@@ -1,0 +1,1400 @@
+/* ==========================================================================
+   GemSuites Hotel & Apartments, Riverside - Design System & Stylesheet
+   Theme: Calm Luxury with a Quiet Futuristic Edge (Warm Cream Palette)
+   Zero Frameworks | Pure Semantic CSS3
+   ========================================================================== */
+
+/* @import Google Fonts with safe local fallbacks */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* --- 1. DESIGN TOKENS (CSS VARIABLES) --- */
+:root {
+  /* Color Palette - Cream, Charcoal, Champagne Gold, Soft Teal */
+  --bg-cream: #F3EBDD;              /* Base canvas background (warm, soft) */
+  --surface-cream: #F8F2E7;         /* Elevated cards, panels, inputs */
+  --surface-cream-subtle: #FAF6EF;  /* Lightest tone for high contrast */
+  --cream-deep: #EADFCB;            /* Subtle borders, section dividers */
+  --cream-hover: #E2D5BE;           /* Interactive button hover state */
+  --cream-active: #D9C8AC;
+
+  /* Typography Colors */
+  --text-main: #2E2A25;             /* Warm charcoal (high contrast, WCAG AAA) */
+  --text-secondary: #6B6256;        /* Warm taupe-grey for subheadings/body */
+  --text-muted: #8E8475;            /* Micro-labels, metadata, timestamps */
+  --text-on-accent: #FFFFFF;        /* Crisp white text for dark/accent buttons */
+
+  /* Champagne Gold Accents */
+  --accent-gold: #B8924A;           /* Champagne gold (luxury identity) */
+  --accent-gold-light: #D4B26F;     /* Subtle shimmer / hover gold */
+  --accent-gold-soft: rgba(184, 146, 74, 0.12); /* Tinted badge background */
+  --gold-hairline: rgba(184, 146, 74, 0.28);    /* Precision luxury borders */
+
+  /* Futuristic Action Colors */
+  --teal-action: #3F8F8A;           /* Soft muted teal for primary conversion CTAs */
+  --teal-action-hover: #327571;     /* Active/hover deep teal */
+  --teal-soft: rgba(63, 143, 138, 0.12); /* Subtle interactive backgrounds */
+  --teal-glow: rgba(63, 143, 138, 0.25);
+
+  /* Glassmorphism & Depth */
+  --glass-bg: rgba(248, 242, 231, 0.82);        /* Frosted cream surface */
+  --glass-bg-subtle: rgba(248, 242, 231, 0.65);
+  --glass-border: rgba(234, 223, 203, 0.75);     /* Glass hairline border */
+  --glass-blur: blur(16px);                      /* Smooth backdrop filter */
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 16px -2px rgba(46, 42, 37, 0.05);
+  --shadow-md: 0 10px 28px -4px rgba(46, 42, 37, 0.08);
+  --shadow-lg: 0 20px 48px -6px rgba(46, 42, 37, 0.12);
+  --shadow-gold-glow: 0 0 28px rgba(184, 146, 74, 0.2);
+
+  /* Typography Stack */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Typography Scales */
+  --font-hero: clamp(2.75rem, 5.5vw, 4.75rem);
+  --font-h1: clamp(2.25rem, 4.2vw, 3.5rem);
+  --font-h2: clamp(1.75rem, 3.2vw, 2.6rem);
+  --font-h3: clamp(1.35rem, 2.2vw, 1.85rem);
+  --font-h4: 1.18rem;
+  --font-body-lg: 1.125rem;
+  --font-body: 1rem;
+  --font-body-sm: 0.875rem;
+  --font-mono-badge: 0.785rem;
+
+  /* Spatial Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Layout Widths */
+  --container-max: 1280px;
+  --container-narrow: 860px;
+  --header-height: 84px;
+
+  /* Smooth Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- 2. CSS RESET & ACCESSIBILITY BASE --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: var(--font-body);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Skip link for keyboard accessibility (WCAG AA) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--text-main);
+  color: var(--surface-cream);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: 600;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 20px;
+  outline: 2px solid var(--accent-gold);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* Responsive typography base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-main);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+/* --- 3. LAYOUT UTILITIES --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+.section-padding {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.section-padding-sm {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+/* Section Header Typography */
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto var(--space-2xl) auto;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--font-mono-badge);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  margin-bottom: var(--space-sm);
+  background: var(--accent-gold-soft);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gold-hairline);
+}
+
+.section-title {
+  font-size: var(--font-h2);
+  margin-bottom: var(--space-sm);
+}
+
+.section-lead {
+  font-size: var(--font-body-lg);
+  color: var(--text-secondary);
+}
+
+/* --- 4. BUTTONS & INTERACTIVE ELEMENTS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: var(--font-body-sm);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary Teal Conversion Button */
+.btn-primary {
+  background-color: var(--teal-action);
+  color: var(--text-on-accent);
+  box-shadow: 0 4px 14px var(--teal-glow);
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--teal-action-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--teal-glow);
+}
+
+/* Secondary Gold Outline Button */
+.btn-gold {
+  background-color: var(--accent-gold);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--accent-gold);
+  color: var(--text-on-accent);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphic Secondary Button */
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-main);
+  border: 1px solid var(--cream-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-glass:hover {
+  background: var(--surface-cream);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+/* WhatsApp Conversion Button */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+}
+
+.btn-whatsapp:hover {
+  background-color: #1EBE5D;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.8125rem;
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+}
+
+/* --- 5. SHARED SITE HEADER & NAVIGATION --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  background: rgba(243, 235, 221, 0.75);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--gold-hairline);
+}
+
+.site-header.scrolled {
+  height: 72px;
+  background: rgba(248, 242, 231, 0.94);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-monogram {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+}
+
+.monogram-mark {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--surface-cream), var(--cream-deep));
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.brand-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+}
+
+/* Nav Links Desktop */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  font-size: 0.915rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 6px 2px;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gold);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-main);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.toggle-line {
+  width: 22px;
+  height: 2px;
+  background: var(--text-main);
+  transition: all var(--transition-normal);
+}
+
+.mobile-nav-toggle.open .toggle-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav-toggle.open .toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.open .toggle-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(243, 235, 221, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  padding: calc(var(--header-height) + var(--space-md)) var(--space-lg) var(--space-xl);
+  overflow-y: auto;
+  transform: translateY(-100%);
+  transition: transform var(--transition-normal);
+}
+
+.mobile-drawer.active {
+  transform: translateY(0);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.mobile-nav-links .nav-link {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--cream-deep);
+}
+
+/* Main Content Spacing for Fixed Header */
+main {
+  flex: 1 0 auto;
+  padding-top: var(--header-height);
+}
+
+/* --- 6. HERO & AMBIENT LIVE BACKGROUND ENGINE --- */
+.hero-ambient {
+  position: relative;
+  min-height: calc(90vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+.ambient-media-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ambient-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Soft Ken Burns Zoom Slideshow Fallback */
+.ambient-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1);
+  animation: kenBurns 20s infinite alternate;
+}
+
+.slide-item.active {
+  opacity: 1;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Cream Protective Overlay (Maintains Readable Text & Warm Mood) */
+.ambient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(243, 235, 221, 0.65) 0%,
+    rgba(243, 235, 221, 0.45) 40%,
+    rgba(243, 235, 221, 0.92) 90%,
+    var(--bg-cream) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 920px;
+}
+
+.hero-title {
+  font-size: var(--font-hero);
+  font-weight: 500;
+  line-height: 1.08;
+  margin-bottom: var(--space-md);
+  color: var(--text-main);
+  text-shadow: 0 2px 20px rgba(248, 242, 231, 0.8);
+}
+
+.hero-lead {
+  font-size: var(--font-body-lg);
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto var(--space-xl);
+}
+
+/* --- 7. FLOATING GLASS BOOKING BAR --- */
+.floating-booking-bar {
+  position: relative;
+  z-index: 10;
+  margin-top: calc(-1 * var(--space-xl));
+  margin-bottom: var(--space-3xl);
+}
+
+.booking-bar-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-md) var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.booking-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 0.925rem;
+  font-weight: 500;
+  transition: border-color var(--transition-fast);
+}
+
+.field-input:focus {
+  border-color: var(--accent-gold);
+  background: #FFFFFF;
+}
+
+/* --- 8. BENTO GRID ARCHITECTURE --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-lg);
+}
+
+.bento-card {
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-md);
+}
+
+.bento-card.col-8 { grid-column: span 8; }
+.bento-card.col-4 { grid-column: span 4; }
+.bento-card.col-6 { grid-column: span 6; }
+.bento-card.col-12 { grid-column: span 12; }
+
+.bento-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+
+.bento-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.bento-card:hover .bento-img {
+  transform: scale(1.05);
+}
+
+.bento-body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bento-badge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: var(--accent-gold-soft);
+  color: var(--accent-gold);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-xs);
+}
+
+.bento-title {
+  font-size: var(--font-h3);
+  margin-bottom: var(--space-xs);
+}
+
+.bento-desc {
+  font-size: var(--font-body-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  flex: 1;
+}
+
+.bento-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--cream-deep);
+  padding-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.rate-figure {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+/* --- 9. 3D-TILT ACCOMMODATION CARDS --- */
+.suite-tilt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.suite-tilt-card {
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease-out, box-shadow var(--transition-normal), border-color var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+}
+
+.suite-tilt-card:hover {
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+}
+
+.suite-card-media {
+  position: relative;
+  height: 250px;
+  background: var(--cream-deep);
+  overflow: hidden;
+}
+
+.suite-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.suite-tilt-card:hover .suite-card-media img {
+  transform: scale(1.04);
+}
+
+.suite-chip {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(248, 242, 231, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  border: 1px solid var(--gold-hairline);
+}
+
+.suite-card-content {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.suite-card-title {
+  font-size: 1.45rem;
+  margin-bottom: var(--space-2xs);
+}
+
+.suite-card-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0;
+  padding: var(--space-xs) 0;
+  border-top: 1px solid var(--cream-deep);
+  border-bottom: 1px solid var(--cream-deep);
+  font-family: var(--font-mono);
+  font-size: 0.785rem;
+  color: var(--text-muted);
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.suite-features-list {
+  margin-bottom: var(--space-md);
+  flex: 1;
+}
+
+.suite-features-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.suite-features-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.suite-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--cream-deep);
+}
+
+/* --- 10. DIRECT-BOOKING PERKS BANNER --- */
+.perks-banner {
+  background: linear-gradient(135deg, var(--surface-cream), var(--cream-deep));
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  margin: var(--space-2xl) 0;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.perk-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.perk-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-cream-subtle);
+  border: 1px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.perk-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.perk-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* --- 11. INTERACTIVE BOOKING ENGINE & CALCULATOR (book.html) --- */
+.booking-journey-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.booking-form-panel {
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.booking-summary-panel {
+  background: var(--surface-cream-subtle);
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-md));
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-label-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(184, 146, 74, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Rate Calculation Summary Table */
+.summary-line-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cream-deep);
+  font-size: 0.925rem;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 2px solid var(--accent-gold);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: var(--space-sm);
+}
+
+/* Honest notice box */
+.honest-notice-box {
+  background: var(--accent-gold-soft);
+  border-left: 3px solid var(--accent-gold);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  margin: var(--space-md) 0;
+}
+
+/* Multi-Channel Finish Options */
+.dispatch-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* M-Pesa Instructions Card */
+.mpesa-card {
+  background: #F4FAF5;
+  border: 1px solid #C4E5CD;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.mpesa-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.mpesa-badge {
+  background: #25D366;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.mpesa-details-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin: var(--space-sm) 0;
+}
+
+.mpesa-key {
+  color: var(--text-muted);
+}
+
+.mpesa-val {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Third-Party Widget Slot */
+.embedded-engine-slot {
+  background: var(--surface-cream);
+  border: 2px dashed var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+/* Cancellation Accordion Panel */
+.policy-panel {
+  background: var(--surface-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.policy-panel h4 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.policy-panel ul {
+  padding-left: 18px;
+  list-style-type: disc;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* --- 12. TESTIMONIALS SLIDER --- */
+.testimonials-section {
+  background: var(--surface-cream);
+  border-top: 1px solid var(--cream-deep);
+  border-bottom: 1px solid var(--cream-deep);
+}
+
+.testimonials-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.testimonial-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--cream-deep);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-quote {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--cream-deep);
+  padding-top: var(--space-sm);
+  font-size: 0.85rem;
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.author-location {
+  color: var(--text-muted);
+  font-size: 0.785rem;
+}
+
+.tripadvisor-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* --- 13. FLOATING CONCIERGE WHATSAPP TRIGGER --- */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.floating-whatsapp:hover {
+  background: #1EBE5D;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  border: 2px solid #25D366;
+  animation: pulseRing 2.4s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* --- 14. SHARED SITE FOOTER --- */
+.site-footer {
+  background: var(--surface-cream);
+  border-top: 1px solid var(--cream-deep);
+  padding: var(--space-4xl) 0 var(--space-xl);
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.footer-brand-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: var(--space-sm) 0 var(--space-md);
+  max-width: 340px;
+}
+
+.footer-heading {
+  font-family: var(--font-mono);
+  font-size: 0.785rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  margin-bottom: var(--space-md);
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav-list a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-list a:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--cream-deep);
+  padding-top: var(--space-lg);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* --- 15. RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1024px) {
+  .booking-bar-card {
+    grid-template-columns: 1fr 1fr;
+  }
+  .booking-bar-card .btn {
+    grid-column: span 2;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  .booking-journey-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 72px;
+  }
+  .nav-desktop {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  .mobile-drawer {
+    display: flex;
+  }
+  .booking-bar-card {
+    grid-template-columns: 1fr;
+  }
+  .booking-bar-card .btn {
+    grid-column: span 1;
+  }
+  .bento-card.col-8,
+  .bento-card.col-4,
+  .bento-card.col-6 {
+    grid-column: span 12;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
+
+/* --- 16. ACCESSIBILITY & REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ambient-video {
+    display: none;
+  }
+  .slide-item {
+    animation: none;
+  }
+}

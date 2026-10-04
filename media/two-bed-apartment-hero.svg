@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="twoBedHeroSky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="50%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#twoBedHeroSky)"/>
+  <g stroke="#0369A1" stroke-width="1.5" fill="none" opacity="0.4">
+    <rect x="100" y="100" width="1200" height="700" rx="16"/>
+    <rect x="150" y="160" width="520" height="380" rx="8" fill="#FFFFFF" fill-opacity="0.85"/>
+    <rect x="730" y="160" width="520" height="380" rx="8" fill="#FFFFFF" fill-opacity="0.85"/>
+    <rect x="250" y="580" width="900" height="180" rx="12" fill="#FFFFFF" fill-opacity="0.9"/>
+  </g>
+  <rect x="420" y="780" width="560" height="50" rx="25" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
+  <text x="700" y="811" font-family="'Cormorant Garamond', Georgia, serif" font-size="22" font-weight="600" fill="#0B2545" text-anchor="middle" letter-spacing="1">TWO-BEDROOM RESIDENTIAL SUITE</text>
+</svg>

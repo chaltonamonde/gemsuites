@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="suiteHeroSkyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="50%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#suiteHeroSkyGrad)"/>
+  <g stroke="#0369A1" stroke-width="1.5" fill="none" opacity="0.4">
+    <rect x="150" y="150" width="1100" height="600" rx="16"/>
+    <rect x="250" y="200" width="400" height="480" rx="8"/>
+    <line x1="450" y1="200" x2="450" y2="680"/>
+    <line x1="250" y1="440" x2="650" y2="440"/>
+    <rect x="750" y="320" width="420" height="360" rx="8" fill="#FFFFFF" fill-opacity="0.85"/>
+    <rect x="720" y="280" width="480" height="40" rx="4"/>
+  </g>
+  <rect x="475" y="775" width="450" height="50" rx="25" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
+  <text x="700" y="806" font-family="'Cormorant Garamond', Georgia, serif" font-size="22" font-weight="600" fill="#0B2545" text-anchor="middle" letter-spacing="1">LUXURY HOTEL SUITE • RIVERSIDE</text>
+</svg>

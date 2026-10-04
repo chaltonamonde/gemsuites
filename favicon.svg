@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="url(#favGrad)"/>
+  <rect x="5" y="5" width="90" height="90" rx="16" fill="none" stroke="#0EA5E9" stroke-width="3"/>
+  <text x="50" y="65" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#0369A1" text-anchor="middle">GS</text>
+</svg>
