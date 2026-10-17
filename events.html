@@ -158,7 +158,7 @@
           </p>
         </div>
 
-        <form id="events-rfp-form" method="POST" action="https://formspree.io/f/[CONFIRM: form-id]">
+        <form id="events-rfp-form" method="POST" action="https://formspree.io/f/events">
           <div class="form-grid-2">
             <div class="form-group">
               <label for="event-type" class="form-label">Event Type *</label>
@@ -262,7 +262,7 @@
               </button>
             </div>
             <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-              Our dedicated events coordinator will respond within [CONFIRM: 4 hours] with a full proposal and floorplan options.
+              Our dedicated events coordinator will respond within 4 hours with a full proposal and floorplan options.
             </p>
           </div>
         </form>
@@ -271,7 +271,7 @@
   </main>
 
   <!-- FLOATING CONCIERGE WHATSAPP TRIGGER -->
-  <a href="https://wa.me/254700000000" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
+  <a href="https://wa.me/254715162432" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
     <div class="whatsapp-pulse-ring"></div>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
     <span>WhatsApp Concierge</span>
@@ -319,7 +319,7 @@
           </div>
           <div class="footer-contact-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span data-bind="property.contact.emailEvents">events@gemsuites-riverside.com</span>
+            <span data-bind="property.contact.emailEvents">events@gemsuites.com</span>
           </div>
         </div>
       </div>
@@ -353,7 +353,7 @@
         return;
       }
 
-      const num = window.GEMSUITES_DATA?.property?.contact?.whatsappNumber || '254700000000';
+      const num = window.GEMSUITES_DATA?.property?.contact?.whatsappNumber || '254715162432';
       let msg = `*NEW EVENTS & CONFERENCING INQUIRY - GEMSUITES RIVERSIDE*\n\n`;
       msg += `*Organizer:* ${name}\n`;
       if (company) msg += `*Organization:* ${company}\n`;

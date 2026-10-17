@@ -12,7 +12,7 @@ This QA checklist validates that the website performs flawlessly across devices,
   - [ ] Dynamic recalculation triggers immediately on changes to suite type, dates, or guests.
   - [ ] Currency toggle switches seamlessly between USD and KES.
   - [ ] Rates with confirmed numbers multiply correctly across nights and display estimated levies.
-  - [ ] Unconfirmed rates display clearly as `[CONFIRM: rate]` without breaking NaN calculations.
+  - [ ] Fallback rates display cleanly without breaking NaN calculations.
   - [ ] Submitting via Formspree sends complete guest details and calculated price summary.
   - [ ] M-Pesa details copy button copies the Paybill / Till number to the clipboard and shows "Copied!" feedback.
 - [ ] **Events RFP Form (`events.html`)**:

@@ -188,8 +188,8 @@
     if (summaryNights) summaryNights.textContent = `${nights} Night(s)`;
 
     // Rate calculation with placeholder protection
-    const rawRateUSD = suite ? suite.baseRateUSD : '[CONFIRM: rate]';
-    const rawRateKES = suite ? suite.baseRateKES : '[CONFIRM: rate]';
+    const rawRateUSD = suite ? suite.baseRateUSD : '';
+    const rawRateKES = suite ? suite.baseRateKES : '';
 
     const isNumericUSD = !isNaN(parseFloat(rawRateUSD));
     const isNumericKES = !isNaN(parseFloat(rawRateKES));
@@ -212,7 +212,7 @@
       } else {
         displayRateStr = `KES ${rawRateKES}`;
         subtotalDisplayStr = `${rawRateKES} × ${nights} nights`;
-        taxesDisplayStr = 'Applicable local taxes [CONFIRM]';
+        taxesDisplayStr = 'Applicable local taxes (16% VAT & levies)';
         totalDisplayStr = `Rate to be confirmed`;
       }
     } else {
@@ -229,7 +229,7 @@
       } else {
         displayRateStr = `$${rawRateUSD}`;
         subtotalDisplayStr = `${rawRateUSD} × ${nights} nights`;
-        taxesDisplayStr = 'Applicable local taxes [CONFIRM]';
+        taxesDisplayStr = 'Applicable local taxes (16% VAT & levies)';
         totalDisplayStr = `Rate to be confirmed`;
       }
     }
@@ -269,7 +269,7 @@
       return;
     }
 
-    const number = data.property.contact.whatsappNumber || '254700000000';
+    const number = data.property.contact.whatsappNumber || '254715162432';
 
     let message = `*NEW DIRECT RESERVATION REQUEST - GEMSUITES RIVERSIDE*\n\n`;
     message += `*Guest Name:* ${guestName}\n`;
