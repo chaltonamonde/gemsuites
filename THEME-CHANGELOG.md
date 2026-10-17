@@ -6,6 +6,29 @@ All updates preserved 100% of underlying HTML structures, booking calculations, 
 
 ---
 
+### Release `capsule-luxe-1` (Floating Island Header & Luxury Segmented Capsule Booking Bar)
+
+1. **Floating Island Glass Header (`.site-header`)**:
+   - Modernized header into a floating island capsule (`top: 14px`, `border-radius: var(--radius-pill)`).
+   - Applied layered frosted-glass blur (`blur(24px) saturate(190%)`), hairline border, and gold-tinted inset sheen.
+   - Dynamic `.scrolled` state smoothly compresses header height from 68px to 60px with deeper elevation shadow.
+   - Mobile navigation drawer upgraded with dark frosted glass backing and gold active link accents.
+
+2. **Full Hero Viewport Immersion (`.hero-ambient`)**:
+   - Pulled hero ambient photography up to `top: 0` using negative margin, seamlessly flowing luxury Ken Burns slideshow under the floating glass header.
+
+3. **Luxury Segmented Booking Bar (`.booking-bar-card`)**:
+   - Segmented four-bay design with hairline vertical dividers and soft hover highlights.
+   - Micro-iconography integrated into Check-In, Check-Out, Suite, and Guest field labels.
+   - Luxury Champagne Gold shimmer CTA button (`.btn-submit`) with subtle directional arrow indicator.
+   - Floating trust guarantee ribbon below the bar highlighting guaranteed direct rates, instant M-Pesa/card settlements, and WhatsApp concierge.
+
+4. **Sitewide Cache Synchronization**:
+   - Synchronized `?v=capsule-luxe-1` query string across all 14 HTML pages.
+
+
+---
+
 ### Files Modified
 
 1. **[css/styles.css](file:///c:/Users/user/OneDrive/Gemsuites/css/styles.css)**:

@@ -404,60 +404,115 @@ button, input, select, textarea {
   font-size: 1.05rem;
 }
 
-/* --- 5. SHARED SITE HEADER & NAVIGATION --- */
+/* --- 5. SHARED SITE HEADER & NAVIGATION (FLOATING ISLAND GLASS CAPSULE) --- */
 .site-header {
   position: fixed;
-  top: 0;
+  top: 14px;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  height: auto;
   z-index: 1000;
-  transition: all var(--transition-normal);
-  background: rgba(43, 110, 166, 0.92);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  border: none;
+  pointer-events: none;
+  padding: 0 var(--space-md);
 }
 
-.site-header.scrolled {
-  height: 72px;
-  background: rgba(30, 85, 134, 0.98);
-  box-shadow: 0 4px 20px -2px rgba(4, 22, 40, 0.25);
-}
-
-.header-inner {
+.site-header .header-inner {
+  pointer-events: auto;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  height: 68px;
+  background: rgba(10, 34, 58, 0.82);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: var(--radius-pill);
+  padding: 0 18px 0 14px;
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 16px 36px -6px rgba(4, 22, 40, 0.38),
+    0 0 0 1px rgba(232, 194, 122, 0.2) inset;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  gap: var(--space-md);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header.scrolled {
+  top: 8px;
+}
+
+.site-header.scrolled .header-inner {
+  height: 60px;
+  background: rgba(8, 28, 48, 0.94);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 18px 42px -4px rgba(4, 22, 40, 0.48),
+    0 0 0 1px rgba(232, 194, 122, 0.24) inset;
+  padding: 0 16px 0 12px;
 }
 
 .brand-monogram {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 12px;
   text-decoration: none;
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.brand-monogram:hover {
+  transform: translateY(-1px);
 }
 
 .monogram-mark {
-  width: 44px;
-  height: 44px;
-  background: #FFFFFF;
-  border: 1.5px solid var(--sky-primary);
-  border-radius: var(--radius-sm);
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #D8ECF8 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--deep-azure);
-  box-shadow: 0 2px 10px rgba(4, 22, 40, 0.15);
+  color: var(--deep-ink);
+  box-shadow: 
+    0 2px 8px rgba(4, 22, 40, 0.18),
+    0 0 0 1px rgba(232, 194, 122, 0.35);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.monogram-mark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232, 194, 122, 0.45), transparent);
+  transition: left 0.5s ease;
+}
+
+.brand-monogram:hover .monogram-mark {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35), 0 0 0 1px var(--accent-gold);
+}
+
+.brand-monogram:hover .monogram-mark::before {
+  left: 100%;
 }
 
 .brand-names {
   display: flex;
   flex-direction: column;
+  line-height: 1.15;
 }
 
 .brand-title {
@@ -465,91 +520,161 @@ button, input, select, textarea {
   font-size: 1.25rem;
   font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 8px rgba(4, 22, 40, 0.4);
+  text-shadow: 0 1px 6px rgba(4, 22, 40, 0.5);
+  white-space: nowrap;
 }
 
 .brand-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #BAE6FD;
+  letter-spacing: 0.16em;
+  color: var(--accent-gold-light);
   font-weight: 600;
+  white-space: nowrap;
 }
 
-/* Nav Links Desktop */
+/* Nav Links Desktop: Glass Capsule Container */
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 3px;
+  background: rgba(4, 20, 36, 0.32);
+  padding: 4px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .nav-link {
-  font-size: 0.915rem;
+  font-size: 0.835rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.88);
   position: relative;
-  padding: 6px 2px;
-  text-shadow: 0 1px 4px rgba(4, 22, 40, 0.35);
-  transition: color var(--transition-fast);
+  padding: 7px 11px;
+  border-radius: var(--radius-pill);
+  text-shadow: 0 1px 3px rgba(4, 22, 40, 0.4);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2.5px;
-  background: var(--deep-azure-dark);
-  box-shadow: 0 0 8px rgba(3, 105, 161, 0.6);
-  transition: width var(--transition-fast);
+  display: none;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 8px rgba(4, 22, 40, 0.18);
+  transform: translateY(-1px);
+}
+
 .nav-link.active {
   color: #FFFFFF;
-  text-shadow: 0 1px 4px rgba(4, 22, 40, 0.3);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.7) 0%, rgba(7, 89, 133, 0.85) 100%);
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Shimmering Gold "Reserve Suite" Button */
+.header-actions .btn {
+  background: linear-gradient(135deg, #E8C27A 0%, #D4A359 48%, #F5E0B7 100%);
+  background-size: 200% 100%;
+  color: #041628;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 4px 16px rgba(232, 194, 122, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  animation: goldShimmerSweep 6s infinite ease-in-out;
+}
+
+@keyframes goldShimmerSweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header-actions .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 90%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-22deg);
+  animation: gleamGlow 4.5s infinite 1.5s;
+}
+
+@keyframes gleamGlow {
+  0% { left: -130%; }
+  25% { left: 180%; }
+  100% { left: 180%; }
+}
+
+.header-actions .btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 8px 24px rgba(232, 194, 122, 0.65),
+    0 0 0 2px rgba(255, 255, 255, 0.55);
 }
 
 /* Mobile Toggle Hamburger */
 .mobile-nav-toggle {
   display: none;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   z-index: 1001;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
 }
 
 .toggle-line {
-  width: 22px;
-  height: 2.5px;
-  background: var(--deep-ink);
+  width: 20px;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 2px;
   transition: all var(--transition-normal);
 }
 
 .mobile-nav-toggle.open .toggle-line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
+  background: #FFFFFF;
 }
 
 .mobile-nav-toggle.open .toggle-line:nth-child(2) {
@@ -558,6 +683,7 @@ button, input, select, textarea {
 
 .mobile-nav-toggle.open .toggle-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+  background: #FFFFFF;
 }
 
 /* Mobile Drawer Overlay */
@@ -568,14 +694,16 @@ button, input, select, textarea {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(107, 174, 214, 0.98);
-  backdrop-filter: blur(20px);
+  background: rgba(8, 28, 50, 0.96);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   z-index: 999;
   flex-direction: column;
-  padding: calc(var(--header-height) + var(--space-md)) var(--space-lg) var(--space-xl);
+  padding: calc(var(--header-height) + 24px) var(--space-lg) var(--space-xl);
   overflow-y: auto;
   transform: translateY(-100%);
-  transition: transform var(--transition-normal);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-drawer.active {
@@ -585,33 +713,47 @@ button, input, select, textarea {
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 4px;
   margin-bottom: var(--space-xl);
 }
 
 .mobile-nav-links .nav-link {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--deep-ink);
+  font-size: 1.45rem;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
 }
 
-/* Main Content Spacing for Fixed Header */
+.mobile-nav-links .nav-link:hover,
+.mobile-nav-links .nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(232, 194, 122, 0.3);
+  color: var(--accent-gold-light);
+  transform: translateX(4px);
+}
+
+/* Main Content Spacing for Floating Header */
 main {
   flex: 1 0 auto;
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + 20px);
 }
 
 /* --- 6. HERO & AMBIENT LIVE BACKGROUND ENGINE --- */
 .hero-ambient {
   position: relative;
-  min-height: calc(90vh - var(--header-height));
+  min-height: 92vh;
+  margin-top: calc(-1 * (var(--header-height) + 20px));
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--space-3xl) 0 var(--space-4xl);
+  padding: calc(var(--header-height) + 48px) 0 var(--space-4xl);
 }
 
 .ambient-media-container {
@@ -779,59 +921,167 @@ main {
   font-weight: 500;
 }
 
-/* --- 7. FLOATING GLASS BOOKING BAR --- */
+/* --- 7. FLOATING GLASS BOOKING BAR (LUXURY SEGMENTED CAPSULE) --- */
 .floating-booking-bar {
   position: relative;
-  z-index: 10;
-  margin-top: calc(-1 * var(--space-xl));
+  z-index: 20;
+  margin-top: -46px;
   margin-bottom: var(--space-3xl);
+  max-width: 1140px;
 }
 
 .booking-bar-card {
-  background: rgba(215, 238, 252, 0.85);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 16px 40px -4px rgba(4, 22, 40, 0.22);
-  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(235, 246, 255, 0.92) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 
+    0 24px 60px -10px rgba(4, 22, 40, 0.28),
+    0 1px 0 rgba(255, 255, 255, 1) inset,
+    0 0 0 1px rgba(232, 194, 122, 0.3) inset;
+  padding: 10px 14px 10px 18px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
-  gap: var(--space-md);
+  grid-template-columns: 1.15fr 1.15fr 1.45fr 1fr auto;
+  gap: 0;
   align-items: center;
+  position: relative;
 }
 
 .booking-field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
+  padding: 10px 16px;
+  position: relative;
+  border-radius: 16px;
+  transition: all 0.22s ease;
+}
+
+/* Vertical hairline divider between segmented bays */
+.booking-field:not(:nth-last-child(2))::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(11, 37, 69, 0.14), transparent);
+}
+
+.booking-field:hover,
+.booking-field:focus-within {
+  background: rgba(2, 132, 199, 0.08);
 }
 
 .field-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--deep-azure-dark);
   font-weight: 700;
+  cursor: pointer;
+}
+
+.field-label svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--deep-azure);
+  stroke-width: 2.2;
 }
 
 .field-input {
   width: 100%;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1.5px solid var(--cloud-border);
-  border-radius: var(--radius-sm);
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   color: var(--deep-ink);
-  font-size: 0.925rem;
+  font-size: 0.95rem;
   font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
   transition: all var(--transition-fast);
 }
 
 .field-input:focus {
-  border-color: var(--sky-primary);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+select.field-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230369A1' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 20px;
+}
+
+/* Submit Button in Booking Bar */
+.booking-submit-wrap {
+  padding-left: 10px;
+}
+
+.booking-bar-card .btn-submit {
+  background: linear-gradient(135deg, #E8C27A 0%, #D4A359 50%, #F5E0B7 100%);
+  background-size: 200% 100%;
+  color: #041628;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 6px 20px rgba(232, 194, 122, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  animation: goldShimmerSweep 5s infinite ease-in-out;
+}
+
+.booking-bar-card .btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(232, 194, 122, 0.65);
+}
+
+/* Trust Guarantee Ribbon below booking bar */
+.booking-bar-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(4, 22, 40, 0.5);
+}
+
+.booking-bar-ribbon .ribbon-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.booking-bar-ribbon .ribbon-star {
+  color: var(--accent-gold);
+}
+
+.booking-bar-ribbon .ribbon-sep {
+  opacity: 0.5;
 }
 
 /* --- 8. BENTO GRID ARCHITECTURE --- */
@@ -1515,12 +1765,39 @@ textarea.form-control {
 }
 
 /* --- 15. RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1100px) {
+  .nav-desktop {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  .mobile-drawer {
+    display: flex;
+  }
+}
+
 @media (max-width: 1024px) {
   .booking-bar-card {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
   }
-  .booking-bar-card .btn {
+  .booking-field:not(:nth-last-child(2))::after {
+    display: none;
+  }
+  .booking-field {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+  .booking-submit-wrap {
     grid-column: span 2;
+    padding-left: 0;
+    width: 100%;
+  }
+  .booking-bar-card .btn-submit {
+    width: 100%;
+    justify-content: center;
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1533,22 +1810,53 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 72px;
+    --header-height: 68px;
   }
-  .nav-desktop {
-    display: none;
+  .site-header {
+    top: 8px;
+    padding: 0 10px;
   }
-  .mobile-nav-toggle {
-    display: flex;
+  .site-header .header-inner {
+    height: 58px;
+    padding: 0 12px;
+    border-radius: 20px;
   }
-  .mobile-drawer {
-    display: flex;
+  .brand-title {
+    font-size: 1.12rem;
+  }
+  .brand-subtitle {
+    font-size: 0.56rem;
+  }
+  .monogram-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
+    border-radius: 10px;
+  }
+  .header-actions .btn {
+    padding: 7px 13px;
+    font-size: 0.75rem;
+  }
+  .floating-booking-bar {
+    margin-top: -24px;
+    padding: 0 12px;
   }
   .booking-bar-card {
     grid-template-columns: 1fr;
+    border-radius: 20px;
+    padding: 14px;
+    gap: 10px;
   }
-  .booking-bar-card .btn {
+  .booking-field {
+    padding: 8px 12px;
+  }
+  .booking-submit-wrap {
     grid-column: span 1;
+    padding-left: 0;
+  }
+  .booking-bar-ribbon {
+    font-size: 0.75rem;
+    gap: 8px;
   }
   .bento-card.col-8,
   .bento-card.col-4,
