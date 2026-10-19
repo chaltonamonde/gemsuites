@@ -1,26 +1,39 @@
-# GemSuites Riverside - Sky Blue Theme Guide ("Cool, Rich, Fancy")
+# GemSuites Riverside - Dual Theme Guide (Daylight Luxury & Dark Sky Blue)
 
-This guide outlines the design tokens, visual components, and customization controls for the **Sky Blue, Cool, Rich, Fancy** theme.
+This guide outlines the design tokens, visual components, and customization controls for both the **Daylight Luxury Sanctuary** (Light Mode) and the **Dark Sky Blue Sanctuary** (Dark Mode).
 
 ---
 
-## 1. Palette & Usage Rules
+## 1. Atmosphere Switcher (Light / Dark Sky Blue Mode)
+
+The website supports instant switching between **Daylight Luxury Mode** and **Dark Sky Blue Mode**:
+- **Desktop**: Click the celestial toggle button (`Dark Sky` / `Light`) located in the header right next to the "Reserve Suite" action button.
+- **Mobile**: Available directly in the sticky navigation header and inside the mobile drawer menu under the "Atmosphere" section.
+- **Persistence**: User selection is saved to `localStorage` under `gemsuites_theme` and synchronized across all pages and open tabs in real-time.
+- **System Preference**: If no preference is manually selected, the website automatically respects the visitor's device/OS `prefers-color-scheme`.
+- **Zero Flash**: Inline `<script>` execution in `<head>` guarantees instant rendering with no white flash or layout shifts during page navigation.
+
+---
+
+## 2. Palettes & Design Tokens
 
 All colors are controlled via CSS custom properties in [css/styles.css](file:///c:/Users/user/OneDrive/Gemsuites/css/styles.css):
 
-| Token Name | Hex / Value | Role & Usage |
-| :--- | :--- | :--- |
-| `--sky-primary` | `#0EA5E9` | Core conversion actions, active navigation states, primary buttons, and link underlines. |
-| `--sky-light` | `#38BDF8` | Button hover highlights, focus rings, and bright sky accents. |
-| `--deep-azure` | `#0369A1` | Subtitles, section eyebrows, monogram borders, and secondary hover states. |
-| `--deep-azure-dark` | `#075985` | Deep ocean gradient stops and high-contrast card borders. |
-| `--deep-ink` | `#0B2545` | Primary body text and headings. Guaranteed WCAG AAA contrast ratio (> 12:1) over soft cloud surfaces. |
-| `--text-azure-secondary` | `#334E68` | Secondary body text, descriptions, and feature lists. |
-| `--soft-cloud` | `#F0F9FF` | Primary page canvas background (crisp, fresh, non-glaring). |
-| `--surface-cloud` | `#E0F2FE` | Elevated cards, bento panels, inputs, and footer backgrounds. |
-| `--cloud-border` | `#BAE6FD` | Luminous hairlines, input borders, and frosted glass edges. |
-| `--accent-gold` | `#E8C27A` | Warm champagne gold highlight used sparingly for luxury accents, badges, and key buttons. |
-| `--color-success` | `#10B981` | Success alerts and M-Pesa badges. |
+| Token Name | Daylight Mode (Light) | Dark Sky Blue Mode (`[data-theme="dark"]`) | Role & Usage |
+| :--- | :--- | :--- | :--- |
+| `--bg-page` | `#FAF6EE` | `#071526` | Deep midnight celestial sky page canvas. |
+| `--bg-section-alt` | `#F5EFE2` | `#0B1F36` | Alternating twilight navy section canvas. |
+| `--bg-card` / `--surface-cloud` | `#FFFDF8` | `#0E2744` | Elevated cards, bento grid panels, and modals. |
+| `--bg-input` | `#FFFEFA` | `#08192D` | Form controls and booking selector backgrounds. |
+| `--border-soft` / `--cloud-border` | `#E6DCC6` | `rgba(56, 189, 248, 0.22)` | Luminous azure hairlines and frosted card boundaries. |
+| `--sky-primary` | `#0284C7` | `#38BDF8` | Core conversion buttons, active links, and highlights. |
+| `--sky-light` | `#38BDF8` | `#BAE6FD` | Starlight glow and focus rings. |
+| `--deep-azure` | `#0369A1` | `#38BDF8` | Eyebrow badges, icons, and subtitles. |
+| `--deep-ink` | `#061A30` | `#F0F9FF` | Primary headings and text (WCAG AAA compliant > 14:1 contrast). |
+| `--text-azure-secondary` | `#2C4B68` | `#94B9DA` | Secondary body text and feature lists (WCAG AAA compliant > 8:1). |
+| `--text-azure-muted` | `#507090` | `#6289AD` | Micro-labels, metadata, and timestamps. |
+| `--accent-gold` | `#D4AF37` | `#F3CE7A` | Warm champagne gold luxury accents and badges. |
+| `--color-success` | `#059669` | `#10B981` | Verification badges and confirmations. |
 
 ---
 

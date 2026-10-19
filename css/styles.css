@@ -167,6 +167,261 @@
 }
 
 /* ==========================================================================
+   DARK SKY BLUE LUXURY SANCTUARY MODE
+   Deep celestial navy, luminous sky cyan accents, champagne gold starlight
+   ========================================================================== */
+html[data-theme="dark"],
+[data-theme="dark"] {
+  /* --- PALETTE IDENTITY: DARK SKY BLUE CANVAS --- */
+  --bg-page:        #071526;   /* Deep midnight sky blue */
+  --bg-section-alt: #0B1F36;   /* Alternating twilight navy sections */
+  --bg-card:        #0E2744;   /* Elevated celestial card surfaces */
+  --bg-input:       #08192D;   /* Dark midnight form fields */
+  --bg-footer:      #040D17;   /* Deep abyss footer */
+  --border-soft:    rgba(56, 189, 248, 0.22); /* Luminous azure hairlines */
+
+  /* Neutral Canvas (Dark Sky Blue base) */
+  --soft-cloud: #071526;
+  --soft-cloud-light: #0E2744;
+  --soft-cloud-tint: #0B1F36;
+  --sky-bg-gradient: radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.22) 0px, transparent 55%),
+                     radial-gradient(at 0% 100%, rgba(2, 132, 199, 0.25) 0px, transparent 50%),
+                     #071526;
+
+  /* Card Surfaces & Elevated Glass */
+  --surface-cloud: #0E2744;
+  --surface-cloud-subtle: #0B1F36;
+  --surface-cloud-glass: rgba(14, 39, 68, 0.92);
+  --cloud-border: rgba(56, 189, 248, 0.22);
+  --cloud-border-subtle: rgba(56, 189, 248, 0.12);
+  --cloud-hover: #133458;
+  --cloud-active: #18416C;
+
+  /* Sky Blue Primaries (Active Horizon & Accents) */
+  --sky-primary: #38BDF8;           /* Vivid luminous sky cyan */
+  --sky-primary-hover: #7DD3FC;     /* Luminous ice sky hover */
+  --sky-light: #BAE6FD;             /* Bright celestial sky highlight */
+  --sky-subtle: #0284C7;            /* Deep vibrant blue */
+  --sky-soft: rgba(56, 189, 248, 0.18);
+  --sky-glow: rgba(56, 189, 248, 0.35);
+
+  /* Deep Azures (Structure, Depth & Footers) */
+  --deep-azure: #38BDF8;            /* Shines as bright sky blue in dark mode */
+  --deep-azure-dark: #0EA5E9;
+  --deep-azure-midnight: #030E1B;
+
+  /* Typography - Razor-sharp contrast, zero glare */
+  --deep-ink: #F0F9FF;              /* Crisp ice sky white - 16.8:1 WCAG AAA */
+  --text-azure-secondary: #94B9DA;  /* Soft celestial azure slate - 8.2:1 WCAG AAA */
+  --text-azure-muted: #6289AD;      /* Refined twilight sky blue */
+  --text-on-accent: #FFFFFF;
+
+  /* Highlight Accent: Warm Champagne Gold */
+  --accent-gold: #F3CE7A;           /* Starlight champagne gold */
+  --accent-gold-light: #FDEAC2;     /* Shimmer highlight */
+  --accent-gold-dark: #D4AF37;      /* Antique gold border */
+  --accent-gold-soft: rgba(243, 206, 122, 0.18);
+  --gold-hairline: rgba(243, 206, 122, 0.45);
+
+  /* Gradients */
+  --gradient-sky: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
+  --gradient-sky-hover: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
+  --gradient-gold: linear-gradient(135deg, #F3CE7A 0%, #E2B558 50%, #C99635 100%);
+  --gradient-gold-hover: linear-gradient(135deg, #FDEAC2 0%, #F3CE7A 100%);
+  --gradient-card: linear-gradient(180deg, #0E2744 0%, #0B1F36 100%);
+  --gradient-hero-overlay: linear-gradient(
+    180deg,
+    rgba(4, 13, 24, 0.88) 0%,
+    rgba(4, 13, 24, 0.62) 45%,
+    rgba(7, 21, 38, 0.96) 85%,
+    var(--soft-cloud) 100%
+  );
+  --gradient-footer: linear-gradient(180deg, #040D17 0%, #02070D 100%);
+
+  /* Glassmorphism */
+  --glass-cloud-bg: rgba(14, 39, 68, 0.92);
+  --glass-cloud-bg-subtle: rgba(11, 31, 54, 0.85);
+  --glass-cloud-border: rgba(56, 189, 248, 0.25);
+
+  /* Multi-layered Deep Shadows */
+  --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px -3px rgba(0, 0, 0, 0.6), 0 3px 10px -2px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 18px 44px -4px rgba(0, 0, 0, 0.75), 0 6px 18px -2px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 28px 70px -8px rgba(0, 0, 0, 0.9);
+  --shadow-sky-glow: 0 8px 30px rgba(56, 189, 248, 0.3);
+  --shadow-gold-glow: 0 8px 30px rgba(243, 206, 122, 0.35);
+
+  /* Backward-compatible Aliases in Dark Mode */
+  --bg-cream: var(--soft-cloud);
+  --surface-cream: var(--surface-cloud);
+  --surface-cream-subtle: var(--surface-cloud-subtle);
+  --cream-deep: var(--cloud-border);
+  --cream-hover: var(--cloud-hover);
+  --cream-active: var(--cloud-active);
+  --text-main: var(--deep-ink);
+  --text-muted: var(--text-azure-muted);
+  --text-secondary: var(--text-azure-secondary);
+  --teal-action: var(--sky-primary);
+  --teal-action-hover: var(--sky-primary-hover);
+  --teal-soft: var(--sky-soft);
+  --teal-glow: var(--shadow-sky-glow);
+  --glass-bg: var(--glass-cloud-bg);
+  --glass-bg-subtle: var(--glass-cloud-bg-subtle);
+  --glass-border: var(--glass-cloud-border);
+}
+
+/* Dark Mode Component Overrides */
+[data-theme="dark"] .monogram-mark {
+  background: linear-gradient(135deg, #0E2744 0%, #06182B 100%);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38BDF8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="dark"] .site-header .header-inner {
+  background: rgba(4, 16, 30, 0.88);
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 1px 0 rgba(56, 189, 248, 0.15) inset, 0 16px 40px -4px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="dark"] .site-header.scrolled .header-inner {
+  background: rgba(4, 16, 30, 0.96);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 1px 0 rgba(56, 189, 248, 0.2) inset, 0 18px 44px -4px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .nav-desktop {
+  background: rgba(4, 16, 30, 0.6);
+  border-color: rgba(56, 189, 248, 0.18);
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="dark"] .mobile-drawer {
+  background: rgba(4, 14, 26, 0.98);
+}
+
+[data-theme="dark"] .btn-gold,
+[data-theme="dark"] .header-actions .btn.btn-gold {
+  color: #061A30 !important;
+}
+
+[data-theme="dark"] .btn-outline-gold {
+  background: rgba(14, 39, 68, 0.5);
+  color: var(--accent-gold-light);
+  border-color: var(--accent-gold);
+}
+
+[data-theme="dark"] .btn-outline-gold:hover {
+  background: var(--accent-gold-soft);
+  color: var(--accent-gold-light);
+}
+
+[data-theme="dark"] .btn-glass {
+  background: rgba(14, 39, 68, 0.7);
+  color: #F0F9FF;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .btn-glass:hover {
+  background: #0E2744;
+  border-color: var(--sky-primary);
+  color: var(--sky-primary);
+}
+
+[data-theme="dark"] .booking-bar-card {
+  border-color: rgba(56, 189, 248, 0.22);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .booking-field:hover,
+[data-theme="dark"] .booking-field:focus-within {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+[data-theme="dark"] .booking-field:not(:nth-last-child(2))::after {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="dark"] .booking-bar-ribbon {
+  color: #BAE6FD;
+}
+
+[data-theme="dark"] select.field-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2338BDF8' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] select.field-input option,
+[data-theme="dark"] select.form-control option {
+  background: #0E2744;
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .bento-badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38BDF8;
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="dark"] .bento-img-wrap,
+[data-theme="dark"] .experience-img-wrap {
+  background: #08192D;
+}
+
+[data-theme="dark"] .section-eyebrow {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.28);
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .form-control {
+  background: #08192D;
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="dark"] .mpesa-card {
+  background: rgba(6, 78, 59, 0.28);
+  border: 1.5px solid rgba(52, 211, 153, 0.4);
+}
+
+[data-theme="dark"] .mpesa-key {
+  color: #94B9DA;
+}
+
+[data-theme="dark"] .mpesa-val {
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .honest-notice-box {
+  background: rgba(14, 39, 68, 0.65);
+  border-left-color: var(--sky-primary);
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .summary-line-item {
+  border-bottom-color: rgba(56, 189, 248, 0.18);
+}
+
+[data-theme="dark"] .summary-total {
+  border-top-color: var(--sky-primary);
+  color: #38BDF8;
+}
+
+[data-theme="dark"] .gallery-thumb-item {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: #08192D;
+}
+
+/* ==========================================================================
    2. CSS RESET & ACCESSIBLE BASE
    ========================================================================== */
 *, *::before, *::after {
@@ -197,6 +452,22 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Smooth Atmosphere Transitions Across Core Components */
+.site-header .header-inner,
+.bento-card,
+.booking-bar-card,
+.experience-card,
+.testimonial-card,
+.sister-property-card,
+.perks-banner,
+.policy-panel,
+.form-control,
+.mobile-drawer,
+.site-footer {
+  transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 /* Accessible Skip Link */
@@ -659,6 +930,173 @@ button, input, select, textarea {
 
 .mobile-nav-toggle.open .toggle-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   THEME TOGGLE SWITCH COMPONENT (LIGHT / DARK SKY BLUE)
+   ========================================================================== */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 14px 0 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-pill);
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all var(--transition-fast);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--sky-primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon-wrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn .theme-icon {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+/* Light mode state: Moon icon visible, Sun icon hidden */
+html:not([data-theme="dark"]) .theme-toggle-btn .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #BAE6FD;
+}
+
+html:not([data-theme="dark"]) .theme-toggle-btn .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.3);
+  pointer-events: none;
+}
+
+/* Dark mode state: Sun icon visible, Moon icon hidden */
+html[data-theme="dark"] .theme-toggle-btn .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #FDE047;
+}
+
+html[data-theme="dark"] .theme-toggle-btn .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.3);
+  pointer-events: none;
+}
+
+/* Dark theme specific button styling */
+html[data-theme="dark"] .theme-toggle-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #F0F9FF;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15) inset, 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .theme-toggle-btn:hover {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 4px 18px rgba(56, 189, 248, 0.25);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+  .theme-toggle-btn .theme-toggle-label {
+    display: none;
+  }
+}
+
+/* Mobile drawer theme toggle switch row */
+.mobile-theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+[data-theme="dark"] .mobile-theme-row {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.22);
+}
+
+.mobile-theme-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-theme-label {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.mobile-theme-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #BAE6FD;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .mobile-theme-sub {
+  color: #38BDF8;
+}
+
+.mobile-theme-btn {
+  display: inline-flex !important;
+  padding: 0 14px 0 10px !important;
+  width: auto !important;
+  height: 38px !important;
+}
+
+.mobile-theme-btn .theme-toggle-label {
+  display: inline !important;
 }
 
 /* Mobile Drawer Overlay */

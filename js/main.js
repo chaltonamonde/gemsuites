@@ -10,6 +10,7 @@
 
   // Wait for DOM ready
   document.addEventListener('DOMContentLoaded', function () {
+    initThemeToggle();
     initHeaderScroll();
     initMobileNavigation();
     initAmbientMedia();
@@ -20,6 +21,127 @@
     initCopyButtons();
     initGalleryLightbox();
   });
+
+  /* -------------------------------------------------------------
+     0. Dark Sky Blue / Light Mode Atmosphere Controller
+     ------------------------------------------------------------- */
+  function initThemeToggle() {
+    const THEME_KEY = 'gemsuites_theme';
+    const THEME_DARK = 'dark';
+    const THEME_LIGHT = 'light';
+
+    function getPreferredTheme() {
+      try {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === THEME_DARK || stored === THEME_LIGHT) {
+          return stored;
+        }
+      } catch (e) {}
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return THEME_DARK;
+      }
+      return THEME_LIGHT;
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', theme === THEME_DARK ? '#071526' : '#FAF6EE');
+      }
+      updateToggleButtons(theme);
+    }
+
+    const moonSvg = '<svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+    const sunSvg = '<svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+    function updateToggleButtons(theme) {
+      const isDark = theme === THEME_DARK;
+      const buttons = document.querySelectorAll('.theme-toggle-btn');
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(isDark));
+        btn.setAttribute('title', isDark ? 'Switch to Daylight Light Mode' : 'Switch to Dark Sky Blue Mode');
+        btn.setAttribute('aria-label', isDark ? 'Switch to Daylight Light Mode' : 'Switch to Dark Sky Blue Mode');
+
+        const label = btn.querySelector('.theme-toggle-label');
+        if (label) {
+          label.textContent = isDark ? 'Light' : 'Dark Sky';
+        }
+      });
+    }
+
+    // Ensure header actions has the toggle button
+    const headerActions = document.querySelector('.header-actions');
+    if (headerActions && !headerActions.querySelector('.theme-toggle-btn')) {
+      const headerBtn = document.createElement('button');
+      headerBtn.type = 'button';
+      headerBtn.className = 'theme-toggle-btn';
+      headerBtn.id = 'theme-toggle-header';
+      headerBtn.setAttribute('title', 'Toggle between Light and Dark Sky Blue mode');
+      headerBtn.innerHTML = '<span class="theme-toggle-icon-wrap" aria-hidden="true">' + moonSvg + sunSvg + '</span><span class="theme-toggle-label">Dark Sky</span>';
+      
+      const mobileToggle = headerActions.querySelector('.mobile-nav-toggle');
+      if (mobileToggle) {
+        headerActions.insertBefore(headerBtn, mobileToggle);
+      } else {
+        headerActions.appendChild(headerBtn);
+      }
+    }
+
+    // Ensure mobile drawer has the atmosphere switch row
+    const mobileDrawer = document.querySelector('.mobile-drawer');
+    if (mobileDrawer && !mobileDrawer.querySelector('.mobile-theme-row')) {
+      const mobileRow = document.createElement('div');
+      mobileRow.className = 'mobile-theme-row';
+      mobileRow.innerHTML = '<div class="mobile-theme-title"><span class="mobile-theme-label">Atmosphere</span><span class="mobile-theme-sub">Light • Dark Sky</span></div><button type="button" class="theme-toggle-btn mobile-theme-btn" aria-label="Toggle atmosphere"><span class="theme-toggle-icon-wrap" aria-hidden="true">' + moonSvg + sunSvg + '</span><span class="theme-toggle-label">Dark Sky</span></button>';
+      
+      const navLinks = mobileDrawer.querySelector('.mobile-nav-links');
+      if (navLinks) {
+        mobileDrawer.insertBefore(mobileRow, navLinks);
+      } else {
+        mobileDrawer.prepend(mobileRow);
+      }
+    }
+
+    // Click delegation for all theme toggle buttons
+    document.addEventListener('click', function (e) {
+      const toggleBtn = e.target.closest('.theme-toggle-btn');
+      if (!toggleBtn) return;
+
+      e.preventDefault();
+      const currentTheme = document.documentElement.getAttribute('data-theme') === THEME_DARK ? THEME_DARK : THEME_LIGHT;
+      const nextTheme = currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
+
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem(THEME_KEY, nextTheme);
+      } catch (err) {}
+
+      window.dispatchEvent(new CustomEvent('gemsuitesThemeChange', { detail: { theme: nextTheme } }));
+    });
+
+    // Cross-tab synchronization
+    window.addEventListener('storage', function (e) {
+      if (e.key === THEME_KEY && e.newValue) {
+        applyTheme(e.newValue);
+      }
+    });
+
+    // System theme sync if user hasn't set explicit choice
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        try {
+          if (!localStorage.getItem(THEME_KEY)) {
+            applyTheme(e.matches ? THEME_DARK : THEME_LIGHT);
+          }
+        } catch (err) {}
+      });
+    }
+
+    // Initial sync
+    const initialTheme = getPreferredTheme();
+    applyTheme(initialTheme);
+  }
 
   /* -------------------------------------------------------------
      1. Header Scroll Shadow & Transparency Transition

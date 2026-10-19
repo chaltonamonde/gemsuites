@@ -8,9 +8,20 @@
   <link rel="canonical" href="https://gemsuites-riverside.com/stay.html">
   <meta property="og:title" content="Suites & Serviced Apartments | GemSuites Riverside, Nairobi">
   <meta property="og:description" content="Hotel suites and residential serviced apartments with gourmet kitchens, washer/dryers, and private terraces in Riverside, Nairobi.">
-  <meta property="og:image" content="media/og-share.svg">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">`n  <meta name="theme-color" content="#FAF6EE">
-    <link rel="stylesheet" href="css/styles.css?v=capsule-luxe-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#FAF6EE">
+  <!-- Theme Preference Initialization (Prevents flash of light/dark mode) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gemsuites_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'dark' ? '#071526' : '#FAF6EE');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=capsule-luxe-1">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -36,6 +47,13 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
       <div class="header-actions">
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Switch to Dark Sky Blue mode" title="Toggle between Light and Dark Sky Blue mode">
+          <span class="theme-toggle-icon-wrap" aria-hidden="true">
+            <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-toggle-label">Dark Sky</span>
+        </button>
         <a href="book.html" class="btn btn-primary btn-sm">Reserve Suite</a>
         <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <span class="toggle-line"></span>
@@ -48,6 +66,19 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-theme-row">
+      <div class="mobile-theme-title">
+        <span class="mobile-theme-label">Atmosphere</span>
+        <span class="mobile-theme-sub">Light • Dark Sky</span>
+      </div>
+      <button type="button" class="theme-toggle-btn mobile-theme-btn" aria-label="Switch atmosphere">
+        <span class="theme-toggle-icon-wrap" aria-hidden="true">
+          <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </span>
+        <span class="theme-toggle-label">Dark Sky</span>
+      </button>
+    </div>
     <nav class="mobile-nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="stay.html" class="nav-link active">Suites &amp; Serviced Apartments</a>
