@@ -1,80 +1,106 @@
 /* ==========================================================================
    GemSuites Hotel & Apartments, Riverside - Design System & Stylesheet
-   Theme: Sky Blue, Cool, Rich, Fancy (Rich Soothing Sky Canvas & Frosted Glass)
-   Zero Frameworks | Pure Semantic CSS3
+   Theme: Sky Blue & Champagne Gold ("Calm Luxury Sanctuary")
+   Pure Semantic Modern CSS3 | Zero Heavy Frameworks | 100% Responsive
    ========================================================================== */
 
-/* @import Google Fonts with safe local fallbacks */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* --- Google Fonts Integration --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-/* --- 1. DESIGN TOKENS (CSS VARIABLES) --- */
+/* ==========================================================================
+   1. DESIGN TOKENS (CSS CUSTOM PROPERTIES)
+   ========================================================================== */
 :root {
-  /* --- PALETTE: RICH SKY BLUE CANVAS (CALM, EYE-PLEASING, NON-GLARING) --- */
-  
-  /* Rich Soothing Sky Blue Base Canvas (Comfortable, Anti-Glare Mid-Tone) */
-  --soft-cloud: #3B82C4;            /* Rich soothing sky blue base canvas */
-  --sky-bg-gradient: linear-gradient(180deg, #4A90C4 0%, #3B82C4 45%, #2B6EA6 100%);
-  --surface-cloud: rgba(215, 238, 252, 0.75);   /* Frosted translucent sky surface for cards */
-  --surface-cloud-subtle: rgba(186, 224, 248, 0.58);  /* Muted secondary sky surface */
-  --cloud-border: rgba(255, 255, 255, 0.55);          /* Radiant crystalline hairline border */
-  --cloud-hover: #3273A8;           /* Hover tone */
-  --cloud-active: #255F8D;
+  /* --- PALETTE IDENTITY (THEME LOCK) --- */
 
-  /* Sky Primaries (Vibrant Horizon & Conversion) */
-  --sky-primary: #0284C7;           /* Vibrant oceanic sky blue */
-  --sky-light: #38BDF8;             /* Radiant azure highlight */
-  --sky-subtle: #7DD3FC;            /* Breeze tone */
-  --sky-soft: rgba(2, 132, 199, 0.18); /* Subtle interactive background */
-  --sky-glow: rgba(2, 132, 199, 0.45);  /* Luminous atmospheric halo */
+  /* === CREAM THEME TOKENS === */
+  --bg-page:        #FAF6EE;   /* main cream page background */
+  --bg-section-alt: #F5EFE2;   /* alternating sections, slightly deeper cream */
+  --bg-card:        #FFFDF8;   /* cards, modals, dropdowns */
+  --bg-input:       #FFFEFA;   /* form fields */
+  --bg-footer:      #EFE7D6;   /* footer bands (overridden by dark gradient below) */
+  --border-soft:    #E6DCC6;   /* borders and dividers */
+  /* text-main & text-muted are defined later as aliases */
 
-  /* Rich Deep Azures (Depth & Borders) */
-  --deep-azure: #0369A1;            /* Rich deep azure */
-  --deep-azure-dark: #075985;       /* Oceanic depth */
-  --deep-azure-hover: #0B2545;      /* Active button hover */
+  /* Neutral Canvas (warm cream base - WCAG AA/AAA Compliant) */
+  --soft-cloud: #FAF6EE;
+  --soft-cloud-light: #FFFDF8;
+  --soft-cloud-tint: #F5EFE2;
+  --sky-bg-gradient: radial-gradient(at 100% 0%, rgba(186, 230, 253, 0.2) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, rgba(224, 242, 254, 0.25) 0px, transparent 50%),
+                     #FAF6EE;
 
-  /* Deep Midnight Ink (Text & Maximum Contrast - WCAG AAA > 8.5:1) */
-  --deep-ink: #041628;              /* Deep midnight navy (sharp, rich, zero eye strain) */
-  --text-azure-secondary: #0A2E50;  /* High-contrast secondary navy for body */
-  --text-azure-muted: #174268;      /* Micro-labels, metadata, timestamps */
-  --text-on-accent: #FFFFFF;        /* Crisp white text for dark/accent buttons */
+  /* Card Surfaces & Elevated Glass */
+  --surface-cloud: #FFFDF8;
+  --surface-cloud-subtle: #F5EFE2;
+  --surface-cloud-glass: rgba(255, 253, 248, 0.92);
+  --cloud-border: #E6DCC6;
+  --cloud-border-subtle: rgba(230, 220, 198, 0.5);
+  --cloud-hover: #F0E8D6;
+  --cloud-active: #E8DBC8;
 
-  /* Highlight Accent: Warm Champagne Gold (Used Sparingly for Key Details) */
-  --accent-gold: #E8C27A;           /* Warm champagne gold */
-  --accent-gold-light: #F3D99F;     /* Subtle gold shimmer */
-  --accent-gold-dark: #B88E3E;      /* Deep antique gold */
-  --accent-gold-soft: rgba(232, 194, 122, 0.22); /* Tinted badge background */
-  --gold-hairline: rgba(232, 194, 122, 0.55);    /* Precision luxury borders */
+  /* Sky Blue Primaries (Conversion & Active Horizon) */
+  --sky-primary: #0284C7;           /* Vibrant oceanic azure */
+  --sky-primary-hover: #0369A1;     /* Rich deep hover state */
+  --sky-light: #38BDF8;             /* Azure glow highlight */
+  --sky-subtle: #7DD3FC;            /* Ethereal sky tint */
+  --sky-soft: rgba(2, 132, 199, 0.1); /* Subtle interactive pill */
+  --sky-glow: rgba(2, 132, 199, 0.25);
 
-  /* Harmonized Semantic Colors */
-  --color-success: #059669;         /* Emerald / mint */
+  /* Deep Azures (Structure, Depth & Footers) */
+  --deep-azure: #0369A1;
+  --deep-azure-dark: #075985;
+  --deep-azure-midnight: #061A30;
+
+  /* Deep Midnight Ink (Typography - Maximum Sharpness & Zero Eye Strain) */
+  --deep-ink: #061A30;              /* WCAG AAA > 14:1 contrast on soft-cloud */
+  --text-azure-secondary: #2C4B68;  /* WCAG AA > 7.5:1 contrast for body copy */
+  --text-azure-muted: #507090;      /* Micro-labels, metadata, timestamps */
+  --text-on-accent: #FFFFFF;        /* Crisp white text for buttons & dark headers */
+
+  /* Highlight Accent: Warm Champagne Gold (Used Deliberately for Luxury Touches) */
+  --accent-gold: #D4AF37;           /* Prestige champagne gold */
+  --accent-gold-light: #F3D99F;     /* Shimmer highlight */
+  --accent-gold-dark: #B88E3E;      /* Antique gold border */
+  --accent-gold-soft: rgba(212, 175, 55, 0.15); /* Tinted badge background */
+  --gold-hairline: rgba(212, 175, 55, 0.45);
+
+  /* Semantic Status Colors */
+  --color-success: #059669;         /* Emerald / Verified */
+  --color-whatsapp: #25D366;        /* Official WhatsApp Green */
+  --color-whatsapp-hover: #1EBE5D;
   --color-warning: #D97706;         /* Warm amber */
-  --color-error: #DC2626;           /* Coral rose */
+  --color-error: #DC2626;           /* Coral red */
 
   /* --- GRADIENTS --- */
-  --gradient-sky: linear-gradient(135deg, #4A90C4 0%, #3B82C4 50%, #2A6EA6 100%);
-  --gradient-deep: linear-gradient(135deg, #075985 0%, #0369A1 50%, #0B2545 100%);
-  --gradient-card: linear-gradient(180deg, rgba(220, 240, 255, 0.78) 0%, rgba(190, 225, 250, 0.65) 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(232, 194, 122, 0.35));
+  --gradient-sky: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  --gradient-sky-hover: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  --gradient-gold: linear-gradient(135deg, #E8C27A 0%, #D4A359 50%, #C59B4B 100%);
+  --gradient-gold-hover: linear-gradient(135deg, #F3D99F 0%, #E8C27A 100%);
+  --gradient-card: linear-gradient(180deg, #FFFDF8 0%, #F5EFE2 100%);
   --gradient-hero-overlay: linear-gradient(
     180deg,
-    rgba(59, 130, 196, 0.65) 0%,
-    rgba(43, 110, 166, 0.45) 40%,
-    rgba(59, 130, 196, 0.88) 85%,
+    rgba(6, 26, 48, 0.72) 0%,
+    rgba(6, 26, 48, 0.42) 45%,
+    rgba(6, 26, 48, 0.82) 85%,
     var(--soft-cloud) 100%
   );
+  --gradient-footer: linear-gradient(180deg, #0A223A 0%, #051424 100%);
 
-  /* --- GLASSMORPHISM & DEPTH (FROSTED SKY GLASS) --- */
-  --glass-cloud-bg: rgba(215, 238, 252, 0.75);        /* Frosted sky glass */
-  --glass-cloud-bg-subtle: rgba(200, 232, 250, 0.58);
-  --glass-cloud-border: rgba(255, 255, 255, 0.65);     /* Luminous crystalline border */
-  --glass-blur: blur(20px);                            /* Smooth backdrop filter */
-  
-  /* --- BLUE-TINTED LAYERED SHADOWS --- */
-  --shadow-sm: 0 4px 16px -2px rgba(4, 22, 40, 0.12);
-  --shadow-md: 0 12px 28px -4px rgba(4, 22, 40, 0.18);
-  --shadow-lg: 0 20px 48px -6px rgba(4, 22, 40, 0.28);
-  --shadow-sky-glow: 0 0 28px rgba(2, 132, 199, 0.35);
-  --shadow-gold-glow: 0 0 28px rgba(232, 194, 122, 0.3);
+  /* --- GLASSMORPHISM & BLUR --- */
+  --glass-cloud-bg: rgba(255, 255, 255, 0.9);
+  --glass-cloud-bg-subtle: rgba(255, 255, 255, 0.75);
+  --glass-cloud-border: rgba(255, 255, 255, 0.85);
+  --glass-blur: blur(20px);
+  --glass-blur-sm: blur(10px);
+
+  /* --- MULTI-LAYERED SHADOWS --- */
+  --shadow-sm: 0 2px 8px -1px rgba(6, 26, 48, 0.06), 0 1px 3px rgba(6, 26, 48, 0.04);
+  --shadow-md: 0 8px 24px -3px rgba(6, 26, 48, 0.08), 0 3px 10px -2px rgba(6, 26, 48, 0.04);
+  --shadow-lg: 0 18px 40px -4px rgba(6, 26, 48, 0.12), 0 6px 16px -2px rgba(6, 26, 48, 0.06);
+  --shadow-xl: 0 28px 64px -8px rgba(6, 26, 48, 0.18);
+  --shadow-sky-glow: 0 8px 28px rgba(2, 132, 199, 0.3);
+  --shadow-gold-glow: 0 8px 28px rgba(212, 175, 55, 0.35);
 
   /* --- BACKWARD-COMPATIBLE ALIASES --- */
   --bg-cream: var(--soft-cloud);
@@ -84,33 +110,33 @@
   --cream-hover: var(--cloud-hover);
   --cream-active: var(--cloud-active);
   --text-main: var(--deep-ink);
-  --text-secondary: var(--text-azure-secondary);
   --text-muted: var(--text-azure-muted);
+  --text-secondary: var(--text-azure-secondary);
   --teal-action: var(--sky-primary);
-  --teal-action-hover: var(--deep-azure);
+  --teal-action-hover: var(--sky-primary-hover);
   --teal-soft: var(--sky-soft);
   --teal-glow: var(--shadow-sky-glow);
   --glass-bg: var(--glass-cloud-bg);
   --glass-bg-subtle: var(--glass-cloud-bg-subtle);
   --glass-border: var(--glass-cloud-border);
 
-  /* --- TYPOGRAPHY STACK --- */
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  /* --- TYPOGRAPHY SCALE --- */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
-  /* Typography Scales */
-  --font-hero: clamp(2.75rem, 5.5vw, 4.75rem);
-  --font-h1: clamp(2.25rem, 4.2vw, 3.5rem);
-  --font-h2: clamp(1.75rem, 3.2vw, 2.6rem);
-  --font-h3: clamp(1.35rem, 2.2vw, 1.85rem);
-  --font-h4: 1.18rem;
+  --font-hero: clamp(2.5rem, 5.2vw, 4.25rem);
+  --font-h1: clamp(2.1rem, 3.8vw, 3.25rem);
+  --font-h2: clamp(1.75rem, 2.8vw, 2.45rem);
+  --font-h3: clamp(1.3rem, 2vw, 1.75rem);
+  --font-h4: 1.15rem;
   --font-body-lg: 1.125rem;
   --font-body: 1rem;
   --font-body-sm: 0.875rem;
-  --font-mono-badge: 0.785rem;
+  --font-mono-badge: 0.725rem;
 
-  /* Spatial Scale */
+  /* --- SPATIAL SCALE --- */
+  --space-3xs: 2px;
   --space-2xs: 4px;
   --space-xs: 8px;
   --space-sm: 16px;
@@ -118,29 +144,31 @@
   --space-lg: 32px;
   --space-xl: 48px;
   --space-2xl: 64px;
-  --space-3xl: 96px;
-  --space-4xl: 128px;
+  --space-3xl: 88px;
+  --space-4xl: 120px;
 
-  /* Border Radii */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  /* --- BORDER RADII --- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-xl: 32px;
   --radius-pill: 9999px;
 
-  /* Layout Widths */
-  --container-max: 1280px;
-  --container-narrow: 860px;
-  --header-height: 84px;
+  /* --- LAYOUT DIMENSIONS --- */
+  --container-max: 1240px;
+  --container-narrow: 840px;
+  --header-height: 80px;
 
-  /* Motion & Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  /* --- MOTION & TRANSITIONS --- */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- 2. CSS RESET & ACCESSIBILITY BASE --- */
+/* ==========================================================================
+   2. CSS RESET & ACCESSIBLE BASE
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -154,7 +182,7 @@ html {
 }
 
 body {
-  background-color: var(--soft-cloud);
+  background-color: var(--bg-page);
   background-image: var(--sky-bg-gradient);
   background-attachment: fixed;
   color: var(--deep-ink);
@@ -167,20 +195,23 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Skip link for keyboard accessibility (WCAG AA) */
+/* Accessible Skip Link */
 .skip-link {
   position: absolute;
-  top: -100px;
+  top: -120px;
   left: 20px;
   background: var(--deep-ink);
   color: #FFFFFF;
-  padding: var(--space-xs) var(--space-md);
+  padding: 10px 18px;
   border-radius: var(--radius-sm);
-  z-index: 9999;
+  z-index: 10000;
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.875rem;
   transition: top var(--transition-fast);
 }
 
@@ -189,23 +220,24 @@ body {
   outline: 2px solid var(--accent-gold);
 }
 
-/* Accessible focus ring */
+/* Keyboard Focus States */
 :focus-visible {
-  outline: 2px solid var(--deep-ink);
+  outline: 2px solid var(--sky-primary);
   outline-offset: 3px;
 }
 
-/* Typography base */
+/* Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   color: var(--deep-ink);
   font-weight: 600;
-  line-height: 1.18;
+  line-height: 1.2;
   letter-spacing: -0.015em;
 }
 
 p {
   color: var(--text-azure-secondary);
+  line-height: 1.65;
 }
 
 a {
@@ -231,7 +263,9 @@ button, input, select, textarea {
   border: none;
 }
 
-/* --- 3. LAYOUT UTILITIES --- */
+/* ==========================================================================
+   3. LAYOUT UTILITIES
+   ========================================================================== */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -263,7 +297,7 @@ button, input, select, textarea {
 /* Section Header Typography */
 .section-header {
   text-align: center;
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 auto var(--space-2xl) auto;
 }
 
@@ -275,148 +309,165 @@ button, input, select, textarea {
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: var(--font-mono-badge);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--deep-ink);
-  margin-bottom: var(--space-sm);
-  background: rgba(255, 255, 255, 0.7);
+  color: var(--deep-azure);
+  margin-bottom: var(--space-xs);
+  background: rgba(2, 132, 199, 0.08);
   padding: 5px 14px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 8px rgba(4, 22, 40, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
 }
 
 .section-title {
   font-size: var(--font-h2);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   color: var(--deep-ink);
 }
 
 .section-lead {
   font-size: var(--font-body-lg);
   color: var(--text-azure-secondary);
+  font-weight: 400;
 }
 
-/* --- 4. BUTTONS & INTERACTIVE ELEMENTS --- */
+/* ==========================================================================
+   4. BUTTONS & INTERACTIVE CONTROLS (MIN TAP TARGET >= 44PX)
+   ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  padding: 12px 26px;
+  min-height: 44px;
+  padding: 12px 24px;
   border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: var(--font-body-sm);
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-fast);
   text-align: center;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
-/* Primary Sky Blue Conversion Button */
+/* Primary Sky Blue Action Button */
 .btn-primary {
-  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  background: var(--gradient-sky);
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  background: var(--gradient-sky-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.5);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
 }
 
-/* Secondary Champagne Gold Button (Used for High-Value Conversion) */
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Luxury Champagne Gold Button */
 .btn-gold {
-  background: linear-gradient(135deg, #E8C27A 0%, #C99E52 100%);
+  background: var(--gradient-gold);
   color: var(--deep-ink);
   font-weight: 700;
-  box-shadow: var(--shadow-sm);
   border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
 }
 
 .btn-gold:hover {
-  background: linear-gradient(135deg, #F3D99F 0%, #E8C27A 100%);
+  background: var(--gradient-gold-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold-glow);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.45);
 }
 
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Outline Gold Button */
 .btn-outline-gold {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--bg-card);
   color: var(--deep-ink);
   border: 1.5px solid var(--accent-gold-dark);
   font-weight: 700;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-outline-gold:hover {
-  background-color: var(--accent-gold);
+  background: var(--accent-gold-soft);
+  border-color: var(--accent-gold);
   color: var(--deep-ink);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold-glow);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.25);
 }
 
-/* Frosted Sky Glass Button */
+/* Frosted Glass Button */
 .btn-glass {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   color: var(--deep-ink);
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border: 1.5px solid var(--cloud-border);
   box-shadow: var(--shadow-sm);
   font-weight: 600;
 }
 
 .btn-glass:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card);
   border-color: var(--sky-primary);
   color: var(--deep-azure);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sky-glow);
+  box-shadow: var(--shadow-md);
 }
 
 /* WhatsApp Conversion Button */
 .btn-whatsapp {
-  background-color: #25D366;
+  background-color: var(--color-whatsapp);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  font-weight: 700;
 }
 
 .btn-whatsapp:hover {
-  background-color: #1EBE5D;
+  background-color: var(--color-whatsapp-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
 }
 
 .btn-sm {
+  min-height: 40px;
   padding: 8px 18px;
   font-size: 0.8125rem;
 }
 
 .btn-lg {
-  padding: 16px 36px;
-  font-size: 1.05rem;
+  min-height: 48px;
+  padding: 14px 32px;
+  font-size: 1rem;
 }
 
-/* --- 5. SHARED SITE HEADER & NAVIGATION (FLOATING ISLAND GLASS CAPSULE) --- */
+/* ==========================================================================
+   5. FLOATING GLASS CAPSULE HEADER & NAVIGATION
+   ========================================================================== */
 .site-header {
   position: fixed;
   top: 14px;
   left: 0;
   width: 100%;
-  height: auto;
   z-index: 1000;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  background: transparent;
-  border: none;
   pointer-events: none;
   padding: 0 var(--space-md);
+  transition: all var(--transition-normal);
 }
 
 .site-header .header-inner {
@@ -424,21 +475,20 @@ button, input, select, textarea {
   max-width: var(--container-max);
   margin: 0 auto;
   height: 68px;
-  background: rgba(10, 34, 58, 0.82);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(6, 26, 48, 0.84);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-pill);
-  padding: 0 18px 0 14px;
+  padding: 0 16px 0 14px;
   box-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.25) inset,
-    0 16px 36px -6px rgba(4, 22, 40, 0.38),
-    0 0 0 1px rgba(232, 194, 122, 0.2) inset;
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 14px 32px -4px rgba(6, 26, 48, 0.35);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: var(--space-sm);
+  transition: all var(--transition-normal);
 }
 
 .site-header.scrolled {
@@ -447,66 +497,42 @@ button, input, select, textarea {
 
 .site-header.scrolled .header-inner {
   height: 60px;
-  background: rgba(8, 28, 48, 0.94);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(6, 26, 48, 0.94);
+  border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.18) inset,
-    0 18px 42px -4px rgba(4, 22, 40, 0.48),
-    0 0 0 1px rgba(232, 194, 122, 0.24) inset;
-  padding: 0 16px 0 12px;
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 18px 36px -4px rgba(6, 26, 48, 0.45);
 }
 
+/* Brand Monogram Mark */
 .brand-monogram {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  transition: transform var(--transition-fast);
   flex-shrink: 0;
 }
 
-.brand-monogram:hover {
-  transform: translateY(-1px);
-}
-
 .monogram-mark {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, #FFFFFF 0%, #D8ECF8 100%);
   border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--deep-ink);
-  box-shadow: 
-    0 2px 8px rgba(4, 22, 40, 0.18),
-    0 0 0 1px rgba(232, 194, 122, 0.35);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition-normal);
+  box-shadow: 0 2px 8px rgba(6, 26, 48, 0.15);
   flex-shrink: 0;
-}
-
-.monogram-mark::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(232, 194, 122, 0.45), transparent);
-  transition: left 0.5s ease;
+  transition: transform var(--transition-fast);
 }
 
 .brand-monogram:hover .monogram-mark {
   transform: scale(1.05);
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35), 0 0 0 1px var(--accent-gold);
-}
-
-.brand-monogram:hover .monogram-mark::before {
-  left: 100%;
 }
 
 .brand-names {
@@ -520,65 +546,50 @@ button, input, select, textarea {
   font-size: 1.25rem;
   font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.05;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 6px rgba(4, 22, 40, 0.5);
   white-space: nowrap;
 }
 
 .brand-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--accent-gold-light);
+  color: var(--accent-gold);
   font-weight: 600;
   white-space: nowrap;
 }
 
-/* Nav Links Desktop: Glass Capsule Container */
+/* Desktop Navigation */
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 3px;
-  background: rgba(4, 20, 36, 0.32);
+  gap: 2px;
+  background: rgba(4, 18, 34, 0.45);
   padding: 4px 6px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-link {
-  font-size: 0.835rem;
+  font-size: 0.825rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.88);
-  position: relative;
-  padding: 7px 11px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 12px;
   border-radius: var(--radius-pill);
-  text-shadow: 0 1px 3px rgba(4, 22, 40, 0.4);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
   white-space: nowrap;
-}
-
-.nav-link::after {
-  display: none;
+  transition: all var(--transition-fast);
 }
 
 .nav-link:hover {
   color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 2px 8px rgba(4, 22, 40, 0.18);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .nav-link.active {
   color: #FFFFFF;
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.7) 0%, rgba(7, 89, 133, 0.85) 100%);
-  border: 1px solid rgba(125, 211, 252, 0.4);
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: var(--gradient-sky);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
 }
 
 .header-actions {
@@ -588,80 +599,46 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-/* Shimmering Gold "Reserve Suite" Button */
+/* Gold Header Action Button */
 .header-actions .btn {
-  background: linear-gradient(135deg, #E8C27A 0%, #D4A359 48%, #F5E0B7 100%);
-  background-size: 200% 100%;
-  color: #041628;
+  background: var(--gradient-gold);
+  color: var(--deep-ink);
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 0.03em;
-  padding: 9px 20px;
+  padding: 8px 18px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 
-    0 4px 16px rgba(232, 194, 122, 0.4),
-    0 1px 0 rgba(255, 255, 255, 0.6) inset;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  animation: goldShimmerSweep 6s infinite ease-in-out;
-}
-
-@keyframes goldShimmerSweep {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.header-actions .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 90%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  transform: skewX(-22deg);
-  animation: gleamGlow 4.5s infinite 1.5s;
-}
-
-@keyframes gleamGlow {
-  0% { left: -130%; }
-  25% { left: 180%; }
-  100% { left: 180%; }
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 12px rgba(212, 175, 55, 0.35);
 }
 
 .header-actions .btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 
-    0 8px 24px rgba(232, 194, 122, 0.65),
-    0 0 0 2px rgba(255, 255, 255, 0.55);
+  background: var(--gradient-gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.5);
 }
 
-/* Mobile Toggle Hamburger */
+/* Mobile Toggle Hamburger (Touch Target 44px+) */
 .mobile-nav-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-pill);
   cursor: pointer;
   z-index: 1001;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .mobile-nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.28);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .toggle-line {
@@ -674,7 +651,6 @@ button, input, select, textarea {
 
 .mobile-nav-toggle.open .toggle-line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
-  background: #FFFFFF;
 }
 
 .mobile-nav-toggle.open .toggle-line:nth-child(2) {
@@ -683,7 +659,6 @@ button, input, select, textarea {
 
 .mobile-nav-toggle.open .toggle-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
-  background: #FFFFFF;
 }
 
 /* Mobile Drawer Overlay */
@@ -694,16 +669,15 @@ button, input, select, textarea {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(8, 28, 50, 0.96);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: rgba(6, 26, 48, 0.97);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   z-index: 999;
   flex-direction: column;
-  padding: calc(var(--header-height) + 24px) var(--space-lg) var(--space-xl);
+  padding: calc(var(--header-height) + 20px) var(--space-md) var(--space-xl);
   overflow-y: auto;
   transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-normal);
 }
 
 .mobile-drawer.active {
@@ -713,47 +687,46 @@ button, input, select, textarea {
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   margin-bottom: var(--space-xl);
 }
 
 .mobile-nav-links .nav-link {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   padding: 12px 16px;
   border-radius: var(--radius-md);
-  border: 1px solid transparent;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all var(--transition-fast);
+  min-height: 48px;
 }
 
 .mobile-nav-links .nav-link:hover,
 .mobile-nav-links .nav-link.active {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(232, 194, 122, 0.3);
   color: var(--accent-gold-light);
-  transform: translateX(4px);
 }
 
-/* Main Content Spacing for Floating Header */
+/* Main Content Spacing */
 main {
   flex: 1 0 auto;
-  padding-top: calc(var(--header-height) + 20px);
+  padding-top: calc(var(--header-height) + 16px);
 }
 
-/* --- 6. HERO & AMBIENT LIVE BACKGROUND ENGINE --- */
+/* ==========================================================================
+   6. HERO SECTION & LIVE AMBIENT BACKGROUND
+   ========================================================================== */
 .hero-ambient {
   position: relative;
-  min-height: 92vh;
-  margin-top: calc(-1 * (var(--header-height) + 20px));
+  min-height: 88vh;
+  margin-top: calc(-1 * (var(--header-height) + 16px));
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: calc(var(--header-height) + 48px) 0 var(--space-4xl);
+  padding: calc(var(--header-height) + 40px) 0 var(--space-4xl);
 }
 
 .ambient-media-container {
@@ -766,20 +739,6 @@ main {
   overflow: hidden;
 }
 
-.ambient-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  pointer-events: none;
-}
-
-/* Soft Ken Burns Zoom Slideshow Fallback */
 .ambient-slideshow {
   position: absolute;
   top: 0;
@@ -797,9 +756,9 @@ main {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.8s ease-in-out;
   transform: scale(1);
-  animation: kenBurns 20s infinite alternate;
+  animation: kenBurns 22s infinite alternate;
 }
 
 .slide-item.active {
@@ -808,10 +767,10 @@ main {
 
 @keyframes kenBurns {
   0% { transform: scale(1); }
-  100% { transform: scale(1.08); }
+  100% { transform: scale(1.06); }
 }
 
-/* PURE CSS ANIMATED SKY BACKGROUND (Drifting Clouds & Ambient Floating Light Orbs) */
+/* Subtle Animated Sky Lighting Orbs */
 .sky-ambient-orbs {
   position: absolute;
   top: 0;
@@ -826,66 +785,43 @@ main {
 .sky-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
-  animation: floatOrb 18s infinite alternate ease-in-out;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: floatOrb 20s infinite alternate ease-in-out;
 }
 
 .sky-orb-1 {
-  width: 520px;
-  height: 520px;
+  width: 500px;
+  height: 500px;
   top: -10%;
   left: 10%;
-  background: radial-gradient(circle, #BAE6FD 0%, rgba(56, 189, 248, 0.25) 70%, transparent 100%);
-  animation-duration: 22s;
+  background: radial-gradient(circle, #38BDF8 0%, rgba(2, 132, 199, 0.2) 70%, transparent 100%);
 }
 
 .sky-orb-2 {
-  width: 580px;
-  height: 580px;
+  width: 560px;
+  height: 560px;
   bottom: 0%;
   right: 5%;
-  background: radial-gradient(circle, #7DD3FC 0%, rgba(14, 165, 233, 0.3) 70%, transparent 100%);
-  animation-duration: 28s;
-  animation-delay: -5s;
+  background: radial-gradient(circle, #0EA5E9 0%, rgba(7, 89, 133, 0.25) 70%, transparent 100%);
+  animation-delay: -6s;
 }
 
 .sky-orb-gold {
-  width: 350px;
-  height: 350px;
+  width: 320px;
+  height: 320px;
   top: 30%;
   right: 25%;
-  background: radial-gradient(circle, rgba(232, 194, 122, 0.35) 0%, transparent 70%);
-  animation-duration: 19s;
-  animation-delay: -8s;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+  animation-delay: -10s;
 }
 
 @keyframes floatOrb {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, 30px) scale(1.08); }
-  100% { transform: translate(-30px, -20px) scale(0.95); }
+  50% { transform: translate(30px, 20px) scale(1.05); }
+  100% { transform: translate(-25px, -15px) scale(0.96); }
 }
 
-/* Drifting Cloud Layer */
-.cloud-drift-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.55) 0%, transparent 70%);
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 2;
-  animation: cloudDrift 45s linear infinite;
-}
-
-@keyframes cloudDrift {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Rich Sky Protective Overlay */
 .ambient-overlay {
   position: absolute;
   top: 0;
@@ -901,51 +837,63 @@ main {
   position: relative;
   z-index: 4;
   text-align: center;
-  max-width: 920px;
+  max-width: 900px;
+}
+
+.hero-content .section-eyebrow {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-gold-light);
+  border-color: rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .hero-title {
   font-size: var(--font-hero);
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.1;
   margin-bottom: var(--space-md);
-  color: var(--deep-ink);
-  text-shadow: 0 2px 24px rgba(255, 255, 255, 0.8);
+  color: #FFFFFF;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-lead {
   font-size: var(--font-body-lg);
-  color: var(--text-azure-secondary);
-  max-width: 680px;
+  color: #E0F2FE;
+  max-width: 660px;
   margin: 0 auto var(--space-xl);
-  font-weight: 500;
+  font-weight: 400;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 7. FLOATING GLASS BOOKING BAR (LUXURY SEGMENTED CAPSULE) --- */
+.hero-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   7. FLOATING GLASS BOOKING BAR (LUXURY SEGMENTED CONSOLE)
+   ========================================================================== */
 .floating-booking-bar {
   position: relative;
   z-index: 20;
-  margin-top: -46px;
+  margin-top: -48px;
   margin-bottom: var(--space-3xl);
   max-width: 1140px;
 }
 
 .booking-bar-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(235, 246, 255, 0.92) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: 24px;
-  box-shadow: 
-    0 24px 60px -10px rgba(4, 22, 40, 0.28),
-    0 1px 0 rgba(255, 255, 255, 1) inset,
-    0 0 0 1px rgba(232, 194, 122, 0.3) inset;
-  padding: 10px 14px 10px 18px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 48px -6px rgba(60, 45, 20, 0.12);
+  padding: 8px 12px 8px 16px;
   display: grid;
-  grid-template-columns: 1.15fr 1.15fr 1.45fr 1fr auto;
+  grid-template-columns: 1.15fr 1.15fr 1.4fr 1fr auto;
   gap: 0;
   align-items: center;
-  position: relative;
 }
 
 .booking-field {
@@ -954,11 +902,11 @@ main {
   gap: 3px;
   padding: 10px 16px;
   position: relative;
-  border-radius: 16px;
-  transition: all 0.22s ease;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
 }
 
-/* Vertical hairline divider between segmented bays */
+/* Subtle Vertical Hairlines */
 .booking-field:not(:nth-last-child(2))::after {
   content: '';
   position: absolute;
@@ -966,12 +914,12 @@ main {
   top: 15%;
   height: 70%;
   width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(11, 37, 69, 0.14), transparent);
+  background: rgba(6, 26, 48, 0.08);
 }
 
 .booking-field:hover,
 .booking-field:focus-within {
-  background: rgba(2, 132, 199, 0.08);
+  background: var(--surface-cloud-subtle);
 }
 
 .field-label {
@@ -979,10 +927,10 @@ main {
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.685rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--deep-azure-dark);
+  color: var(--deep-azure);
   font-weight: 700;
   cursor: pointer;
 }
@@ -999,20 +947,11 @@ main {
   padding: 6px 0;
   background: transparent;
   border: none;
-  border-radius: 0;
   color: var(--deep-ink);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   outline: none;
-  box-shadow: none;
-  transition: all var(--transition-fast);
-}
-
-.field-input:focus {
-  border: none;
-  background: transparent;
-  box-shadow: none;
 }
 
 select.field-input {
@@ -1023,36 +962,33 @@ select.field-input {
   padding-right: 20px;
 }
 
-/* Submit Button in Booking Bar */
 .booking-submit-wrap {
   padding-left: 10px;
 }
 
 .booking-bar-card .btn-submit {
-  background: linear-gradient(135deg, #E8C27A 0%, #D4A359 50%, #F5E0B7 100%);
-  background-size: 200% 100%;
-  color: #041628;
+  background: var(--gradient-gold);
+  color: var(--deep-ink);
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
-  padding: 13px 26px;
+  min-height: 48px;
+  padding: 12px 24px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 6px 20px rgba(232, 194, 122, 0.45),
-    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.25s ease;
-  animation: goldShimmerSweep 5s infinite ease-in-out;
+  transition: all var(--transition-fast);
 }
 
 .booking-bar-card .btn-submit:hover {
+  background: var(--gradient-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(232, 194, 122, 0.65);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.5);
 }
 
 /* Trust Guarantee Ribbon below booking bar */
@@ -1063,11 +999,9 @@ select.field-input {
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 14px;
-  font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #FFFFFF;
-  text-shadow: 0 1px 4px rgba(4, 22, 40, 0.5);
+  color: var(--deep-azure);
 }
 
 .booking-bar-ribbon .ribbon-item {
@@ -1081,10 +1015,64 @@ select.field-input {
 }
 
 .booking-bar-ribbon .ribbon-sep {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-/* --- 8. BENTO GRID ARCHITECTURE --- */
+/* ==========================================================================
+   8. DIRECT-BOOKING PERKS BANNER
+   ========================================================================== */
+.perks-banner {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 8px 24px -3px rgba(60, 45, 20, 0.08), 0 3px 10px -2px rgba(60, 45, 20, 0.04);
+  margin-bottom: var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.perk-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.perk-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-cloud-subtle);
+  border: 1.5px solid var(--cloud-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sky-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.perk-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--deep-ink);
+}
+
+.perk-desc {
+  font-size: 0.85rem;
+  color: var(--text-azure-secondary);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   9. BENTO GRID ARCHITECTURE (ACCOMMODATIONS)
+   ========================================================================== */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -1092,15 +1080,12 @@ select.field-input {
 }
 
 .bento-card {
-  background: rgba(215, 238, 252, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 24px -2px rgba(4, 22, 40, 0.15);
-  transition: all var(--transition-normal);
-  position: relative;
+  box-shadow: 0 8px 24px -3px rgba(60, 45, 20, 0.08), 0 3px 10px -2px rgba(60, 45, 20, 0.04);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
   display: flex;
   flex-direction: column;
 }
@@ -1108,8 +1093,7 @@ select.field-input {
 .bento-card:hover {
   transform: translateY(-4px);
   border-color: var(--sky-primary);
-  background: rgba(230, 245, 255, 0.9);
-  box-shadow: 0 16px 36px -4px rgba(4, 22, 40, 0.22), var(--shadow-sky-glow);
+  box-shadow: var(--shadow-lg), var(--shadow-sky-glow);
 }
 
 .bento-card.col-8 { grid-column: span 8; }
@@ -1120,9 +1104,9 @@ select.field-input {
 .bento-img-wrap {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 270px;
   overflow: hidden;
-  background: var(--surface-cloud);
+  background: var(--surface-cloud-subtle);
 }
 
 .bento-img {
@@ -1133,7 +1117,7 @@ select.field-input {
 }
 
 .bento-card:hover .bento-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .bento-body {
@@ -1148,13 +1132,13 @@ select.field-input {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  background: rgba(2, 132, 199, 0.14);
-  color: var(--deep-ink);
+  letter-spacing: 0.12em;
+  background: var(--surface-cloud-subtle);
+  color: var(--deep-azure);
   font-weight: 700;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(2, 132, 199, 0.35);
+  border: 1px solid var(--cloud-border);
   margin-bottom: var(--space-xs);
 }
 
@@ -1169,6 +1153,7 @@ select.field-input {
   color: var(--text-azure-secondary);
   margin-bottom: var(--space-md);
   flex: 1;
+  line-height: 1.6;
 }
 
 .bento-meta {
@@ -1187,395 +1172,59 @@ select.field-input {
   font-size: 1.1rem;
 }
 
-/* --- 9. 3D-TILT ACCOMMODATION CARDS --- */
-.suite-tilt-grid {
+/* ==========================================================================
+   10. EXPERIENCES HIGHLIGHT GRID
+   ========================================================================== */
+.experiences-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-lg);
+  gap: var(--space-xl);
 }
 
-.suite-tilt-card {
-  background: rgba(215, 238, 252, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
+.experience-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 24px -2px rgba(4, 22, 40, 0.15);
-  transition: transform 0.2s ease-out, box-shadow var(--transition-normal), border-color var(--transition-normal);
+  box-shadow: 0 8px 24px -3px rgba(60, 45, 20, 0.08), 0 3px 10px -2px rgba(60, 45, 20, 0.04);
   display: flex;
   flex-direction: column;
-  perspective: 1000px;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
-.suite-tilt-card:hover {
+.experience-card:hover {
+  transform: translateY(-4px);
   border-color: var(--sky-primary);
-  background: rgba(230, 245, 255, 0.92);
-  box-shadow: var(--shadow-lg), var(--shadow-sky-glow);
+  box-shadow: var(--shadow-lg);
 }
 
-.suite-card-media {
-  position: relative;
-  height: 250px;
-  background: var(--surface-cloud);
+.experience-img-wrap {
+  width: 100%;
+  height: 280px;
   overflow: hidden;
 }
 
-.suite-card-media img {
+.experience-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
 
-.suite-tilt-card:hover .suite-card-media img {
+.experience-card:hover .experience-img-wrap img {
   transform: scale(1.04);
 }
 
-.suite-chip {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--deep-ink);
-  border: 1px solid var(--cloud-border);
-  box-shadow: 0 2px 8px rgba(4, 22, 40, 0.12);
-}
-
-.suite-card-content {
+.experience-body {
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.suite-card-title {
-  font-size: 1.45rem;
-  margin-bottom: var(--space-2xs);
-  color: var(--deep-ink);
-}
-
-.suite-card-specs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin: var(--space-sm) 0;
-  padding: var(--space-xs) 0;
-  border-top: 1px solid var(--cloud-border);
-  border-bottom: 1px solid var(--cloud-border);
-  font-family: var(--font-mono);
-  font-size: 0.785rem;
-  color: var(--text-azure-muted);
-}
-
-.spec-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.suite-features-list {
-  margin-bottom: var(--space-md);
-  flex: 1;
-}
-
-.suite-features-list li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.875rem;
-  color: var(--text-azure-secondary);
-  margin-bottom: 6px;
-}
-
-.suite-features-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--sky-primary);
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.suite-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--cloud-border);
-}
-
-/* --- 10. DIRECT-BOOKING PERKS BANNER --- */
-.perks-banner {
-  background: linear-gradient(135deg, rgba(215, 238, 252, 0.85) 0%, rgba(186, 224, 248, 0.75) 50%, rgba(125, 211, 252, 0.8) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  box-shadow: 0 12px 32px -2px rgba(4, 22, 40, 0.18);
-  margin: var(--space-2xl) 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.perks-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.perks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-}
-
-.perk-item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.perk-icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
-  background: #FFFFFF;
-  border: 1.5px solid var(--sky-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--deep-azure);
-  box-shadow: 0 2px 8px rgba(4, 22, 40, 0.12);
-}
-
-.perk-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--deep-ink);
-}
-
-.perk-desc {
-  font-size: 0.85rem;
-  color: var(--text-azure-secondary);
-}
-
-/* --- 11. INTERACTIVE BOOKING ENGINE & CALCULATOR (book.html) --- */
-.booking-journey-layout {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: var(--space-xl);
-  align-items: start;
-}
-
-.booking-form-panel {
-  background: rgba(215, 238, 252, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
-}
-
-.booking-summary-panel {
-  background: rgba(215, 238, 252, 0.9);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 2px solid var(--sky-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  box-shadow: 0 16px 40px -4px rgba(4, 22, 40, 0.22);
-  position: sticky;
-  top: calc(var(--header-height) + var(--space-md));
-}
-
-.form-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: var(--space-md);
-}
-
-.form-label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--deep-ink);
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-label-note {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-azure-muted);
-  font-weight: 500;
-}
-
-.form-control {
-  width: 100%;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1.5px solid var(--cloud-border);
-  border-radius: var(--radius-sm);
-  color: var(--deep-ink);
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all var(--transition-fast);
-}
-
-.form-control:focus {
-  border-color: var(--sky-primary);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
-}
-
-textarea.form-control {
-  resize: vertical;
-  min-height: 90px;
-}
-
-/* Rate Calculation Summary Table */
-.summary-line-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--cloud-border);
-  font-size: 0.925rem;
-}
-
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 0;
-  border-top: 2px solid var(--sky-primary);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--deep-azure);
-  margin-top: var(--space-sm);
-}
-
-/* Honest notice box */
-.honest-notice-box {
-  background: rgba(255, 255, 255, 0.7);
-  border-left: 3.5px solid var(--sky-primary);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.875rem;
-  color: var(--deep-ink);
-  margin: var(--space-md) 0;
-}
-
-/* Multi-Channel Finish Options */
-.dispatch-options-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  margin-top: var(--space-lg);
-}
-
-/* M-Pesa Instructions Card */
-.mpesa-card {
-  background: rgba(240, 253, 244, 0.92);
-  border: 1.5px solid #86EFAC;
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.mpesa-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-}
-
-.mpesa-badge {
-  background: #25D366;
-  color: #FFFFFF;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius-xs);
-}
-
-.mpesa-details-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px var(--space-md);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  margin: var(--space-sm) 0;
-}
-
-.mpesa-key {
-  color: var(--text-azure-muted);
-}
-
-.mpesa-val {
-  color: var(--deep-ink);
-  font-weight: 600;
-}
-
-/* Third-Party Widget Slot */
-.embedded-engine-slot {
-  background: rgba(224, 242, 254, 0.85);
-  border: 2px dashed var(--cloud-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
-  text-align: center;
-  margin-top: var(--space-2xl);
-}
-
-/* Cancellation Accordion Panel */
-.policy-panel {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--cloud-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-md) var(--space-lg);
-  margin-top: var(--space-lg);
-}
-
-.policy-panel h4 {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--deep-ink);
-}
-
-.policy-panel ul {
-  padding-left: 18px;
-  list-style-type: disc;
-  font-size: 0.85rem;
-  color: var(--text-azure-secondary);
-}
-
-/* --- 12. TESTIMONIALS SLIDER --- */
-.testimonials-section {
-  background: rgba(224, 242, 254, 0.65);
-  border-top: 1.5px solid var(--cloud-border);
-  border-bottom: 1.5px solid var(--cloud-border);
-}
-
+/* ==========================================================================
+   11. TESTIMONIALS & TRIPADVISOR SECTION
+   ========================================================================== */
 .testimonials-track {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1583,17 +1232,15 @@ textarea.form-control {
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-normal), border-color var(--transition-normal);
+  box-shadow: 0 2px 8px -1px rgba(60, 45, 20, 0.06), 0 1px 3px rgba(60, 45, 20, 0.04);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .testimonial-card:hover {
@@ -1607,7 +1254,7 @@ textarea.form-control {
   font-size: 1.15rem;
   font-style: italic;
   color: var(--deep-ink);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: var(--space-md);
 }
 
@@ -1640,7 +1287,35 @@ textarea.form-control {
   gap: 4px;
 }
 
-/* --- 13. FLOATING CONCIERGE WHATSAPP TRIGGER --- */
+.tripadvisor-link:hover {
+  text-decoration: underline;
+  color: var(--sky-primary);
+}
+
+/* ==========================================================================
+   12. SISTER PROPERTY CARD (GEMSUITES STATE HOUSE)
+   ========================================================================== */
+.sister-property-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  box-shadow: 0 2px 8px -1px rgba(60, 45, 20, 0.06), 0 1px 3px rgba(60, 45, 20, 0.04);
+  margin-bottom: var(--space-4xl);
+}
+
+.sister-property-content {
+  max-width: 620px;
+}
+
+/* ==========================================================================
+   13. FLOATING CONCIERGE WHATSAPP TRIGGER (TOUCH TARGET 44PX+)
+   ========================================================================== */
 .floating-whatsapp {
   position: fixed;
   bottom: 28px;
@@ -1649,20 +1324,21 @@ textarea.form-control {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  background: #25D366;
+  min-height: 48px;
+  background: var(--color-whatsapp);
   color: #FFFFFF;
   padding: 12px 20px;
   border-radius: var(--radius-pill);
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
   font-size: 0.875rem;
-  font-weight: 600;
-  transition: all var(--transition-normal);
+  font-weight: 700;
+  transition: all var(--transition-fast);
   text-decoration: none;
 }
 
 .floating-whatsapp:hover {
-  background: #1EBE5D;
-  transform: translateY(-3px) scale(1.02);
+  background: var(--color-whatsapp-hover);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
 }
 
@@ -1673,20 +1349,22 @@ textarea.form-control {
   width: 100%;
   height: 100%;
   border-radius: var(--radius-pill);
-  border: 2px solid #25D366;
+  border: 2px solid var(--color-whatsapp);
   animation: pulseRing 2.4s infinite;
   pointer-events: none;
 }
 
 @keyframes pulseRing {
   0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
 }
 
-/* --- 14. SHARED SITE FOOTER --- */
+/* ==========================================================================
+   14. SHARED SITE FOOTER
+   ========================================================================== */
 .site-footer {
-  background: linear-gradient(180deg, #2B6EA6 0%, #061A30 100%);
-  border-top: 2px solid rgba(255, 255, 255, 0.45);
+  background: var(--gradient-footer);
+  border-top: 2px solid var(--accent-gold);
   padding: var(--space-4xl) 0 var(--space-xl);
   margin-top: auto;
   color: #FFFFFF;
@@ -1701,9 +1379,10 @@ textarea.form-control {
 
 .footer-brand-desc {
   font-size: 0.9rem;
-  color: #D1EEFC;
+  color: #BAE6FD;
   margin: var(--space-sm) 0 var(--space-md);
   max-width: 340px;
+  line-height: 1.6;
 }
 
 .footer-heading {
@@ -1739,14 +1418,14 @@ textarea.form-control {
   gap: var(--space-xs);
   font-size: 0.875rem;
   color: #E0F2FE;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: var(--space-lg);
   font-size: 0.8125rem;
   color: #BAE6FD;
@@ -1760,11 +1439,196 @@ textarea.form-control {
 .footer-bottom-links a {
   color: #BAE6FD;
 }
+
 .footer-bottom-links a:hover {
   color: #FFFFFF;
 }
 
-/* --- 15. RESPONSIVE BREAKPOINTS --- */
+/* ==========================================================================
+   15. BOOKING ENGINE & GENERAL FORM SUPPORT (book.html, etc.)
+   ========================================================================== */
+.booking-journey-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.booking-form-panel {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 8px 24px -3px rgba(60, 45, 20, 0.08), 0 3px 10px -2px rgba(60, 45, 20, 0.04);
+}
+
+.booking-summary-panel {
+  background: var(--bg-card);
+  border: 2px solid var(--sky-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 18px 40px -4px rgba(60, 45, 20, 0.1), 0 6px 16px -2px rgba(60, 45, 20, 0.05);
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-md));
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--deep-ink);
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-label-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-azure-muted);
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  color: var(--deep-ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--sky-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.summary-line-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cloud-border);
+  font-size: 0.925rem;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 2px solid var(--sky-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-azure);
+  margin-top: var(--space-sm);
+}
+
+.honest-notice-box {
+  background: var(--surface-cloud-subtle);
+  border-left: 3.5px solid var(--sky-primary);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.875rem;
+  color: var(--deep-ink);
+  margin: var(--space-md) 0;
+}
+
+.dispatch-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* Lipa na M-Pesa Instructions Card */
+.mpesa-card {
+  background: #F0FDF4;
+  border: 1.5px solid #86EFAC;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.mpesa-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.mpesa-badge {
+  background: #16A34A;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.mpesa-details-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin: var(--space-sm) 0;
+}
+
+.mpesa-key {
+  color: var(--text-azure-muted);
+}
+
+.mpesa-val {
+  color: var(--deep-ink);
+  font-weight: 600;
+}
+
+.policy-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.policy-panel h4 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--deep-ink);
+}
+
+.policy-panel ul {
+  padding-left: 18px;
+  list-style-type: disc;
+  font-size: 0.85rem;
+  color: var(--text-azure-secondary);
+}
+
+/* ==========================================================================
+   16. RESPONSIVE BREAKPOINTS (MOBILE-FIRST ARCHITECTURE)
+   ========================================================================== */
 @media (max-width: 1100px) {
   .nav-desktop {
     display: none;
@@ -1787,8 +1651,8 @@ textarea.form-control {
     display: none;
   }
   .booking-field {
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: var(--bg-section-alt);
+    border: 1px solid var(--border-soft);
   }
   .booking-submit-wrap {
     grid-column: span 2;
@@ -1798,6 +1662,10 @@ textarea.form-control {
   .booking-bar-card .btn-submit {
     width: 100%;
     justify-content: center;
+  }
+  .bento-card.col-8,
+  .bento-card.col-4 {
+    grid-column: span 6;
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1810,49 +1678,38 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 68px;
+    --header-height: 64px;
   }
   .site-header {
     top: 8px;
     padding: 0 10px;
   }
   .site-header .header-inner {
-    height: 58px;
+    height: 56px;
     padding: 0 12px;
-    border-radius: 20px;
   }
   .brand-title {
-    font-size: 1.12rem;
+    font-size: 1.1rem;
   }
   .brand-subtitle {
-    font-size: 0.56rem;
+    font-size: 0.55rem;
   }
   .monogram-mark {
-    width: 36px;
-    height: 36px;
-    font-size: 1.15rem;
-    border-radius: 10px;
-  }
-  .header-actions .btn {
-    padding: 7px 13px;
-    font-size: 0.75rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
   }
   .floating-booking-bar {
     margin-top: -24px;
-    padding: 0 12px;
+    padding: 0 8px;
   }
   .booking-bar-card {
     grid-template-columns: 1fr;
-    border-radius: 20px;
-    padding: 14px;
+    padding: 12px;
     gap: 10px;
-  }
-  .booking-field {
-    padding: 8px 12px;
   }
   .booking-submit-wrap {
     grid-column: span 1;
-    padding-left: 0;
   }
   .booking-bar-ribbon {
     font-size: 0.75rem;
@@ -1863,20 +1720,55 @@ textarea.form-control {
   .bento-card.col-6 {
     grid-column: span 12;
   }
+  .bento-img-wrap {
+    height: 220px;
+  }
+  .experiences-grid {
+    grid-template-columns: 1fr;
+  }
   .form-grid-2 {
     grid-template-columns: 1fr;
   }
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-xl);
   }
   .footer-bottom {
     flex-direction: column;
     gap: var(--space-sm);
     text-align: center;
   }
+  .floating-whatsapp {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 0.8125rem;
+  }
 }
 
-/* --- 16. ACCESSIBILITY & REDUCED MOTION --- */
+/* Strict small mobile screens (360px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .bento-body {
+    padding: var(--space-md);
+  }
+  .sister-property-card {
+    padding: var(--space-lg);
+  }
+}
+
+/* ==========================================================================
+   17. REDUCED MOTION ACCESSIBILITY (WCAG 2.1)
+   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1884,13 +1776,13 @@ textarea.form-control {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .ambient-video {
-    display: none;
-  }
   .slide-item {
     animation: none;
   }
-  .sky-orb, .cloud-drift-layer {
+  .sky-orb {
+    animation: none;
+  }
+  .whatsapp-pulse-ring {
     animation: none;
   }
 }

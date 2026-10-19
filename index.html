@@ -23,16 +23,8 @@
   <meta property="twitter:image" content="media/og-share.svg">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/styles.css?v=capsule-luxe-1">
-  <style>
-    /* Direct Anti-Glare Sky Blue Canvas */
-    html, body {
-      background-color: #3B82C4 !important;
-      background-image: linear-gradient(180deg, #4A90C4 0%, #3B82C4 45%, #2B6EA6 100%) !important;
-      background-attachment: fixed !important;
-      color: #041628 !important;
-    }
-  </style>
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="stylesheet" href="css/styles.css?v=calm-luxe-2">
 
   <!-- JSON-LD Structured Data: Hotel & LocalBusiness -->
   <script type="application/ld+json">
@@ -88,7 +80,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="book.html" class="btn btn-primary btn-sm">Reserve Suite</a>
+        <a href="book.html" class="btn btn-gold btn-sm">Reserve Suite</a>
         <!-- Mobile Hamburger Toggle -->
         <button type="button" class="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <span class="toggle-line"></span>
@@ -115,7 +107,7 @@
       <a href="state-house.html" class="nav-link">GemSuites State House</a>
       <a href="contact.html" class="nav-link">Contact &amp; Concierge</a>
     </nav>
-    <a href="book.html" class="btn btn-primary btn-lg" style="width: 100%;">Book Direct Now</a>
+    <a href="book.html" class="btn btn-gold btn-lg" style="width: 100%;">Book Direct Now</a>
   </div>
 
   <!-- MAIN CONTENT -->
@@ -132,13 +124,12 @@
           <div class="slide-item" style="background-image: url('media/spa-infinity-pool.jpg');"></div>
         </div>
 
-        <!-- Pure CSS Animated Sky Effects -->
+        <!-- Pure CSS Animated Ambient Orbs -->
         <div class="sky-ambient-orbs" aria-hidden="true">
           <div class="sky-orb sky-orb-1"></div>
           <div class="sky-orb sky-orb-2"></div>
           <div class="sky-orb sky-orb-gold"></div>
         </div>
-        <div class="cloud-drift-layer" aria-hidden="true"></div>
         <div class="ambient-overlay"></div>
       </div>
 
@@ -148,7 +139,7 @@
         <p class="hero-lead">
           Immerse yourself in refined tranquility. Hotel suites, residential serviced apartments, Argenti restaurant, rooftop sunset lounge, and restorative Infinity Spa.
         </p>
-        <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
+        <div class="hero-actions">
           <a href="book.html" class="btn btn-primary btn-lg">Check Direct Rates</a>
           <a href="stay.html" class="btn btn-glass btn-lg">Explore Accommodations</a>
         </div>
@@ -214,12 +205,12 @@
     </section>
 
     <!-- DIRECT BOOKING GUARANTEE BANNER -->
-    <section class="container" style="margin-bottom: var(--space-3xl);">
+    <section class="container" aria-label="Direct Guest Privileges">
       <div class="perks-banner">
         <div class="section-header" style="margin-bottom: var(--space-sm);">
           <div class="section-eyebrow">Direct Guest Privilege</div>
-          <h2 style="font-size: 1.85rem;">Book Direct For The Guaranteed Best Experience</h2>
-          <p style="font-size: 0.95rem;">Skip online travel agent commissions and enjoy exclusive perks reserved solely for guests who reserve directly with our Nairobi reservations team.</p>
+          <h2 class="section-title" style="font-size: 1.85rem;">Book Direct For The Guaranteed Best Experience</h2>
+          <p class="section-lead" style="font-size: 0.95rem;">Skip online travel agent commissions and enjoy exclusive perks reserved solely for guests who reserve directly with our Nairobi reservations team.</p>
         </div>
         <div class="perks-grid">
           <div class="perk-item">
@@ -334,7 +325,7 @@
     </section>
 
     <!-- EXPERIENCES HIGHLIGHT: ARGENTI & INFINITY SPA -->
-    <section class="section-padding" style="background: var(--surface-cream); border-top: 1px solid var(--cream-deep); border-bottom: 1px solid var(--cream-deep);">
+    <section class="section-padding" style="background: var(--bg-section-alt); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
       <div class="container">
         <div class="section-header">
           <div class="section-eyebrow">Sensory Living</div>
@@ -342,47 +333,47 @@
           <p class="section-lead">From dawn breakfasts to sunset cocktails and heated pool therapies nestled in Riverside's tranquil greenery.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-xl);">
+        <div class="experiences-grid">
           <!-- Dining Card -->
-          <div class="bento-card" data-tilt>
-            <div class="bento-img-wrap" style="height: 300px;">
-              <img src="media/argenti-dining.jpg" alt="Argenti Restaurant interior" class="bento-img" loading="lazy">
+          <div class="experience-card" data-tilt>
+            <div class="experience-img-wrap">
+              <img src="media/argenti-dining.jpg" alt="Argenti Restaurant interior" loading="lazy">
             </div>
-            <div class="bento-body">
+            <div class="experience-body">
               <span class="bento-badge">Argenti Restaurant &amp; Rooftop Sky Lounge</span>
               <h3 class="bento-title">Contemporary Dining &amp; Sunset Sky Lounge</h3>
               <p class="bento-desc">Vibrant international gastronomy celebrating prime local ingredients. Enjoy panoramic dusk views, artisan cocktails, and alfresco terrace dining.</p>
-              <div style="display: flex; gap: var(--space-sm); margin-top: auto;">
+              <div style="margin-top: auto; padding-top: var(--space-sm);">
                 <a href="argenti.html" class="btn btn-primary btn-sm">Explore Menus &amp; Book Table</a>
               </div>
             </div>
           </div>
 
           <!-- Spa Card -->
-          <div class="bento-card" data-tilt>
-            <div class="bento-img-wrap" style="height: 300px;">
-              <img src="media/spa-infinity-pool.jpg" alt="Infinity Spa and heated outdoor pool" class="bento-img" loading="lazy">
+          <div class="experience-card" data-tilt>
+            <div class="experience-img-wrap">
+              <img src="media/spa-infinity-pool.jpg" alt="Infinity Spa and heated outdoor pool" loading="lazy">
             </div>
-            <div class="bento-body">
+            <div class="experience-body">
               <span class="bento-badge">Infinity Spa &amp; Wellness Sanctuary</span>
               <h3 class="bento-title">Outdoor Heated Pool &amp; Holistic Therapies</h3>
               <p class="bento-desc">Bespoke massages, organic botanical scrubs, and a heated outdoor pool surrounded by lush Riverside foliage for total body revitalization.</p>
-              <div style="display: flex; gap: var(--space-sm); margin-top: auto;">
+              <div style="margin-top: auto; padding-top: var(--space-sm);">
                 <a href="spa.html" class="btn btn-primary btn-sm">View Treatments &amp; Reserve</a>
               </div>
             </div>
           </div>
 
           <!-- Conferencing Card -->
-          <div class="bento-card" data-tilt>
-            <div class="bento-img-wrap" style="height: 300px;">
-              <img src="media/events-boardroom.jpg" alt="Conferencing and event spaces" class="bento-img" loading="lazy">
+          <div class="experience-card" data-tilt>
+            <div class="experience-img-wrap">
+              <img src="media/events-boardroom.jpg" alt="Conferencing and event spaces" loading="lazy">
             </div>
-            <div class="bento-body">
+            <div class="experience-body">
               <span class="bento-badge">Conferencing • 10 to 180 Guests</span>
               <h3 class="bento-title">Bespoke Executive Meetings &amp; Banquets</h3>
               <p class="bento-desc">Flexible layouts including plenary ballroom and executive boardroom. Complete 4K audiovisual infrastructure with custom catering by Argenti.</p>
-              <div style="display: flex; gap: var(--space-sm); margin-top: auto;">
+              <div style="margin-top: auto; padding-top: var(--space-sm);">
                 <a href="events.html" class="btn btn-primary btn-sm">Request Event Proposal</a>
               </div>
             </div>
@@ -447,12 +438,12 @@
     </section>
 
     <!-- SISTER PROPERTY TEASER (GemSuites State House) -->
-    <section class="container" style="margin-bottom: var(--space-4xl);">
-      <div style="background: var(--surface-cream); border: 1px solid var(--cream-deep); border-radius: var(--radius-lg); padding: var(--space-2xl); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-lg);">
-        <div style="max-width: 600px;">
+    <section class="container" aria-label="Sister Property">
+      <div class="sister-property-card">
+        <div class="sister-property-content">
           <div class="section-eyebrow">Sister Property</div>
-          <h3 style="font-size: 1.75rem; margin-bottom: var(--space-xs);">GemSuites State House, Nairobi</h3>
-          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+          <h3 class="section-title" style="font-size: 1.75rem; margin-bottom: var(--space-xs);">GemSuites State House, Nairobi</h3>
+          <p style="font-size: 0.95rem; color: var(--text-azure-secondary);">
             Seeking luxury corporate residences near State House Crescent? GemSuites State House offers long-term diplomatic apartments in a quiet, high-security neighborhood.
           </p>
         </div>
@@ -466,7 +457,7 @@
   <!-- FLOATING CONCIERGE WHATSAPP TRIGGER -->
   <a href="https://wa.me/254715162432" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
     <div class="whatsapp-pulse-ring"></div>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
     <span>WhatsApp Concierge</span>
   </a>
 
@@ -521,15 +512,15 @@
         <div>
           <div class="footer-heading">Contact &amp; Concierge</div>
           <div class="footer-contact-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Riverside Lane, Riverside, Nairobi, Kenya</span>
           </div>
           <div class="footer-contact-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span data-bind="property.contact.phone">+254 20 428 9100</span>
           </div>
           <div class="footer-contact-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <span data-bind="property.contact.emailReservations">reservations@gemsuites.com</span>
           </div>
           <div style="margin-top: var(--space-md);">
@@ -562,6 +553,3 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
-
-
-
