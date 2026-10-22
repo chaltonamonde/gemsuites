@@ -179,59 +179,100 @@
 
     <!-- FLOATING GLASS BOOKING BAR -->
     <section class="container floating-booking-bar" aria-label="Quick Booking Selector">
-      <form action="book.html" method="GET" class="booking-bar-card">
-        <div class="booking-field">
-          <label for="bar-checkin" class="field-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            Check-In
-          </label>
-          <input type="date" id="bar-checkin" name="checkin" class="field-input" required>
+      <div class="booking-bar-wrapper">
+        <div class="booking-bar-ambient-glow" aria-hidden="true"></div>
+        <form action="book.html" method="GET" class="booking-bar-card" id="hero-booking-bar">
+          <div class="booking-field" id="field-checkin">
+            <label for="bar-checkin" class="field-label">
+              <span class="field-label-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Check-In</span>
+              </span>
+            </label>
+            <input type="date" id="bar-checkin" name="checkin" class="field-input" required aria-label="Check-in Date">
+            <div class="field-subtext" id="bar-checkin-weekday">From 14:00</div>
+          </div>
+
+          <div class="booking-field" id="field-checkout">
+            <label for="bar-checkout" class="field-label">
+              <span class="field-label-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Check-Out</span>
+              </span>
+              <span class="booking-duration-pill" id="bar-duration-pill" title="Calculated stay duration">
+                <span class="pill-dot"></span>
+                <span class="pill-text">2 Nights</span>
+              </span>
+            </label>
+            <input type="date" id="bar-checkout" name="checkout" class="field-input" required aria-label="Check-out Date">
+            <div class="field-subtext" id="bar-checkout-weekday">Until 11:00</div>
+          </div>
+
+          <div class="booking-field" id="field-suite">
+            <label for="bar-suite" class="field-label">
+              <span class="field-label-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path><path d="M21 11H3"></path><path d="M7 11V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"></path></svg>
+                <span>Suite / Apartment</span>
+              </span>
+            </label>
+            <select id="bar-suite" name="suite" class="field-input" aria-label="Suite or Serviced Apartment Type">
+              <option value="hotel-suite">Luxury Hotel Suite</option>
+              <option value="one-bedroom-apartment">1-Bedroom Serviced Apartment</option>
+              <option value="two-bedroom-apartment">2-Bedroom Serviced Apartment</option>
+              <option value="penthouse">Presidential Penthouse</option>
+            </select>
+            <div class="field-subtext">Serviced residences</div>
+          </div>
+
+          <div class="booking-field" id="field-guests">
+            <label for="bar-guests" class="field-label">
+              <span class="field-label-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Guests</span>
+              </span>
+            </label>
+            <select id="bar-guests" name="guests" class="field-input" aria-label="Number of Guests">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests</option>
+            </select>
+            <div class="field-subtext">Adults &amp; children</div>
+          </div>
+
+          <div class="booking-submit-wrap">
+            <button type="submit" class="btn-submit" id="bar-submit-btn" aria-label="Check rates and suite availability">
+              <span class="btn-submit-shimmer" aria-hidden="true"></span>
+              <span class="btn-submit-label">Check Rates</span>
+              <svg class="btn-submit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="booking-bar-ribbon" role="region" aria-label="Direct guest booking privileges">
+        <div class="ribbon-item">
+          <span class="ribbon-star" aria-hidden="true">✦</span>
+          <span>Guaranteed Best Direct Rates</span>
         </div>
-        <div class="booking-field">
-          <label for="bar-checkout" class="field-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            Check-Out
-          </label>
-          <input type="date" id="bar-checkout" name="checkout" class="field-input" required>
-        </div>
-        <div class="booking-field">
-          <label for="bar-suite" class="field-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path><path d="M21 11H3"></path><path d="M7 11V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"></path></svg>
-            Suite / Apartment
-          </label>
-          <select id="bar-suite" name="suite" class="field-input">
-            <option value="hotel-suite">Luxury Hotel Suite</option>
-            <option value="one-bedroom-apartment">1-Bedroom Serviced Apartment</option>
-            <option value="two-bedroom-apartment">2-Bedroom Serviced Apartment</option>
-            <option value="penthouse">Presidential Penthouse</option>
-          </select>
-        </div>
-        <div class="booking-field">
-          <label for="bar-guests" class="field-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            Guests
-          </label>
-          <select id="bar-guests" name="guests" class="field-input">
-            <option value="1">1 Guest</option>
-            <option value="2" selected>2 Guests</option>
-            <option value="3">3 Guests</option>
-            <option value="4">4 Guests</option>
-            <option value="5">5+ Guests</option>
-          </select>
-        </div>
-        <div class="booking-submit-wrap">
-          <button type="submit" class="btn-submit">
-            <span>Check Rates</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </form>
-      <div class="booking-bar-ribbon">
-        <span class="ribbon-item"><span class="ribbon-star">✦</span> Guaranteed Best Direct Rates</span>
         <span class="ribbon-sep" aria-hidden="true">•</span>
-        <span class="ribbon-item">Instant M-Pesa &amp; Card Settlements</span>
+        <div class="ribbon-item">
+          <span class="ribbon-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          </span>
+          <span>Instant M-Pesa &amp; Card Settlements</span>
+        </div>
         <span class="ribbon-sep" aria-hidden="true">•</span>
-        <span class="ribbon-item">Direct WhatsApp Concierge</span>
+        <div class="ribbon-item">
+          <span class="ribbon-icon ribbon-whatsapp" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          </span>
+          <span>Direct WhatsApp Concierge</span>
+        </div>
       </div>
     </section>
 
@@ -575,12 +616,5 @@
   <!-- Central site-data.js must be loaded before main.js -->
   <script src="data/site-data.js"></script>
   <script src="js/main.js"></script>
-  <!-- Vercel Speed Insights & Web Analytics (Pure Static HTML Integration) -->
-  <script>
-    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

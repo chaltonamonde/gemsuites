@@ -20,6 +20,7 @@
     initFloatingWhatsApp();
     initCopyButtons();
     initGalleryLightbox();
+    initBookingBarEnhancements();
   });
 
   /* -------------------------------------------------------------
@@ -428,6 +429,146 @@
         closeLightbox();
       }
     });
+  }
+
+  /* -------------------------------------------------------------
+     10. Floating Glass Booking Bar Smart Date & Night Calculator
+     ------------------------------------------------------------- */
+  function initBookingBarEnhancements() {
+    const barCheckin = document.getElementById('bar-checkin');
+    const barCheckout = document.getElementById('bar-checkout');
+    const barForm = document.getElementById('hero-booking-bar');
+    const durationPill = document.getElementById('bar-duration-pill');
+    const checkinSub = document.getElementById('bar-checkin-weekday');
+    const checkoutSub = document.getElementById('bar-checkout-weekday');
+
+    if (!barCheckin || !barCheckout) return;
+
+    // Helper: format YYYY-MM-DD local string
+    function formatYMD(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Helper: human readable short weekday and date, e.g., "Thu, Oct 22"
+    function formatHumanDate(dateStr, defaultNote) {
+      if (!dateStr) return defaultNote;
+      try {
+        const parts = dateStr.split('-');
+        if (parts.length === 3) {
+          const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+          return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        }
+      } catch (e) {}
+      return defaultNote;
+    }
+
+    // Smart default dates (today + 2 nights)
+    const now = new Date();
+    // If it's late evening (after 20:00), default start to tomorrow
+    if (now.getHours() >= 20) {
+      now.setDate(now.getDate() + 1);
+    }
+    const todayStr = formatYMD(now);
+
+    const checkOutDate = new Date(now);
+    checkOutDate.setDate(checkOutDate.getDate() + 2);
+    const defaultCheckoutStr = formatYMD(checkOutDate);
+
+    // Set min date to prevent selecting past dates
+    barCheckin.min = todayStr;
+
+    // If input has no value yet, prefill with smart defaults
+    if (!barCheckin.value) {
+      barCheckin.value = todayStr;
+    }
+
+    // Sync checkout min based on checkin
+    function syncDatesAndDuration() {
+      if (!barCheckin.value) return;
+
+      const checkinDate = new Date(barCheckin.value + 'T00:00:00');
+      const minCheckout = new Date(checkinDate);
+      minCheckout.setDate(minCheckout.getDate() + 1);
+      const minCheckoutStr = formatYMD(minCheckout);
+
+      barCheckout.min = minCheckoutStr;
+
+      // If checkout is missing or earlier than minCheckout, adjust it
+      if (!barCheckout.value || barCheckout.value < minCheckoutStr) {
+        barCheckout.value = minCheckoutStr;
+      }
+
+      // Compute night duration
+      const checkoutDate = new Date(barCheckout.value + 'T00:00:00');
+      const diffTime = checkoutDate - checkinDate;
+      const nights = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
+
+      // Update duration pill
+      if (durationPill) {
+        const pillText = durationPill.querySelector('.pill-text');
+        if (pillText) {
+          pillText.textContent = `${nights} ${nights === 1 ? 'Night' : 'Nights'}`;
+        }
+        // Micro pop animation
+        durationPill.style.animation = 'none';
+        // force reflow
+        void durationPill.offsetWidth;
+        durationPill.style.animation = 'pillPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      }
+
+      // Update contextual subtexts
+      if (checkinSub) {
+        checkinSub.textContent = `${formatHumanDate(barCheckin.value, 'From 14:00')} • 14:00`;
+      }
+      if (checkoutSub) {
+        checkoutSub.textContent = `${formatHumanDate(barCheckout.value, 'Until 11:00')} • 11:00`;
+      }
+    }
+
+    // Initialize on load
+    if (!barCheckout.value) {
+      barCheckout.value = defaultCheckoutStr;
+    }
+    syncDatesAndDuration();
+
+    // Event listeners
+    barCheckin.addEventListener('change', syncDatesAndDuration);
+    barCheckout.addEventListener('change', syncDatesAndDuration);
+
+    // Clicking anywhere in a booking-field focuses its input/select
+    const bookingFields = document.querySelectorAll('.booking-bar-card .booking-field');
+    bookingFields.forEach(field => {
+      field.addEventListener('click', function (e) {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'SELECT' && e.target.tagName !== 'LABEL') {
+          const input = field.querySelector('input, select');
+          if (input) {
+            if (typeof input.showPicker === 'function' && input.type === 'date') {
+              try {
+                input.showPicker();
+              } catch (err) {
+                input.focus();
+              }
+            } else {
+              input.focus();
+            }
+          }
+        }
+      });
+    });
+
+    // Button ripple / press effect
+    const submitBtn = document.getElementById('bar-submit-btn');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', function () {
+        submitBtn.style.transform = 'scale(0.97)';
+        setTimeout(() => {
+          submitBtn.style.transform = '';
+        }, 150);
+      });
+    }
   }
 
   /* -------------------------------------------------------------
