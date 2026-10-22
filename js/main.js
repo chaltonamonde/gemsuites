@@ -22,6 +22,7 @@
     initGalleryLightbox();
     initBookingBarEnhancements();
     initCardDescriptionClamping();
+    initSuiteFilters();
   });
 
   /* -------------------------------------------------------------
@@ -603,6 +604,47 @@
 
         desc.parentNode.insertBefore(btn, desc.nextSibling);
       }
+    });
+  }
+
+  /* -------------------------------------------------------------
+     12. Accommodation Collection Category Filters
+     ------------------------------------------------------------- */
+  function initSuiteFilters() {
+    const filterBtns = document.querySelectorAll('.suite-filter-bar .filter-btn');
+    const cards = document.querySelectorAll('.suite-tilt-card');
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const filter = btn.getAttribute('data-filter') || 'all';
+
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        cards.forEach(function (card) {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            requestAnimationFrame(function () {
+              card.style.opacity = '1';
+              card.style.transform = '';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px) scale(0.98)';
+            setTimeout(function () {
+              if (btn.getAttribute('data-filter') !== 'all' && card.getAttribute('data-category') !== btn.getAttribute('data-filter')) {
+                card.style.display = 'none';
+              }
+            }, 250);
+          }
+        });
+      });
     });
   }
 

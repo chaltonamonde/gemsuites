@@ -97,226 +97,484 @@
   </div>
 
   <main id="main-content">
-    <!-- SUBPAGE HERO -->
-    <section class="section-padding" style="background: linear-gradient(180deg, var(--surface-cream) 0%, var(--bg-cream) 100%); border-bottom: 1px solid var(--cream-deep);">
-      <div class="container text-center" style="max-width: 820px; margin: 0 auto;">
-        <div class="section-eyebrow">Accommodation Collection</div>
-        <h1 class="section-title" style="font-size: var(--font-h1);">Sanctuary Living in Riverside</h1>
-        <p class="section-lead">
-          From tailored executive suites for dynamic business visits to expansive one- and two-bedroom apartments with full kitchens and private terraces for extended Nairobi stays.
+    <!-- SUBPAGE HERO WITH AMBIENT BACKDROP -->
+    <section class="subpage-hero" aria-label="Accommodation Overview">
+      <img src="media/penthouse-terrace.jpg" alt="GemSuites Riverside Luxury Living" class="subpage-hero-bg">
+      <div class="subpage-hero-overlay"></div>
+      <div class="container subpage-hero-content">
+        <div class="section-eyebrow">Accommodation Collection • Riverside Nairobi</div>
+        <h1 class="subpage-hero-title">Sanctuary Living in Riverside</h1>
+        <p class="subpage-hero-lead">
+          From tailored executive suites for dynamic business visits to expansive one- and two-bedroom residences with full gourmet kitchens and the panoramic rooftop penthouse — crafted for serene, 5-star extended living.
         </p>
-        <div style="margin-top: var(--space-md); font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-gold);">
-          Official Direct Rates • <span class="rate-validity-label">Official 2026 / 2027 Direct Seasonal Rates</span>
+        <div class="hero-highlights-strip">
+          <div class="strip-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Best Direct Rate</span>
+          </div>
+          <span class="strip-sep">•</span>
+          <div class="strip-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+            <span>Dedicated Fiber</span>
+          </div>
+          <span class="strip-sep">•</span>
+          <div class="strip-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Chef's Kitchens &amp; Laundry</span>
+          </div>
+          <span class="strip-sep">•</span>
+          <div class="strip-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>24/7 Concierge</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SUITES & APARTMENTS DETAILED LIST -->
-    <section class="container section-padding">
+    <!-- CATEGORY FILTER SELECTOR -->
+    <div class="suite-filter-wrap">
+      <div class="suite-filter-bar" role="tablist" aria-label="Filter suites by type">
+        <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          <span>All Living</span>
+          <span class="filter-count">4</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="hotel-suite" role="tab" aria-selected="false">
+          <span>Hotel Suites</span>
+          <span class="filter-count">1</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="serviced-apartment" role="tab" aria-selected="false">
+          <span>Serviced Apartments</span>
+          <span class="filter-count">2</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="penthouse" role="tab" aria-selected="false">
+          <span>Penthouse</span>
+          <span class="filter-count">1</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUITES & APARTMENTS SHOWCASE GRID -->
+    <section class="container" style="margin-bottom: var(--space-3xl);">
       <div class="suite-tilt-grid">
         <!-- 1. Luxury Hotel Suite -->
-        <article id="hotel-suite" class="suite-tilt-card" data-tilt>
+        <article id="hotel-suite" class="suite-tilt-card" data-tilt data-category="hotel-suite">
           <div class="suite-card-media">
-            <img src="media/suite-deluxe.jpg" alt="Luxury Hotel Suite at GemSuites Riverside">
+            <img src="media/suite-deluxe.jpg" alt="Luxury Hotel Suite at GemSuites Riverside" loading="lazy">
             <span class="suite-chip">Hotel Suite</span>
+            <span class="suite-price-badge">From $180 <small>/ night</small></span>
           </div>
           <div class="suite-card-content">
-            <h2 class="suite-card-title">Luxury Hotel Suite</h2>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 8px;">
-              Ideal for executive solo travelers and couples seeking hotel service with superior quiet and comfort.
-            </p>
-            <div class="suite-card-specs">
-              <span class="spec-item"><strong>Max:</strong> 2 Guests</span>
-              <span class="spec-item">• <strong>Bed:</strong> 1 King</span>
-              <span class="spec-item">• <strong>Area:</strong> 45 m²</span>
+            <div class="suite-card-header">
+              <div class="suite-category-tag">Executive Short-Stay</div>
+              <h2 class="suite-card-title">Luxury Hotel Suite</h2>
+              <p class="suite-card-lead">
+                Elegantly proportioned sanctuary crafted for executive solo travelers and couples seeking calm indulgence with 5-star hotel services.
+              </p>
             </div>
-            <ul class="suite-features-list">
-              <li>Plush King-size bed with crisp Egyptian cotton linens</li>
-              <li>Dedicated ergonomic workstation with high-speed fiber Wi-Fi</li>
-              <li>Marble ensuite bathroom with rainfall shower &amp; organic amenities</li>
-              <li>Smart TV with international channels &amp; personal Nespresso station</li>
-            </ul>
-            <div class="suite-card-footer">
-              <div>
-                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Direct From</span>
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--text-main); font-size: 1.15rem;">
-                  $180 / KES 25,000
-                </div>
+            
+            <div class="suite-card-specs">
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="spec-capsule-label">Guests</span>
+                <span class="spec-capsule-val">2 Adults</span>
               </div>
-              <a href="book.html?suite=hotel-suite" class="btn btn-primary btn-sm">Calculate &amp; Book</a>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+                <span class="spec-capsule-label">Bed</span>
+                <span class="spec-capsule-val">1 King Bed</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="spec-capsule-label">Area</span>
+                <span class="spec-capsule-val">45 m² / 484 sq ft</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="spec-capsule-label">View</span>
+                <span class="spec-capsule-val">Garden View</span>
+              </div>
+            </div>
+
+            <div class="suite-features-wrap">
+              <div class="suite-features-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Signature Inclusions</span>
+              </div>
+              <ul class="suite-features-list">
+                <li><span class="feat-bullet">✦</span> Plush King bed with Egyptian cotton</li>
+                <li><span class="feat-bullet">✦</span> Ergonomic workstation with fiber Wi-Fi</li>
+                <li><span class="feat-bullet">✦</span> Marble ensuite with monsoon shower</li>
+                <li><span class="feat-bullet">✦</span> Nespresso coffee &amp; minibar station</li>
+              </ul>
+            </div>
+
+            <div class="suite-card-footer">
+              <div class="suite-card-rate-block">
+                <span class="suite-card-rate-label">Direct Rate</span>
+                <div class="suite-card-rate-val">
+                  $180 <span class="currency-sub">/ KES 25,000</span>
+                </div>
+                <span class="suite-card-rate-sub">Per night • Incl. taxes &amp; service</span>
+              </div>
+              <div class="suite-card-actions">
+                <a href="https://wa.me/254715162432?text=Hello%20GemSuites%2C%20I%20am%20inquiring%20about%20the%20Luxury%20Hotel%20Suite." class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Inquire</a>
+                <a href="book.html?suite=hotel-suite" class="btn btn-primary btn-sm">Reserve Direct</a>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- 2. One-Bedroom Serviced Apartment -->
-        <article id="one-bedroom" class="suite-tilt-card" data-tilt>
+        <article id="one-bedroom" class="suite-tilt-card" data-tilt data-category="serviced-apartment">
           <div class="suite-card-media">
-            <img src="media/one-bed-apartment.jpg" alt="One-Bedroom Serviced Apartment at GemSuites Riverside">
+            <img src="media/one-bed-apartment.jpg" alt="One-Bedroom Serviced Apartment at GemSuites Riverside" loading="lazy">
             <span class="suite-chip">Serviced Apartment</span>
+            <span class="suite-price-badge">From $240 <small>/ night</small></span>
           </div>
           <div class="suite-card-content">
-            <h2 class="suite-card-title">One-Bedroom Serviced Apartment</h2>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 8px;">
-              Seamless fusion of private residential luxury and 5-star hotel amenities for short or extended stays.
-            </p>
-            <div class="suite-card-specs">
-              <span class="spec-item"><strong>Max:</strong> 2 Guests</span>
-              <span class="spec-item">• <strong>Bed:</strong> 1 King</span>
-              <span class="spec-item">• <strong>Area:</strong> 85 m²</span>
+            <div class="suite-card-header">
+              <div class="suite-category-tag">Residential Long-Stay &amp; Leisure</div>
+              <h2 class="suite-card-title">One-Bedroom Serviced Apartment</h2>
+              <p class="suite-card-lead">
+                Seamless fusion of private residential living and boutique luxury, featuring a separate master suite, chef's kitchen, and private veranda.
+              </p>
             </div>
-            <ul class="suite-features-list">
-              <li>Separate master bedroom with acoustic insulation &amp; built-in wardrobe</li>
-              <li>Fully equipped designer kitchen with induction stove, oven, microwave &amp; fridge</li>
-              <li>Spacious living lounge with private outdoor balcony facing Riverside greenery</li>
-              <li>In-suite washer and dryer for effortless independent living</li>
-            </ul>
-            <div class="suite-card-footer">
-              <div>
-                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Direct From</span>
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--text-main); font-size: 1.15rem;">
-                  $240 / KES 33,000
-                </div>
+            
+            <div class="suite-card-specs">
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="spec-capsule-label">Guests</span>
+                <span class="spec-capsule-val">2 Adults</span>
               </div>
-              <a href="book.html?suite=one-bedroom-apartment" class="btn btn-primary btn-sm">Calculate &amp; Book</a>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+                <span class="spec-capsule-label">Bed</span>
+                <span class="spec-capsule-val">1 King Suite</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="spec-capsule-label">Area</span>
+                <span class="spec-capsule-val">85 m² / 915 sq ft</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="spec-capsule-label">Veranda</span>
+                <span class="spec-capsule-val">Private Balcony</span>
+              </div>
+            </div>
+
+            <div class="suite-features-wrap">
+              <div class="suite-features-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Signature Inclusions</span>
+              </div>
+              <ul class="suite-features-list">
+                <li><span class="feat-bullet">✦</span> Master bedroom with acoustic insulation</li>
+                <li><span class="feat-bullet">✦</span> Full kitchen (induction, oven, fridge)</li>
+                <li><span class="feat-bullet">✦</span> In-suite washer &amp; dryer utility</li>
+                <li><span class="feat-bullet">✦</span> Private balcony facing Riverside green</li>
+              </ul>
+            </div>
+
+            <div class="suite-card-footer">
+              <div class="suite-card-rate-block">
+                <span class="suite-card-rate-label">Direct Rate</span>
+                <div class="suite-card-rate-val">
+                  $240 <span class="currency-sub">/ KES 33,000</span>
+                </div>
+                <span class="suite-card-rate-sub">Per night • Incl. taxes &amp; service</span>
+              </div>
+              <div class="suite-card-actions">
+                <a href="https://wa.me/254715162432?text=Hello%20GemSuites%2C%20I%20am%20inquiring%20about%20the%20One-Bedroom%20Serviced%20Apartment." class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Inquire</a>
+                <a href="book.html?suite=one-bedroom-apartment" class="btn btn-primary btn-sm">Reserve Direct</a>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- 3. Two-Bedroom Serviced Apartment -->
-        <article id="two-bedroom" class="suite-tilt-card" data-tilt>
+        <article id="two-bedroom" class="suite-tilt-card" data-tilt data-category="serviced-apartment">
           <div class="suite-card-media">
-            <img src="media/two-bed-apartment.jpg" alt="Two-Bedroom Serviced Apartment at GemSuites Riverside">
+            <img src="media/two-bed-apartment.jpg" alt="Two-Bedroom Serviced Apartment at GemSuites Riverside" loading="lazy">
             <span class="suite-chip">Family &amp; Delegation</span>
+            <span class="suite-price-badge">From $340 <small>/ night</small></span>
           </div>
           <div class="suite-card-content">
-            <h2 class="suite-card-title">Two-Bedroom Serviced Apartment</h2>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 8px;">
-              Generous, elegant space created for executive delegations, diplomats, and families traveling together.
-            </p>
-            <div class="suite-card-specs">
-              <span class="spec-item"><strong>Max:</strong> 4 Guests</span>
-              <span class="spec-item">• <strong>Beds:</strong> 2 Ensuite Bedrooms</span>
-              <span class="spec-item">• <strong>Area:</strong> 135 m²</span>
+            <div class="suite-card-header">
+              <div class="suite-category-tag">Diplomatic &amp; Family Choice</div>
+              <h2 class="suite-card-title">Two-Bedroom Serviced Apartment</h2>
+              <p class="suite-card-lead">
+                Generous, sophisticated sanctuary designed for executive delegations, diplomats, and families requiring complete independence and luxury.
+              </p>
             </div>
-            <ul class="suite-features-list">
-              <li>Two independent ensuite bedrooms with bespoke marble bathrooms</li>
-              <li>Master bathroom featuring a deep soaking tub and dual vanities</li>
-              <li>Chef's kitchen with stone breakfast bar, dishwasher, and formal dining table</li>
-              <li>Twin balconies with views over the pool and serene Riverside canopy</li>
-            </ul>
-            <div class="suite-card-footer">
-              <div>
-                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Direct From</span>
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--text-main); font-size: 1.15rem;">
-                  $340 / KES 47,000
-                </div>
+            
+            <div class="suite-card-specs">
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="spec-capsule-label">Guests</span>
+                <span class="spec-capsule-val">4 Adults</span>
               </div>
-              <a href="book.html?suite=two-bedroom-apartment" class="btn btn-primary btn-sm">Calculate &amp; Book</a>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+                <span class="spec-capsule-label">Beds</span>
+                <span class="spec-capsule-val">2 Ensuite Suites</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="spec-capsule-label">Area</span>
+                <span class="spec-capsule-val">135 m² / 1,453 sq ft</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="spec-capsule-label">Verandas</span>
+                <span class="spec-capsule-val">Twin Balconies</span>
+              </div>
+            </div>
+
+            <div class="suite-features-wrap">
+              <div class="suite-features-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Signature Inclusions</span>
+              </div>
+              <ul class="suite-features-list">
+                <li><span class="feat-bullet">✦</span> 2 ensuite bedrooms with walk-in closets</li>
+                <li><span class="feat-bullet">✦</span> Deep soaking tub &amp; dual marble vanities</li>
+                <li><span class="feat-bullet">✦</span> Chef's island kitchen with dishwasher</li>
+                <li><span class="feat-bullet">✦</span> Separate utility laundry &amp; private parking</li>
+              </ul>
+            </div>
+
+            <div class="suite-card-footer">
+              <div class="suite-card-rate-block">
+                <span class="suite-card-rate-label">Direct Rate</span>
+                <div class="suite-card-rate-val">
+                  $340 <span class="currency-sub">/ KES 47,000</span>
+                </div>
+                <span class="suite-card-rate-sub">Per night • Incl. taxes &amp; service</span>
+              </div>
+              <div class="suite-card-actions">
+                <a href="https://wa.me/254715162432?text=Hello%20GemSuites%2C%20I%20am%20inquiring%20about%20the%20Two-Bedroom%20Serviced%20Apartment." class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Inquire</a>
+                <a href="book.html?suite=two-bedroom-apartment" class="btn btn-primary btn-sm">Reserve Direct</a>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- 4. Presidential Penthouse -->
-        <article id="penthouse" class="suite-tilt-card" data-tilt>
+        <article id="penthouse" class="suite-tilt-card" data-tilt data-category="penthouse">
           <div class="suite-card-media">
-            <img src="media/penthouse-terrace.jpg" alt="The Presidential Penthouse at GemSuites Riverside">
+            <img src="media/penthouse-terrace.jpg" alt="The Presidential Penthouse at GemSuites Riverside" loading="lazy">
             <span class="suite-chip">Signature Penthouse</span>
+            <span class="suite-price-badge">From $650 <small>/ night</small></span>
           </div>
           <div class="suite-card-content">
-            <h2 class="suite-card-title">The Presidential Penthouse</h2>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 8px;">
-              Nairobi's pinnacle of urban refinement occupying the entire premier rooftop level.
-            </p>
-            <div class="suite-card-specs">
-              <span class="spec-item"><strong>Max:</strong> 6 Guests</span>
-              <span class="spec-item">• <strong>Beds:</strong> 3 Ensuite Suites</span>
-              <span class="spec-item">• <strong>Area:</strong> 260 m²</span>
+            <div class="suite-card-header">
+              <div class="suite-category-tag">Premier Rooftop Living</div>
+              <h2 class="suite-card-title">The Presidential Penthouse</h2>
+              <p class="suite-card-lead">
+                Nairobi's pinnacle of urban refinement occupying the entire premier rooftop level with wraparound vistas and VIP concierge.
+              </p>
             </div>
-            <ul class="suite-features-list">
-              <li>Wraparound panoramic entertaining terrace with 360-degree city views</li>
-              <li>Grand entertaining salon with bespoke architectural lighting and fireplace</li>
-              <li>Formal presentation dining room accommodating up to 8 guests</li>
-              <li>Private VIP butler concierge service &amp; private elevator security access</li>
-            </ul>
-            <div class="suite-card-footer">
-              <div>
-                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Direct From</span>
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--text-main); font-size: 1.15rem;">
-                  $650 / KES 90,000
-                </div>
+            
+            <div class="suite-card-specs">
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="spec-capsule-label">Guests</span>
+                <span class="spec-capsule-val">6 Adults</span>
               </div>
-              <a href="book.html?suite=penthouse" class="btn btn-primary btn-sm">Calculate &amp; Book</a>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>
+                <span class="spec-capsule-label">Suites</span>
+                <span class="spec-capsule-val">3 King Ensuites</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="spec-capsule-label">Area</span>
+                <span class="spec-capsule-val">260 m² / 2,800 sq ft</span>
+              </div>
+              <div class="spec-capsule">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span class="spec-capsule-label">Terrace</span>
+                <span class="spec-capsule-val">360° Panoramic</span>
+              </div>
+            </div>
+
+            <div class="suite-features-wrap">
+              <div class="suite-features-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Signature Inclusions</span>
+              </div>
+              <ul class="suite-features-list">
+                <li><span class="feat-bullet">✦</span> 360° wraparound private rooftop terrace</li>
+                <li><span class="feat-bullet">✦</span> Grand salon with fireplace &amp; art lighting</li>
+                <li><span class="feat-bullet">✦</span> Presentation dining table for 8 guests</li>
+                <li><span class="feat-bullet">✦</span> Dedicated butler concierge &amp; private lift</li>
+              </ul>
+            </div>
+
+            <div class="suite-card-footer">
+              <div class="suite-card-rate-block">
+                <span class="suite-card-rate-label">Direct Rate</span>
+                <div class="suite-card-rate-val">
+                  $650 <span class="currency-sub">/ KES 90,000</span>
+                </div>
+                <span class="suite-card-rate-sub">Per night • Incl. taxes &amp; service</span>
+              </div>
+              <div class="suite-card-actions">
+                <a href="https://wa.me/254715162432?text=Hello%20GemSuites%2C%20I%20am%20inquiring%20about%20the%20Presidential%20Penthouse." class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Inquire</a>
+                <a href="book.html?suite=penthouse" class="btn btn-primary btn-sm">Reserve Direct</a>
+              </div>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- COMPARISON TABLE (Real Searchable HTML, NO PDFS!) -->
-    <section class="container section-padding-sm" style="margin-bottom: var(--space-3xl);">
-      <div class="section-header">
+    <!-- COMPARISON MATRIX SECTION -->
+    <section id="specifications-matrix" class="container" style="margin-bottom: var(--space-3xl);">
+      <div class="section-header text-center">
         <div class="section-eyebrow">Specifications Matrix</div>
         <h2 class="section-title">Accommodation Comparison</h2>
         <p class="section-lead">Find the suite or apartment configuration perfectly tailored to your length of stay.</p>
       </div>
 
-      <div style="overflow-x: auto; background: var(--surface-cream); border: 1px solid var(--cream-deep); border-radius: var(--radius-lg); padding: var(--space-md); box-shadow: var(--shadow-sm);">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
-          <thead>
-            <tr style="border-bottom: 2px solid var(--accent-gold);">
-              <th style="padding: 14px 16px;">Suite Type</th>
-              <th style="padding: 14px 16px;">Max Occupancy</th>
-              <th style="padding: 14px 16px;">Kitchen &amp; Dining</th>
-              <th style="padding: 14px 16px;">Laundry in Unit</th>
-              <th style="padding: 14px 16px;">Outdoor Space</th>
-              <th style="padding: 14px 16px;">Direct Rates</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--cream-deep);">
-              <td style="padding: 14px 16px; font-weight: 600;">Luxury Hotel Suite</td>
-              <td style="padding: 14px 16px;">2 Adults</td>
-              <td style="padding: 14px 16px;">Nespresso &amp; Minibar</td>
-              <td style="padding: 14px 16px;">Valet Laundry Service</td>
-              <td style="padding: 14px 16px;">Garden Window View</td>
-              <td style="padding: 14px 16px; font-family: var(--font-mono); font-weight: 600;">$180 / KES 25,000</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--cream-deep);">
-              <td style="padding: 14px 16px; font-weight: 600;">1-Bedroom Serviced Apartment</td>
-              <td style="padding: 14px 16px;">2 Adults</td>
-              <td style="padding: 14px 16px;">Full Designer Kitchen + Dining for 4</td>
-              <td style="padding: 14px 16px;">Private Washer &amp; Dryer</td>
-              <td style="padding: 14px 16px;">Private Balcony</td>
-              <td style="padding: 14px 16px; font-family: var(--font-mono); font-weight: 600;">$240 / KES 33,000</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--cream-deep);">
-              <td style="padding: 14px 16px; font-weight: 600;">2-Bedroom Serviced Apartment</td>
-              <td style="padding: 14px 16px;">4 Adults</td>
-              <td style="padding: 14px 16px;">Chef's Island Kitchen + Dining for 6</td>
-              <td style="padding: 14px 16px;">Separate Utility Laundry Room</td>
-              <td style="padding: 14px 16px;">Twin Balconies</td>
-              <td style="padding: 14px 16px; font-family: var(--font-mono); font-weight: 600;">$340 / KES 47,000</td>
-            </tr>
-            <tr>
-              <td style="padding: 14px 16px; font-weight: 600;">The Presidential Penthouse</td>
-              <td style="padding: 14px 16px;">6 Adults</td>
-              <td style="padding: 14px 16px;">Gourmet Kitchen + Presentation Dining for 8</td>
-              <td style="padding: 14px 16px;">Full In-Suite Laundry Room</td>
-              <td style="padding: 14px 16px;">360° Wraparound Rooftop Terrace</td>
-              <td style="padding: 14px 16px; font-family: var(--font-mono); font-weight: 600;">$650 / KES 90,000</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="spec-comparison-card">
+        <div class="spec-scroll-hint">← Swipe horizontally to compare all features →</div>
+        <div class="spec-table-scroll">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Suite Type</th>
+                <th>Occupancy</th>
+                <th>Kitchen &amp; Dining</th>
+                <th>In-Unit Laundry</th>
+                <th>Outdoor Veranda</th>
+                <th>Dedicated Wi-Fi</th>
+                <th>Direct Rate</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="suite-name-cell">Luxury Hotel Suite</td>
+                <td>2 Adults</td>
+                <td>Nespresso &amp; Stocked Minibar</td>
+                <td>Valet Laundry Service</td>
+                <td>Garden Window View</td>
+                <td><span class="spec-check">✓ High-Speed</span></td>
+                <td class="rate-cell">$180 / KES 25,000</td>
+                <td><a href="book.html?suite=hotel-suite" class="btn btn-primary btn-sm">Book</a></td>
+              </tr>
+              <tr>
+                <td class="suite-name-cell">1-Bedroom Serviced Apartment</td>
+                <td>2 Adults</td>
+                <td>Designer Kitchen + Dining for 4</td>
+                <td><span class="spec-check">✓ In-Suite Washer &amp; Dryer</span></td>
+                <td>Private Veranda Balcony</td>
+                <td><span class="spec-check">✓ High-Speed</span></td>
+                <td class="rate-cell">$240 / KES 33,000</td>
+                <td><a href="book.html?suite=one-bedroom-apartment" class="btn btn-primary btn-sm">Book</a></td>
+              </tr>
+              <tr>
+                <td class="suite-name-cell">2-Bedroom Serviced Apartment</td>
+                <td>4 Adults</td>
+                <td>Chef's Island Kitchen + Dining for 6</td>
+                <td><span class="spec-check">✓ Utility Laundry Room</span></td>
+                <td>Twin Panoramic Balconies</td>
+                <td><span class="spec-check">✓ High-Speed</span></td>
+                <td class="rate-cell">$340 / KES 47,000</td>
+                <td><a href="book.html?suite=two-bedroom-apartment" class="btn btn-primary btn-sm">Book</a></td>
+              </tr>
+              <tr>
+                <td class="suite-name-cell">The Presidential Penthouse</td>
+                <td>6 Adults</td>
+                <td>Gourmet Kitchen + Presentation Dining (8)</td>
+                <td><span class="spec-check">✓ Full Utility Suite</span></td>
+                <td>360° Wraparound Rooftop Terrace</td>
+                <td><span class="spec-check">✓ High-Speed</span></td>
+                <td class="rate-cell">$650 / KES 90,000</td>
+                <td><a href="book.html?suite=penthouse" class="btn btn-primary btn-sm">Book</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIPLOMATIC & LONG-STAY LEASING CALLOUT -->
+    <section class="container" style="margin-bottom: var(--space-3xl);">
+      <div class="long-stay-callout">
+        <div class="long-stay-text">
+          <div class="long-stay-eyebrow">Extended Residences • Monthly Leases</div>
+          <h2 class="long-stay-title">Diplomatic &amp; Corporate Long-Stay Privileges</h2>
+          <p class="long-stay-desc">
+            GemSuites Riverside offers bespoke extended-stay solutions for diplomatic missions, multinational executives, and relocation delegations. Enjoy preferential monthly rates, dedicated concierge billing, customized housekeeping rotations, private basement parking, and tailored pantry stocking.
+          </p>
+        </div>
+        <div class="long-stay-actions">
+          <a href="https://wa.me/254715162432?text=Hello%20GemSuites%20Concierge%2C%20I%20am%20inquiring%20about%20extended%20stay%20and%20corporate%20leases." class="btn btn-primary" target="_blank" rel="noopener">Contact Long-Stay Concierge</a>
+          <a href="contact.html" class="btn btn-secondary">Request Corporate Proposal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECT BOOKING GUARANTEES STRIP -->
+    <section class="container section-padding-sm" style="margin-bottom: var(--space-3xl);">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">The GemSuites Promise</div>
+        <h2 class="section-title">Direct Reservation Privileges</h2>
+        <p class="section-lead">Book directly through our website or concierge to unlock guaranteed privileges.</p>
+      </div>
+      <div class="perks-strip-collection">
+        <div class="collection-perk-card">
+          <div class="collection-perk-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="collection-perk-title">Best Rate Guarantee</h3>
+          <p class="collection-perk-desc">Zero third-party commission markups. You always receive our lowest rates direct.</p>
+        </div>
+        <div class="collection-perk-card">
+          <div class="collection-perk-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="collection-perk-title">Flexible Priority Arrival</h3>
+          <p class="collection-perk-desc">Priority early check-in and late checkout scheduling subject to availability.</p>
+        </div>
+        <div class="collection-perk-card">
+          <div class="collection-perk-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+          </div>
+          <h3 class="collection-perk-title">Dedicated Fiber Wi-Fi</h3>
+          <p class="collection-perk-desc">Ultra-fast private bandwidth in every suite, private balcony, and public lounge.</p>
+        </div>
+        <div class="collection-perk-card">
+          <div class="collection-perk-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="collection-perk-title">Welcome Reception</h3>
+          <p class="collection-perk-desc">Arrival hospitality refreshment and artisan Kenyan coffee at Argenti Lounge.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- FLOATING CONCIERGE WHATSAPP TRIGGER -->
+  <!-- FLOATING CONCIERGE WHATSAPP TRIGGER (DESKTOP) -->
   <a href="https://wa.me/254715162432" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
     <div class="whatsapp-pulse-ring"></div>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
     <span>WhatsApp Concierge</span>
   </a>
+
+  <!-- MOBILE BOTTOM STICKY ACTION BAR -->
+  <div class="mobile-sticky-bar" aria-label="Quick Booking Actions">
+    <a href="https://wa.me/254715162432" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="book.html" class="btn btn-primary btn-sm">
+      <span>Reserve Direct</span>
+    </a>
+  </div>
 
   <!-- SHARED FOOTER -->
   <footer class="site-footer" role="contentinfo">
