@@ -6,5 +6,6 @@ Thumbs.db
 *.log
 .tempmediaStorage/
 .vercel
+scratch/
 
 .vercel

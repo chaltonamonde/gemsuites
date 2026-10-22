@@ -31,10 +31,10 @@ window.GEMSUITES_DATA = {
       googleMapsDirectionsUrl: "https://maps.google.com/?q=GemSuites+Riverside+Lane+Nairobi"
     },
     contact: {
-      phone: "+254 20 428 9100",
-      phoneSecondary: "+254 715 162 432",
-      whatsappNumber: "254715162432", // Digits only without '+' for international API links
-      whatsappFormatted: "+254 715 162 432",
+      phone: "+254 110 677 149",
+      phoneSecondary: "+254 110 677 149",
+      whatsappNumber: "254110677149", // Digits only without '+' for international API links
+      whatsappFormatted: "+254 110 677 149",
       emailReservations: "reservations@gemsuites.com",
       emailEvents: "events@gemsuites.com",
       emailGeneral: "info@gemsuites.com",

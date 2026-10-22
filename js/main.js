@@ -355,7 +355,7 @@
     const data = window.GEMSUITES_DATA;
     if (!waBtn || !data || !data.property || !data.property.contact) return;
 
-    const number = data.property.contact.whatsappNumber || '254715162432';
+    const number = data.property.contact.whatsappNumber || '254110677149';
     const pageTitle = document.title || 'GemSuites Riverside';
     const defaultMsg = encodeURIComponent(`Hello GemSuites Riverside Concierge, I am inquiring from your website (${pageTitle}).`);
 

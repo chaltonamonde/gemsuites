@@ -10,12 +10,17 @@
 (function () {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function boot() {
     const bookingForm = document.getElementById('booking-calculation-form');
     if (!bookingForm) return;
-
     initBookingEngine();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 
   function initBookingEngine() {
     const data = window.GEMSUITES_DATA;
@@ -110,12 +115,85 @@
       });
     }
 
-    // 7. Embedded Booking Engine Toggle
-    if (bookingIframeContainer && data.bookingSettings && data.bookingSettings.embeddedEngine) {
-      if (data.bookingSettings.embeddedEngine.enabled && data.bookingSettings.embeddedEngine.iframeUrl) {
-        bookingIframeContainer.innerHTML = `<iframe src="${data.bookingSettings.embeddedEngine.iframeUrl}" width="100%" height="650" frameborder="0" title="Hotel Booking Engine"></iframe>`;
+    // 8. Test Autofill Helper Trigger (Using 0110677149)
+    window.testAutofillWithMyNumber = function () {
+      if (guestNameInput && !guestNameInput.value) guestNameInput.value = 'VIP Guest';
+      if (guestEmailInput && !guestEmailInput.value) guestEmailInput.value = 'guest@gemsuites.com';
+      if (guestPhoneInput) {
+        guestPhoneInput.value = '0110677149';
+        guestPhoneInput.style.borderColor = 'var(--accent-gold)';
+        guestPhoneInput.style.boxShadow = '0 0 0 4px rgba(212, 175, 55, 0.35)';
+        setTimeout(() => {
+          guestPhoneInput.style.borderColor = '';
+          guestPhoneInput.style.boxShadow = '';
+        }, 2000);
       }
+      // Set sample stay dates if empty (tomorrow for 2 nights)
+      if (checkinInput && !checkinInput.value) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        checkinInput.value = tomorrow.toISOString().split('T')[0];
+      }
+      if (checkoutInput && (!checkoutInput.value || checkoutInput.value <= checkinInput.value)) {
+        const checkinDate = new Date(checkinInput.value);
+        checkinDate.setDate(checkinDate.getDate() + 2);
+        checkoutInput.value = checkinDate.toISOString().split('T')[0];
+      }
+      calculateEstimate(data);
+    };
+
+    const autofillBtn = document.getElementById('btn-autofill-test');
+    if (autofillBtn) {
+      autofillBtn.addEventListener('click', window.testAutofillWithMyNumber);
     }
+
+    // 9. M-Pesa 1-Click Copy Buttons with visual confirmation
+    initMpesaCopyButtons();
+  }
+
+  /* -------------------------------------------------------------
+     Helper: M-Pesa 1-Click Copy with Visual Confirmation
+     ------------------------------------------------------------- */
+  function initMpesaCopyButtons() {
+    const copyBtns = document.querySelectorAll('[data-copy-target]');
+    copyBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-copy-target');
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+
+        const textToCopy = targetEl.textContent.trim();
+        const executeFeedback = () => {
+          const originalText = this.textContent;
+          this.textContent = '✓ Copied!';
+          this.classList.add('copied');
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.classList.remove('copied');
+          }, 2000);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy)
+            .then(executeFeedback)
+            .catch(() => fallbackCopy(textToCopy, executeFeedback));
+        } else {
+          fallbackCopy(textToCopy, executeFeedback);
+        }
+      });
+    });
+  }
+
+  function fallbackCopy(text, callback) {
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+      document.execCommand('copy');
+      if (callback) callback();
+    } catch (e) {}
+    document.body.removeChild(tempInput);
   }
 
   /* -------------------------------------------------------------
@@ -127,7 +205,7 @@
     accommodations.forEach(acc => {
       const opt = document.createElement('option');
       opt.value = acc.id;
-      opt.textContent = `${acc.name} (${acc.category})`;
+      opt.textContent = `${acc.name} (${acc.sizeSqm || acc.category})`;
       selectEl.appendChild(opt);
     });
   }
@@ -149,7 +227,7 @@
   }
 
   /* -------------------------------------------------------------
-     Calculation Engine: Nights, Rates, Taxes
+     Calculation Engine: Nights, Rates, Taxes, & Live Previews
      ------------------------------------------------------------- */
   function calculateEstimate(data) {
     const checkinVal = document.getElementById('book-checkin')?.value;
@@ -167,6 +245,14 @@
     const summarySubtotal = document.getElementById('summary-subtotal');
     const summaryTaxes = document.getElementById('summary-taxes');
     const summaryTotal = document.getElementById('summary-total');
+    const summaryThumb = document.getElementById('summary-suite-thumb');
+
+    // Live preview targets in Step 1
+    const liveNightsCount = document.getElementById('live-nights-count');
+    const previewImg = document.getElementById('suite-preview-img');
+    const previewName = document.getElementById('suite-preview-name');
+    const previewMeta = document.getElementById('suite-preview-meta');
+    const previewRate = document.getElementById('suite-preview-rate');
 
     // Find selected suite
     const suite = data.accommodations.find(a => a.id === suiteId) || data.accommodations[0];
@@ -185,7 +271,9 @@
     } else {
       if (summaryDates) summaryDates.textContent = 'Dates to be selected';
     }
-    if (summaryNights) summaryNights.textContent = `${nights} Night(s)`;
+    const nightsText = `${nights} Night${nights > 1 ? 's' : ''}`;
+    if (summaryNights) summaryNights.textContent = `${nightsText}`;
+    if (liveNightsCount) liveNightsCount.textContent = `${nightsText} Stay`;
 
     // Rate calculation with placeholder protection
     const rawRateUSD = suite ? suite.baseRateUSD : '';
@@ -239,9 +327,21 @@
     if (summaryTaxes) summaryTaxes.textContent = taxesDisplayStr;
     if (summaryTotal) summaryTotal.textContent = totalDisplayStr;
 
+    // Update Suite Preview Card in Step 1
+    if (suite) {
+      const thumbUrl = suite.images?.thumbnail || 'media/suite-deluxe.jpg';
+      if (previewImg) previewImg.src = thumbUrl;
+      if (previewName) previewName.textContent = suite.name;
+      if (previewMeta) {
+        previewMeta.innerHTML = `<span>${suite.sizeSqm || ''}</span> • <span>${suite.bedConfig || ''}</span> • <span>Max ${suite.maxGuests || 2} Guests</span>`;
+      }
+      if (previewRate) previewRate.textContent = `${displayRateStr} / night`;
+      if (summaryThumb) summaryThumb.src = thumbUrl;
+    }
+
     // Attach calculated values to hidden fields for Formspree submit
     const hiddenSummary = document.getElementById('hidden-calculated-summary');
-    if (hiddenSummary) {
+    if (hiddenSummary && suite) {
       hiddenSummary.value = `Suite: ${suite.name} | Dates: ${checkinVal || 'TBD'} to ${checkoutVal || 'TBD'} (${nights} nights) | Guests: ${guests} | Est. Rate: ${displayRateStr}/night | Total Estimate: ${totalDisplayStr}`;
     }
   }
@@ -260,7 +360,7 @@
 
     const guestName = document.getElementById('guest-name')?.value.trim();
     const guestEmail = document.getElementById('guest-email')?.value.trim();
-    const guestPhone = document.getElementById('guest-phone')?.value.trim();
+    const guestPhone = document.getElementById('guest-phone')?.value.trim() || '0110677149';
     const specialRequests = document.getElementById('special-requests')?.value.trim();
 
     if (!guestName) {
@@ -269,11 +369,11 @@
       return;
     }
 
-    const number = data.property.contact.whatsappNumber || '254715162432';
+    const number = data.property.contact.whatsappNumber || '254110677149';
 
     let message = `*NEW DIRECT RESERVATION REQUEST - GEMSUITES RIVERSIDE*\n\n`;
     message += `*Guest Name:* ${guestName}\n`;
-    if (guestPhone) message += `*Guest Phone:* ${guestPhone}\n`;
+    if (guestPhone) message += `*Guest Phone / WhatsApp:* ${guestPhone}\n`;
     if (guestEmail) message += `*Guest Email:* ${guestEmail}\n\n`;
 
     message += `*Accommodation:* ${suite.name} (${suite.category})\n`;

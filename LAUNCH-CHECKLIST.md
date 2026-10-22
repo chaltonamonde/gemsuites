@@ -8,10 +8,10 @@ All pre-launch operational, contact, and pricing configurations have been confir
 
 | Item | File Location (`data/site-data.js`) | Confirmed Value | Status |
 | :--- | :--- | :--- | :--- |
-| **Primary Phone** | `property.contact.phone` | `+254 20 428 9100` | Verified |
-| **Alternative Telephone** | `property.contact.phoneSecondary` | `+254 715 162 432` | Verified |
-| **WhatsApp Number (API Digits)** | `property.contact.whatsappNumber` | `254715162432` | Verified |
-| **WhatsApp (Display Format)** | `property.contact.whatsappFormatted` | `+254 715 162 432` | Verified |
+| **Primary Phone** | `property.contact.phone` | `+254 110 677 149` | Verified |
+| **Alternative Telephone** | `property.contact.phoneSecondary` | `+254 110 677 149` | Verified |
+| **WhatsApp Number (API Digits)** | `property.contact.whatsappNumber` | `254110677149` | Verified |
+| **WhatsApp (Display Format)** | `property.contact.whatsappFormatted` | `+254 110 677 149` | Verified |
 | **Reservations Email** | `property.contact.emailReservations` | `reservations@gemsuites.com` | Verified |
 | **Events & Conferences Email**| `property.contact.emailEvents` | `events@gemsuites.com` | Verified |
 | **General Inquiries Email** | `property.contact.emailGeneral` | `info@gemsuites.com` | Verified |
