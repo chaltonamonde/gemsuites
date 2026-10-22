@@ -23,6 +23,7 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=capsule-luxe-1">
+  <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -161,7 +162,7 @@
         </div>
 
         <!-- Right: General Contact Form -->
-        <div style="background: var(--surface-cream); border: 1px solid var(--cream-deep); border-radius: var(--radius-xl); padding: var(--space-xl); box-shadow: var(--shadow-sm);">
+        <div class="luxury-form-card">
           <div class="section-eyebrow">Message Us</div>
           <h3 style="font-size: 1.5rem; margin-bottom: var(--space-sm);">Send an Inquiry</h3>
           <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: var(--space-lg);">
@@ -203,8 +204,8 @@
               <textarea id="contact-message" name="message" class="form-control" rows="4" placeholder="How can our team assist you today?" required></textarea>
             </div>
 
-            <div class="dispatch-options-group" style="margin-top: var(--space-lg);">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+            <div class="dispatch-options-group">
+              <div class="form-dispatch-grid">
                 <button type="button" id="btn-contact-whatsapp" class="btn btn-whatsapp btn-lg">
                   Send on WhatsApp
                 </button>

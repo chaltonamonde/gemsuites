@@ -23,6 +23,7 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=capsule-luxe-1">
+  <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -226,7 +227,7 @@
 
     <!-- SPA APPOINTMENT BOOKING FORM -->
     <section id="spa-booking-form" class="container section-padding" style="margin-bottom: var(--space-3xl);">
-      <div style="background: var(--surface-cream); border: 1px solid var(--gold-hairline); border-radius: var(--radius-xl); padding: var(--space-2xl); box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto;">
+      <div class="luxury-form-card form-narrow">
         <div class="section-header" style="margin-bottom: var(--space-xl);">
           <div class="section-eyebrow">Appointment Request</div>
           <h2 class="section-title">Schedule an Infinity Spa Session</h2>
@@ -291,8 +292,8 @@
             <textarea id="spa-notes" name="special_notes" class="form-control" rows="2" placeholder="e.g. Pregnancy, shoulder tension focus, light/firm pressure..."></textarea>
           </div>
 
-          <div class="dispatch-options-group" style="margin-top: var(--space-lg);">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div class="dispatch-options-group">
+            <div class="form-dispatch-grid">
               <button type="button" id="btn-spa-whatsapp" class="btn btn-whatsapp btn-lg">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
                 Book via WhatsApp
