@@ -23,6 +23,7 @@
     initBookingBarEnhancements();
     initCardDescriptionClamping();
     initSuiteFilters();
+    initMobileCarouselDots();
   });
 
   /* -------------------------------------------------------------
@@ -645,6 +646,85 @@
           }
         });
       });
+    });
+  }
+
+  /* -------------------------------------------------------------
+     12. Mobile Carousel Dot Indicators
+     ------------------------------------------------------------- */
+  function initMobileCarouselDots() {
+    const carouselSelectors = [
+      '.suite-tilt-grid',
+      '.bento-grid',
+      '.experiences-grid',
+      '.testimonials-track',
+      '.packages-carousel',
+      '.spaces-carousel',
+      '.treatments-carousel',
+      '.dining-menu-carousel'
+    ];
+
+    carouselSelectors.forEach(function (sel) {
+      const container = document.querySelector(sel);
+      if (!container) return;
+
+      const items = Array.from(container.children).filter(function (child) {
+        return !child.classList.contains('carousel-dots-wrap');
+      });
+      if (items.length <= 1) return;
+
+      let dotsWrap = container.parentNode.querySelector('.carousel-dots-wrap[data-for="' + sel + '"]');
+      if (!dotsWrap) {
+        dotsWrap = document.createElement('div');
+        dotsWrap.className = 'carousel-dots-wrap';
+        dotsWrap.setAttribute('data-for', sel);
+        dotsWrap.setAttribute('aria-hidden', 'true');
+
+        items.forEach(function (_, idx) {
+          const dot = document.createElement('span');
+          dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+          dot.addEventListener('click', function () {
+            items[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          });
+          dotsWrap.appendChild(dot);
+        });
+
+        if (container.nextSibling) {
+          container.parentNode.insertBefore(dotsWrap, container.nextSibling);
+        } else {
+          container.parentNode.appendChild(dotsWrap);
+        }
+      }
+
+      let scrollTimer = null;
+      container.addEventListener('scroll', function () {
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function () {
+          const containerLeft = container.getBoundingClientRect().left;
+          const containerCenter = containerLeft + container.offsetWidth / 2;
+          let closestIndex = 0;
+          let minDistance = Infinity;
+
+          items.forEach(function (item, idx) {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.left + rect.width / 2;
+            const dist = Math.abs(containerCenter - itemCenter);
+            if (dist < minDistance) {
+              minDistance = dist;
+              closestIndex = idx;
+            }
+          });
+
+          const dots = dotsWrap.querySelectorAll('.carousel-dot');
+          dots.forEach(function (d, i) {
+            if (i === closestIndex) {
+              d.classList.add('active');
+            } else {
+              d.classList.remove('active');
+            }
+          });
+        }, 50);
+      }, { passive: true });
     });
   }
 

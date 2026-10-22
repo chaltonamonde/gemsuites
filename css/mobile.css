@@ -1,0 +1,396 @@
+/* ==========================================================================
+   GemSuites Riverside - Global Mobile Stylesheet (css/mobile.css)
+   Whole-site phone optimization (up to 768px, tuned for 360px, 390px, 430px)
+   Less scrolling, compact cards, 80-90svh heroes & horizontal swipe carousels
+   Zero changes to desktop layout.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* -------------------------------------------------------------
+     1. GLOBAL SPATIAL SCALING & CSS VARIABLES (Single point of change)
+     ------------------------------------------------------------- */
+  :root {
+    --space-3xs: 2px;
+    --space-2xs: 3px;
+    --space-xs: 6px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 20px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+    --space-3xl: 48px;
+    --space-4xl: 56px;
+    --header-height: 64px;
+  }
+
+  /* Prevent any unwanted horizontal overflow */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* -------------------------------------------------------------
+     2. LESS SCROLLING: REDUCED SECTION PADDING & COMPACT TYPOGRAPHY
+     ------------------------------------------------------------- */
+  .section-padding {
+    padding-top: clamp(36px, 7.5vw, 48px) !important;
+    padding-bottom: clamp(36px, 7.5vw, 48px) !important;
+  }
+
+  .section-padding-sm {
+    padding-top: clamp(20px, 5vw, 26px) !important;
+    padding-bottom: clamp(20px, 5vw, 26px) !important;
+  }
+
+  .section-header {
+    margin: 0 auto 16px auto !important;
+    max-width: 100% !important;
+  }
+
+  .section-eyebrow {
+    font-size: 0.68rem !important;
+    padding: 2.5px 8px !important;
+    margin-bottom: 6px !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .section-lead {
+    font-size: clamp(0.84rem, 3.2vw, 0.92rem) !important;
+    line-height: 1.42 !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* -------------------------------------------------------------
+     3. HERO SECTIONS: 80-90svh (Never fixed pixels or 100vh)
+     ------------------------------------------------------------- */
+  .hero-ambient {
+    min-height: 84svh !important;
+    height: 84svh !important;
+    max-height: 90svh !important;
+    padding: calc(var(--header-height) + 10px) 0 16px !important;
+    margin-top: calc(-1 * var(--header-height)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .subpage-hero {
+    min-height: 80svh !important;
+    height: 80svh !important;
+    max-height: 88svh !important;
+    padding: calc(var(--header-height) + 16px) 0 20px !important;
+    margin-top: calc(-1 * var(--header-height)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .subpage-hero-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.3rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .subpage-hero-lead {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    max-width: 95% !important;
+  }
+
+  .hero-highlights-strip {
+    gap: 6px !important;
+    margin-top: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .hero-highlight-pill {
+    padding: 3px 9px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* -------------------------------------------------------------
+     4. COMPACT CARDS & IMAGES (180-220px, clamped text, 14-18px pad)
+     ------------------------------------------------------------- */
+  .bento-card,
+  .suite-tilt-card,
+  .experience-card,
+  article.bento-card,
+  .perk-item {
+    border-radius: 16px !important;
+    padding: 0 !important;
+    box-shadow: 0 8px 24px -2px rgba(6, 26, 48, 0.08) !important;
+  }
+
+  .bento-body,
+  .experience-body,
+  .suite-card-content {
+    padding: 14px 16px !important;
+  }
+
+  .bento-img-wrap,
+  .experience-img-wrap,
+  .suite-card-media {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 205px !important;
+    min-height: 175px !important;
+    border-radius: 14px 14px 0 0 !important;
+    overflow: hidden !important;
+  }
+
+  .bento-img,
+  .experience-img-wrap img,
+  .suite-card-media img,
+  .bento-card img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 205px !important;
+    object-fit: cover !important;
+  }
+
+  /* Descriptions clamped to 2-3 lines across all cards */
+  .bento-desc,
+  .experience-body .bento-desc,
+  .suite-card-lead,
+  .perk-desc,
+  p.bento-desc {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    font-size: 0.84rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Tightened metadata, badges and buttons */
+  .bento-badge,
+  .suite-card-badge {
+    font-size: 0.66rem !important;
+    padding: 2.5px 8px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .bento-title,
+  .suite-card-title {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .bento-meta,
+  .suite-card-footer {
+    padding-top: 10px !important;
+    gap: 8px !important;
+  }
+
+  .btn {
+    min-height: 42px !important;
+    padding: 9px 14px !important;
+    font-size: 0.86rem !important;
+  }
+
+  .btn-sm {
+    min-height: 38px !important;
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* -------------------------------------------------------------
+     5. SMARTER LAYOUTS: HORIZONTAL SWIPE CAROUSELS WITH SCROLL-SNAP
+        (peek of next card at 360px, 390px, 430px)
+     ------------------------------------------------------------- */
+  .suite-tilt-grid,
+  .bento-grid,
+  .experiences-grid,
+  .testimonials-track,
+  .mobile-swipe-carousel,
+  .packages-carousel,
+  .spaces-carousel,
+  .treatments-carousel,
+  .dining-menu-carousel {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 8px 14px 16px 14px !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+    width: calc(100% + 28px) !important;
+    max-width: calc(100% + 28px) !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+  }
+
+  .suite-tilt-grid::-webkit-scrollbar,
+  .bento-grid::-webkit-scrollbar,
+  .experiences-grid::-webkit-scrollbar,
+  .testimonials-track::-webkit-scrollbar,
+  .mobile-swipe-carousel::-webkit-scrollbar,
+  .packages-carousel::-webkit-scrollbar,
+  .spaces-carousel::-webkit-scrollbar,
+  .treatments-carousel::-webkit-scrollbar,
+  .dining-menu-carousel::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Child cards in carousel: 84vw with clamp for next-card peek */
+  .suite-tilt-card,
+  .bento-grid .bento-card,
+  .experiences-grid .experience-card,
+  .testimonials-track .testimonial-card,
+  .mobile-swipe-carousel > *,
+  .packages-carousel > *,
+  .spaces-carousel > *,
+  .treatments-carousel > *,
+  .dining-menu-carousel > * {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    min-width: 260px !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: normal !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* -------------------------------------------------------------
+     6. CAROUSEL DOT INDICATORS
+     ------------------------------------------------------------- */
+  .carousel-dots-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0 2px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cloud-border);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  [data-theme="dark"] .carousel-dot {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .carousel-dot.active {
+    width: 18px;
+    border-radius: 4px;
+    background: var(--accent-gold);
+  }
+
+  /* -------------------------------------------------------------
+     7. COMPACT 2-COLUMN GRIDS: GALLERY, PERKS & PILLARS
+     ------------------------------------------------------------- */
+  .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .gallery-thumb-item {
+    height: 135px !important;
+    border-radius: 12px !important;
+  }
+
+  .gallery-caption-overlay {
+    font-size: 0.72rem !important;
+    padding: 6px 8px !important;
+    opacity: 1 !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(6, 26, 48, 0.88) 100%) !important;
+  }
+
+  .perks-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .perk-item {
+    padding: 10px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Filter buttons horizontal scroll */
+  .filter-bar,
+  .gallery-filters {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 16px !important;
+    scrollbar-width: none !important;
+  }
+
+  .filter-bar::-webkit-scrollbar,
+  .gallery-filters::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .filter-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+    font-size: 0.76rem !important;
+  }
+
+  /* -------------------------------------------------------------
+     8. COMPACT FOOTER
+     ------------------------------------------------------------- */
+  .site-footer {
+    padding: 32px 0 20px !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px 14px !important;
+  }
+
+  .footer-brand-desc {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .footer-heading {
+    font-size: 0.85rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .footer-nav-list li {
+    margin-bottom: 6px !important;
+    font-size: 0.8rem !important;
+  }
+}
