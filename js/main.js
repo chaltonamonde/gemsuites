@@ -21,6 +21,7 @@
     initCopyButtons();
     initGalleryLightbox();
     initBookingBarEnhancements();
+    initCardDescriptionClamping();
   });
 
   /* -------------------------------------------------------------
@@ -248,9 +249,10 @@
   function init3DTiltCards() {
     const tiltCards = document.querySelectorAll('[data-tilt]');
     
-    // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    // Check if user prefers reduced motion or is on touch/mobile device
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchOrMobile = window.innerWidth <= 768 || (window.matchMedia && window.matchMedia('(hover: none)').matches);
+    if (prefersReducedMotion || isTouchOrMobile) return;
 
     tiltCards.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {
@@ -569,6 +571,39 @@
         }, 150);
       });
     }
+  }
+
+  /* -------------------------------------------------------------
+     12. Card Description Clamping & "Read more" Expander
+     ------------------------------------------------------------- */
+  function initCardDescriptionClamping() {
+    const descElements = document.querySelectorAll('.bento-desc, .experience-body .bento-desc');
+
+    descElements.forEach(function (desc) {
+      const nextEl = desc.nextElementSibling;
+      if (nextEl && nextEl.classList.contains('card-read-more-btn')) {
+        return;
+      }
+
+      const text = (desc.textContent || '').trim();
+      if (text.length > 95) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'card-read-more-btn';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Read more';
+
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isExpanded = desc.classList.toggle('is-expanded');
+          btn.setAttribute('aria-expanded', String(isExpanded));
+          btn.textContent = isExpanded ? 'Show less' : 'Read more';
+        });
+
+        desc.parentNode.insertBefore(btn, desc.nextSibling);
+      }
+    });
   }
 
   /* -------------------------------------------------------------

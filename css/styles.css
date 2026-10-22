@@ -527,6 +527,15 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
 /* Smooth Atmosphere Transitions Across Core Components */
 .site-header .header-inner,
 .bento-card,
@@ -2483,106 +2492,741 @@ textarea.form-control {
   }
 }
 
+/* Mobile-only components base defaults (hidden on desktop) */
+.mobile-sticky-bar {
+  display: none;
+}
+.card-read-more-btn {
+  display: none;
+}
+
+/* ==========================================================================
+   MOBILE PHONES & SMALL TABLETS (<= 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
   :root {
-    --header-height: 64px;
+    --header-height: 58px;
+    --space-4xl: 38px;
+    --space-3xl: 28px;
+    --space-2xl: 22px;
+    --space-xl: 18px;
+    --space-lg: 14px;
+    --space-md: 12px;
+    --space-sm: 8px;
   }
+
+  body {
+    font-size: clamp(0.9rem, 2.7vw, 0.98rem);
+    line-height: 1.5;
+    /* Bottom padding clearance so sticky action bar never covers any content */
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Header Optimization & Zero Overflow */
   .site-header {
-    top: 8px;
-    padding: 0 10px;
+    top: 6px;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
   }
   .site-header .header-inner {
-    height: 56px;
-    padding: 0 12px;
+    height: 52px;
+    padding: 0 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 8px !important;
   }
   .brand-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
   .brand-subtitle {
-    font-size: 0.55rem;
+    font-size: 0.52rem;
   }
   .monogram-mark {
-    width: 34px;
-    height: 34px;
-    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    flex-shrink: 0;
   }
+  .header-actions {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  /* Hide redundant Reserve button in mobile header - handled by sticky action bar */
+  .header-actions .btn {
+    display: none !important;
+  }
+  /* Icon-only theme toggle button in header for mobile widths */
+  .header-actions .theme-toggle-btn {
+    padding: 6px 8px !important;
+    min-height: 38px !important;
+    gap: 0 !important;
+  }
+  .header-actions .theme-toggle-label {
+    display: none !important;
+  }
+  .mobile-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Section Spacing: Compact vertical rhythm (40px-48px instead of 100px+) */
+  .section-padding {
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+  .section-padding-sm {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+  .section-header {
+    margin: 0 auto 16px auto !important;
+  }
+  .section-eyebrow {
+    font-size: 0.68rem !important;
+    padding: 3px 10px !important;
+    margin-bottom: 6px !important;
+  }
+  .section-title {
+    font-size: clamp(1.45rem, 5.2vw, 1.85rem) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 8px !important;
+  }
+  .section-lead {
+    font-size: clamp(0.86rem, 2.8vw, 0.95rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Hero Section: Compact svh units with controlled padding */
+  .hero-ambient {
+    min-height: 68svh !important;
+    min-height: 68dvh !important;
+    padding: calc(var(--header-height) + 16px) 0 20px !important;
+    margin-top: calc(-1 * (var(--header-height) + 6px)) !important;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 6.2vw, 1.95rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-lead {
+    font-size: clamp(0.88rem, 3.2vw, 0.98rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 16px !important;
+    max-width: 95% !important;
+  }
+  .hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .hero-actions .btn {
+    flex: 1 1 140px !important;
+    max-width: 220px !important;
+    font-size: 0.88rem !important;
+    padding: 10px 14px !important;
+    min-height: 44px !important;
+  }
+
+  /* Compact Floating Booking Bar */
   .floating-booking-bar {
-    margin-top: -24px;
-    padding: 0 8px;
+    margin-top: -20px !important;
+    padding: 0 10px !important;
+    margin-bottom: 20px !important;
   }
   .booking-bar-card {
-    grid-template-columns: 1fr;
-    border-radius: 22px;
-    padding: 10px;
-    gap: 8px;
+    grid-template-columns: 1fr 1fr !important;
+    border-radius: 18px !important;
+    padding: 8px !important;
+    gap: 6px !important;
   }
   .booking-bar-ambient-glow {
-    border-radius: 26px;
-    inset: -4px;
+    border-radius: 22px !important;
+    inset: -3px !important;
   }
   .booking-field {
-    border-radius: 16px;
-    padding: 10px 14px;
+    border-radius: 12px !important;
+    padding: 6px 10px !important;
+    min-height: 52px !important;
+  }
+  .field-label {
+    font-size: 0.68rem !important;
+    margin-bottom: 2px !important;
+  }
+  .field-label svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .booking-duration-pill {
+    padding: 1px 5px !important;
+    font-size: 0.62rem !important;
+  }
+  .field-input {
+    font-size: 0.84rem !important;
+    padding: 2px 0 !important;
+  }
+  .field-subtext {
+    font-size: 0.68rem !important;
+    margin-top: 1px !important;
   }
   .booking-submit-wrap {
-    grid-column: span 1;
-    margin-top: 2px;
+    grid-column: span 2 !important;
+    margin-top: 4px !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+  .booking-bar-card .btn-submit {
+    width: 100% !important;
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+    font-size: 0.9rem !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
   }
   .booking-bar-ribbon {
-    font-size: 0.75rem;
-    gap: 6px;
+    font-size: 0.72rem !important;
+    gap: 4px !important;
+    margin-top: 8px !important;
+    flex-wrap: wrap !important;
   }
   .booking-bar-ribbon .ribbon-item {
-    padding: 3px 8px;
+    padding: 2px 6px !important;
   }
+  .booking-bar-ribbon .ribbon-sep {
+    display: none !important;
+  }
+
+  /* Perks Banner (Direct Booking Privilege) */
+  .perks-banner {
+    padding: 16px 14px !important;
+    margin-bottom: 24px !important;
+    border-radius: 18px !important;
+  }
+  .perks-banner .section-header {
+    margin-bottom: 12px !important;
+  }
+  .perks-banner .section-title {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
+  }
+  .perks-banner .section-lead {
+    font-size: 0.84rem !important;
+    margin-bottom: 10px !important;
+  }
+  .perks-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+  }
+  .perk-item {
+    padding: 10px !important;
+    border-radius: 12px !important;
+    gap: 4px !important;
+    background: var(--surface-cloud-subtle);
+    border: 1px solid var(--cloud-border-subtle);
+  }
+  [data-theme="dark"] .perk-item {
+    background: rgba(14, 39, 68, 0.4);
+    border-color: rgba(56, 189, 248, 0.15);
+  }
+  .perk-icon-wrap {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    margin-bottom: 2px !important;
+  }
+  .perk-icon-wrap svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .perk-title {
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+  }
+  .perk-desc {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ==========================================================================
+     CAROUSEL 1: ACCOMMODATIONS BENTO GRID (Horizontal Scroll Snap Carousel)
+     ========================================================================== */
+  .bento-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 6px 4px 14px 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+  }
+  .bento-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .bento-card,
   .bento-card.col-8,
   .bento-card.col-4,
-  .bento-card.col-6 {
-    grid-column: span 12;
+  .bento-card.col-6,
+  .bento-card.col-12 {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    min-width: 260px !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: normal !important;
+    grid-column: auto !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
   }
   .bento-img-wrap {
-    height: 220px;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 195px !important;
   }
+  .bento-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .bento-body {
+    padding: 14px 16px !important;
+  }
+  .bento-badge {
+    font-size: 0.68rem !important;
+    padding: 3px 9px !important;
+    margin-bottom: 6px !important;
+  }
+  .bento-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 6px !important;
+    line-height: 1.25 !important;
+  }
+  .bento-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .bento-meta {
+    padding-top: 10px !important;
+    font-size: 0.75rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+  }
+  .bento-meta .btn {
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Description Expand Button ("Read more") */
+  .card-read-more-btn {
+    display: inline-block !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: -2px 0 8px 0 !important;
+    color: var(--sky-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.76rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+  }
+  [data-theme="dark"] .card-read-more-btn {
+    color: var(--sky-light) !important;
+  }
+  .bento-desc.is-expanded,
+  .experience-body .bento-desc.is-expanded {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+  }
+
+  /* ==========================================================================
+     CAROUSEL 2: EXPERIENCES GRID (Horizontal Scroll Snap Carousel)
+     ========================================================================== */
   .experiences-grid {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 6px 4px 14px 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
   }
-  .form-grid-2 {
-    grid-template-columns: 1fr;
+  .experiences-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .experience-card {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    min-width: 260px !important;
+    scroll-snap-align: center !important;
+    border-radius: 18px !important;
+    margin: 0 !important;
+  }
+  .experience-img-wrap {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 195px !important;
+  }
+  .experience-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .experience-body {
+    padding: 14px 16px !important;
+  }
+  .experience-body .bento-badge {
+    font-size: 0.68rem !important;
+    padding: 3px 9px !important;
+    margin-bottom: 6px !important;
+  }
+  .experience-body .bento-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 6px !important;
+    line-height: 1.25 !important;
+  }
+  .experience-body .bento-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .experience-body .btn {
+    min-height: 44px !important;
+    font-size: 0.85rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     CAROUSEL 3: TESTIMONIALS TRACK (Horizontal Scroll Snap Carousel)
+     ========================================================================== */
+  .testimonials-track {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 6px 4px 14px 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+  }
+  .testimonials-track::-webkit-scrollbar {
+    display: none !important;
+  }
+  .testimonial-card {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    min-width: 260px !important;
+    scroll-snap-align: center !important;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+  }
+  .testimonial-quote {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+  }
+  .author-name {
+    font-size: 0.88rem !important;
+  }
+  .author-location {
+    font-size: 0.75rem !important;
+  }
+
+  /* Sister Property Card */
+  .sister-property-card {
+    padding: 18px 16px !important;
+    margin-bottom: 24px !important;
+    border-radius: 18px !important;
+    gap: 12px !important;
+  }
+  .sister-property-content {
+    max-width: 100% !important;
+  }
+  .sister-property-card .section-title {
+    font-size: 1.35rem !important;
+  }
+  .sister-property-card p {
+    font-size: 0.88rem !important;
+  }
+  .sister-property-card .btn {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 0.88rem !important;
+    justify-content: center !important;
+  }
+
+  /* Hide Desktop Floating WhatsApp on Phone in Favor of Sticky Action Bar */
+  .floating-whatsapp {
+    display: none !important;
+  }
+
+  /* ==========================================================================
+     MOBILE STICKY BOTTOM ACTION BAR (Reserve + WhatsApp)
+     ========================================================================== */
+  .mobile-sticky-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 998 !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    background: rgba(255, 253, 248, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-top: 1px solid rgba(230, 220, 198, 0.85) !important;
+    box-shadow: 0 -4px 20px rgba(6, 26, 48, 0.12) !important;
+  }
+  [data-theme="dark"] .mobile-sticky-bar {
+    background: rgba(7, 21, 38, 0.95) !important;
+    border-top-color: rgba(56, 189, 248, 0.2) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45) !important;
+  }
+  .mobile-sticky-bar .sticky-btn-reserve {
+    flex: 1.2 !important;
+    min-height: 44px !important;
+    background: var(--gradient-gold) !important;
+    color: #1a1202 !important;
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    border-radius: var(--radius-pill) !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+    letter-spacing: 0.01em !important;
+  }
+  .mobile-sticky-bar .sticky-btn-reserve:active {
+    transform: scale(0.98) !important;
+  }
+  .mobile-sticky-bar .sticky-btn-wa {
+    flex: 1 !important;
+    min-height: 44px !important;
+    background: var(--color-whatsapp) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    border-radius: var(--radius-pill) !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.28) !important;
+  }
+  .mobile-sticky-bar .sticky-btn-wa:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Compact Site Footer */
+  .site-footer {
+    padding-top: 32px !important;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
   }
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .footer-brand-desc {
+    font-size: 0.82rem !important;
+    margin-bottom: 10px !important;
+  }
+  .footer-heading {
+    font-size: 0.88rem !important;
+    margin-bottom: 6px !important;
+  }
+  .footer-nav-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px 10px !important;
+  }
+  .footer-nav-list li a {
+    font-size: 0.82rem !important;
+    padding: 2px 0 !important;
+  }
+  .footer-contact-item {
+    font-size: 0.82rem !important;
+    margin-bottom: 4px !important;
   }
   .footer-bottom {
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: center;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    font-size: 0.74rem !important;
+    gap: 8px !important;
   }
-  .floating-whatsapp {
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 16px;
-    font-size: 0.8125rem;
+
+  /* Lighter Mobile Animations */
+  .sky-orb {
+    animation-duration: 16s !important;
+    opacity: 0.22 !important;
+    filter: blur(40px) !important;
+  }
+  .bento-card:hover,
+  .experience-card:hover,
+  .testimonial-card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+  .bento-card:hover .bento-img,
+  .experience-card:hover .experience-img-wrap img {
+    transform: none !important;
+  }
+
+  /* General Button Mobile Consistency (44px min tap height & zero overflow) */
+  .btn,
+  .btn-sm,
+  .btn-lg {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+  }
+  .btn-lg {
+    padding: 10px 16px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.35 !important;
   }
 }
 
-/* Strict small mobile screens (360px) */
-@media (max-width: 380px) {
-  .hero-title {
-    font-size: 2.1rem;
+/* ==========================================================================
+   EXTRA COMPACT PHONE SCREENS (<= 480px, including 430px, 390px, 360px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero-ambient {
+    min-height: 65svh !important;
+    min-height: 65dvh !important;
+    padding: calc(var(--header-height) + 12px) 0 18px !important;
   }
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
+  .hero-title {
+    font-size: clamp(1.5rem, 5.8vw, 1.8rem) !important;
   }
   .hero-actions .btn {
-    width: 100%;
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
   }
-  .bento-body {
-    padding: var(--space-md);
+  .booking-field {
+    padding: 5px 8px !important;
   }
-  .sister-property-card {
-    padding: var(--space-lg);
+  .field-input {
+    font-size: 0.8rem !important;
+  }
+  .field-label {
+    font-size: 0.64rem !important;
+  }
+  .bento-card,
+  .bento-card.col-8,
+  .bento-card.col-4,
+  .bento-card.col-6,
+  .bento-card.col-12,
+  .experience-card,
+  .testimonial-card {
+    flex: 0 0 85vw !important;
+    max-width: 300px !important;
+    min-width: 240px !important;
+  }
+  .bento-img-wrap,
+  .experience-img-wrap {
+    max-height: 180px !important;
+  }
+  .bento-body,
+  .experience-body {
+    padding: 12px 14px !important;
+  }
+  .bento-meta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .bento-meta .btn {
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* Strict small mobile screens (<= 360px) */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.45rem !important;
+  }
+  .section-title {
+    font-size: 1.35rem !important;
+  }
+  .bento-card,
+  .bento-card.col-8,
+  .bento-card.col-4,
+  .bento-card.col-6,
+  .bento-card.col-12,
+  .experience-card,
+  .testimonial-card {
+    flex: 0 0 88vw !important;
+    max-width: 280px !important;
+    min-width: 220px !important;
+  }
+  .booking-bar-card {
+    grid-template-columns: 1fr !important;
+  }
+  .booking-submit-wrap {
+    grid-column: span 1 !important;
+  }
+  .perks-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
