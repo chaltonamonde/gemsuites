@@ -12,6 +12,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     initThemeToggle();
     initHeaderScroll();
+    initNavDropdowns();
     initMobileNavigation();
     initAmbientMedia();
     init3DTiltCards();
@@ -165,6 +166,95 @@
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+  }
+
+  /* -------------------------------------------------------------
+     1b. Accessible Desktop & Mobile Navigation Dropdowns & Accordions
+     ------------------------------------------------------------- */
+  function initNavDropdowns() {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+    dropdowns.forEach(function (dd) {
+      const btn = dd.querySelector('.nav-dropdown-btn');
+      const menu = dd.querySelector('.dropdown-menu');
+      if (!btn || !menu) return;
+
+      // Click / Tap toggle
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dd.classList.contains('open');
+
+        // Close any other open dropdowns
+        dropdowns.forEach(function (other) {
+          if (other !== dd) {
+            other.classList.remove('open');
+            const otherBtn = other.querySelector('.nav-dropdown-btn');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        dd.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      // Keyboard navigation (Escape, ArrowUp, ArrowDown)
+      dd.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          dd.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        } else if (e.key === 'ArrowDown') {
+          const items = Array.from(menu.querySelectorAll('.dropdown-item'));
+          if (document.activeElement === btn && items.length) {
+            e.preventDefault();
+            dd.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            items[0].focus();
+          } else {
+            const idx = items.indexOf(document.activeElement);
+            if (idx !== -1 && idx < items.length - 1) {
+              e.preventDefault();
+              items[idx + 1].focus();
+            }
+          }
+        } else if (e.key === 'ArrowUp') {
+          const items = Array.from(menu.querySelectorAll('.dropdown-item'));
+          const idx = items.indexOf(document.activeElement);
+          if (idx > 0) {
+            e.preventDefault();
+            items[idx - 1].focus();
+          } else if (idx === 0) {
+            e.preventDefault();
+            btn.focus();
+          }
+        }
+      });
+    });
+
+    // Close desktop dropdowns when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        dropdowns.forEach(function (dd) {
+          dd.classList.remove('open');
+          const btn = dd.querySelector('.nav-dropdown-btn');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Mobile collapsible drawer accordion groups
+    const groupHeaders = document.querySelectorAll('.mobile-group-header');
+    groupHeaders.forEach(function (header) {
+      header.addEventListener('click', function (e) {
+        e.preventDefault();
+        const group = header.closest('.mobile-nav-group');
+        if (!group) return;
+        const isOpen = group.classList.contains('open');
+        group.classList.toggle('open', !isOpen);
+        header.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
   }
 
   /* -------------------------------------------------------------

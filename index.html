@@ -80,15 +80,36 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation (Consolidated Core Links) -->
       <nav class="nav-desktop" aria-label="Primary Navigation">
         <a href="stay.html" class="nav-link">Suites &amp; Living</a>
-        <a href="argenti.html" class="nav-link">Dining &amp; Lounge</a>
-        <a href="spa.html" class="nav-link">Infinity Spa</a>
-        <a href="events.html" class="nav-link">Conferencing</a>
-        <a href="offers.html" class="nav-link">Offers</a>
-        <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="location.html" class="nav-link">Location</a>
+        
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+            <span>Experiences</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <a href="argenti.html" class="dropdown-item" role="menuitem">Argenti Dining &amp; Lounge</a>
+            <a href="spa.html" class="dropdown-item" role="menuitem">Infinity Spa &amp; Pool</a>
+            <a href="events.html" class="dropdown-item" role="menuitem">Conferencing &amp; Events</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+            <span>Discover</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <a href="offers.html" class="dropdown-item" role="menuitem">Exclusive Offers</a>
+            <a href="gallery.html" class="dropdown-item" role="menuitem">Visual Gallery</a>
+            <a href="location.html" class="dropdown-item" role="menuitem">Riverside Neighborhood</a>
+            <a href="about.html" class="dropdown-item" role="menuitem">About GemSuites</a>
+            <a href="state-house.html" class="dropdown-item" role="menuitem">GemSuites State House</a>
+          </div>
+        </div>
+
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
@@ -126,21 +147,56 @@
         <span class="theme-toggle-label">Dark Sky</span>
       </button>
     </div>
-    <nav class="mobile-nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="stay.html" class="nav-link">Suites &amp; Serviced Apartments</a>
-      <a href="book.html" class="nav-link">Direct Booking &amp; Rates</a>
-      <a href="argenti.html" class="nav-link">Argenti Dining &amp; Sky Lounge</a>
-      <a href="spa.html" class="nav-link">Infinity Spa &amp; Pool</a>
-      <a href="events.html" class="nav-link">Conferencing (10–180 Guests)</a>
-      <a href="offers.html" class="nav-link">Exclusive Offers</a>
-      <a href="gallery.html" class="nav-link">Visual Gallery</a>
-      <a href="location.html" class="nav-link">Riverside Neighborhood</a>
-      <a href="about.html" class="nav-link">About GemSuites</a>
-      <a href="state-house.html" class="nav-link">GemSuites State House</a>
-      <a href="contact.html" class="nav-link">Contact &amp; Concierge</a>
-    </nav>
-    <a href="book.html" class="btn btn-gold btn-lg" style="width: 100%;">Book Direct Now</a>
+    <div class="mobile-nav-groups">
+      <div class="mobile-nav-group open">
+        <button type="button" class="mobile-group-header" aria-expanded="true">
+          <span>Accommodations</span>
+          <svg class="mobile-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="mobile-group-links">
+          <a href="index.html" class="nav-link active">Home Overview</a>
+          <a href="stay.html" class="nav-link">Suites &amp; Serviced Living</a>
+          <a href="book.html" class="nav-link">Direct Booking &amp; Rates</a>
+        </div>
+      </div>
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-group-header" aria-expanded="false">
+          <span>Experiences</span>
+          <svg class="mobile-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="mobile-group-links">
+          <a href="argenti.html" class="nav-link">Argenti Dining &amp; Sky Lounge</a>
+          <a href="spa.html" class="nav-link">Infinity Spa &amp; Heated Pool</a>
+          <a href="events.html" class="nav-link">Conferencing &amp; Banqueting</a>
+        </div>
+      </div>
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-group-header" aria-expanded="false">
+          <span>Discover</span>
+          <svg class="mobile-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="mobile-group-links">
+          <a href="offers.html" class="nav-link">Exclusive Offers &amp; Packages</a>
+          <a href="gallery.html" class="nav-link">Visual Photo Gallery</a>
+          <a href="location.html" class="nav-link">Riverside Neighborhood</a>
+          <a href="about.html" class="nav-link">About GemSuites Riverside</a>
+          <a href="state-house.html" class="nav-link">GemSuites State House Crescent</a>
+        </div>
+      </div>
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-group-header" aria-expanded="false">
+          <span>Guest Services</span>
+          <svg class="mobile-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="mobile-group-links">
+          <a href="contact.html" class="nav-link">Contact &amp; Concierge</a>
+          <a href="policies.html" class="nav-link">Guest Policies &amp; Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-drawer-cta">
+      <a href="book.html" class="btn btn-gold btn-lg" style="width: 100%;">Book Direct Now</a>
+    </div>
   </div>
 
   <!-- MAIN CONTENT -->
