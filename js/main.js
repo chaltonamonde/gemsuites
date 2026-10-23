@@ -24,6 +24,7 @@
     initCardDescriptionClamping();
     initSuiteFilters();
     initMobileCarouselDots();
+    initPrivilegeCardEffects();
   });
 
   /* -------------------------------------------------------------
@@ -726,6 +727,45 @@
         }, 50);
       }, { passive: true });
     });
+  }
+
+  /* -------------------------------------------------------------
+     15. Direct Guest Privilege Card Ambient & Interactive Effects
+     ------------------------------------------------------------- */
+  function initPrivilegeCardEffects() {
+    const banner = document.querySelector('.perks-banner');
+    if (!banner) return;
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    banner.addEventListener('mousemove', function (e) {
+      const rect = banner.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      banner.style.setProperty('--mouse-x', `${x.toFixed(1)}px`);
+      banner.style.setProperty('--mouse-y', `${y.toFixed(1)}px`);
+    }, { passive: true });
+
+    // Smooth scroll for internal Reserve Direct button to the hero booking bar
+    const reserveCta = banner.querySelector('.perks-cta-reserve');
+    const heroBar = document.getElementById('hero-booking-bar');
+    if (reserveCta && heroBar) {
+      reserveCta.addEventListener('click', function (e) {
+        e.preventDefault();
+        heroBar.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const checkinField = document.getElementById('bar-checkin');
+        if (checkinField) {
+          setTimeout(function () {
+            checkinField.focus();
+            if (typeof checkinField.showPicker === 'function') {
+              try { checkinField.showPicker(); } catch (err) {}
+            }
+          }, 600);
+        }
+      });
+    }
   }
 
   /* -------------------------------------------------------------

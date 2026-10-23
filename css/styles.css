@@ -1822,55 +1822,598 @@ input[type="date"].field-input::-webkit-calendar-picker-indicator {
 }
 
 /* ==========================================================================
-   8. DIRECT-BOOKING PERKS BANNER
+   8. DIRECT-BOOKING PERKS BANNER (EXECUTIVE DIRECT GUEST PRIVILEGE)
+   Rich Sanctuary Hospitality, Atmospheric Animations & Micro-Interactions
    ========================================================================== */
 .perks-banner {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  box-shadow: 0 8px 24px -3px rgba(60, 45, 20, 0.08), 0 3px 10px -2px rgba(60, 45, 20, 0.04);
-  margin-bottom: var(--space-3xl);
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius-xl);
+  padding: clamp(28px, 4vw, 44px);
+  margin-bottom: var(--space-3xl);
+  background: linear-gradient(145deg, #FFFDF8 0%, #FAF5EA 60%, #F5EFE2 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 
+    0 2px 4px rgba(60, 45, 20, 0.03),
+    0 12px 32px -4px rgba(60, 45, 20, 0.08),
+    0 24px 60px -12px rgba(6, 26, 48, 0.06);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
+.perks-banner:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 
+    0 2px 6px rgba(60, 45, 20, 0.05),
+    0 18px 48px -6px rgba(60, 45, 20, 0.12),
+    0 32px 72px -12px rgba(2, 132, 199, 0.09);
+}
+
+/* Dynamic Cursor-Following Ambient Light */
+.perks-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 30%), rgba(212, 175, 55, 0.1), transparent 50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.perks-banner:hover::after {
+  opacity: 1;
+}
+
+/* Luminous Gold Shimmer Sweep across top border */
+.perks-shimmer-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.3) 15%, 
+    var(--accent-gold) 40%, 
+    #FFF8E7 50%, 
+    var(--sky-primary) 70%, 
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: perksShimmerSweep 5.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes perksShimmerSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Atmospheric Ambient Warmth Behind Content */
+.perks-ambient-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, rgba(2, 132, 199, 0.06) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(48px);
+  z-index: 0;
+  animation: perksAmbientPulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes perksAmbientPulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+  50% { transform: scale(1.15) translate(-25px, 20px); opacity: 1; }
+  100% { transform: scale(1.05) translate(15px, -15px); opacity: 0.85; }
+}
+
+/* Decorative Monogram Seal Watermark */
+.perks-watermark {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 140px;
+  height: 140px;
+  opacity: 0.055;
+  color: var(--accent-gold-dark);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.perks-banner:hover .perks-watermark {
+  opacity: 0.1;
+  transform: rotate(8deg) scale(1.06);
+}
+
+/* Header Area */
+.perks-header {
+  position: relative;
+  z-index: 2;
+  max-width: 840px;
+  margin-bottom: var(--space-xl);
+}
+
+.perks-badges-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.privilege-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.14) 0%, rgba(2, 132, 199, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--deep-ink);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.12);
+}
+
+.privilege-sparkle {
+  color: var(--accent-gold);
+  font-size: 0.95rem;
+  line-height: 1;
+  animation: sparkleTwinkle 3.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+  50% { transform: scale(1.25) rotate(20deg); opacity: 1; }
+}
+
+.privilege-assurance-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-success);
+  padding: 4px 11px;
+  background: rgba(5, 150, 105, 0.08);
+  border: 1px solid rgba(5, 150, 105, 0.22);
+  border-radius: var(--radius-pill);
+}
+
+.assurance-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  display: inline-block;
+  animation: assurancePulse 2.2s infinite;
+}
+
+@keyframes assurancePulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.65); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(5, 150, 105, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+}
+
+.perks-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--deep-ink);
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+}
+
+.perks-lead {
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  color: var(--text-azure-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-width: 760px;
+}
+
+/* Trust Strip (Inline verified badges) */
+.perks-trust-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-azure-secondary);
+  padding-top: 4px;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--deep-ink);
+}
+
+.trust-item svg {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+.trust-bullet {
+  color: var(--accent-gold);
+  opacity: 0.6;
+}
+
+/* Perks 4-Card Grid */
 .perks-grid {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: 0;
 }
 
+/* Individual Privilege Card */
 .perk-item {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  padding: 24px 20px;
+  border-radius: var(--radius-md);
+  background: var(--surface-cloud);
+  border: 1.5px solid var(--cloud-border);
+  box-shadow: 0 4px 16px -2px rgba(6, 26, 48, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  cursor: default;
+}
+
+.perk-item:hover,
+.perk-item:focus-visible {
+  transform: translateY(-5px);
+  background: #FFFFFF;
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 
+    0 14px 32px -4px rgba(60, 45, 20, 0.12),
+    0 0 0 1px rgba(212, 175, 55, 0.35),
+    0 4px 12px rgba(2, 132, 199, 0.06);
+}
+
+.perk-item:focus-visible {
+  outline: 2px solid var(--sky-primary);
+  outline-offset: 2px;
+}
+
+/* Top Row inside Perk Card (Icon + Micro-Tag) */
+.perk-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .perk-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-cloud-subtle);
-  border: 1.5px solid var(--cloud-border);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 239, 226, 0.85) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--sky-primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px -2px rgba(6, 26, 48, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              color 0.35s ease,
+              box-shadow 0.35s ease;
+  flex-shrink: 0;
+}
+
+.perk-item:hover .perk-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+  color: var(--accent-gold-dark);
+  border-color: var(--accent-gold);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
+}
+
+.perk-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--sky-primary);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.perk-item:hover .perk-tag {
+  background: rgba(212, 175, 55, 0.14);
+  color: var(--accent-gold-dark);
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .perk-title {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--deep-ink);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .perk-desc {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-azure-secondary);
   line-height: 1.55;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.perk-footer-note {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-azure-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--cloud-border);
+  transition: color 0.3s ease;
+}
+
+.perk-item:hover .perk-footer-note {
+  color: var(--accent-gold-dark);
+}
+
+.perk-footer-note .note-bullet {
+  color: var(--accent-gold);
+  font-size: 0.8rem;
+}
+
+/* Concierge Welcoming Strip / CTA Bar */
+.perks-concierge-strip {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--space-xl);
+  padding: 18px 24px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(255, 253, 248, 0.95) 0%, rgba(240, 232, 214, 0.9) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 16px -2px rgba(60, 45, 20, 0.05);
+}
+
+.concierge-strip-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1 340px;
+}
+
+.concierge-avatar-badge {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+  flex-shrink: 0;
+}
+
+.concierge-online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-success);
+  border: 2px solid #FFFFFF;
+  animation: assurancePulse 2s infinite;
+}
+
+.concierge-strip-title {
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--deep-ink);
+  margin-bottom: 2px;
+}
+
+.concierge-strip-desc {
+  font-size: 0.84rem;
+  color: var(--text-azure-secondary);
+  line-height: 1.4;
+}
+
+.concierge-strip-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.perks-cta-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.perks-cta-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+.perks-cta-reserve {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.22);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.perks-cta-reserve:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.32);
+}
+
+/* ==========================================================================
+   DARK SKY BLUE ATMOSPHERE FOR PERKS BANNER
+   ========================================================================== */
+[data-theme="dark"] .perks-banner {
+  background: linear-gradient(145deg, rgba(11, 31, 54, 0.96) 0%, rgba(14, 39, 68, 0.92) 100%);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 
+    0 12px 36px -4px rgba(0, 0, 0, 0.4),
+    0 24px 64px -10px rgba(2, 132, 199, 0.12),
+    0 0 0 1px rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="dark"] .perks-banner:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 
+    0 18px 48px -6px rgba(0, 0, 0, 0.5),
+    0 32px 72px -12px rgba(56, 189, 248, 0.2),
+    0 0 0 1px rgba(212, 175, 55, 0.5);
+}
+
+[data-theme="dark"] .perks-ambient-glow {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(56, 189, 248, 0.12) 45%, transparent 70%);
+}
+
+[data-theme="dark"] .perks-watermark {
+  opacity: 0.08;
+  color: var(--accent-gold-light);
+}
+
+[data-theme="dark"] .perks-banner:hover .perks-watermark {
+  opacity: 0.15;
+}
+
+[data-theme="dark"] .privilege-pill {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(56, 189, 248, 0.15) 100%);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #FFFDF8;
+}
+
+[data-theme="dark"] .privilege-assurance-tag {
+  background: rgba(5, 150, 105, 0.18);
+  border-color: rgba(5, 150, 105, 0.35);
+  color: #34D399;
+}
+
+[data-theme="dark"] .perks-title {
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .perks-lead {
+  color: var(--text-azure-secondary);
+}
+
+[data-theme="dark"] .trust-item {
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .perk-item {
+  background: rgba(14, 39, 68, 0.65);
+  border-color: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .perk-item:hover {
+  background: rgba(19, 52, 88, 0.85);
+  border-color: var(--accent-gold);
+  box-shadow: 
+    0 14px 34px -4px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(212, 175, 55, 0.4);
+}
+
+[data-theme="dark"] .perk-icon-wrap {
+  background: linear-gradient(135deg, rgba(14, 39, 68, 0.9) 0%, rgba(11, 31, 54, 0.95) 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--sky-primary);
+}
+
+[data-theme="dark"] .perk-item:hover .perk-icon-wrap {
+  color: var(--accent-gold-light);
+  border-color: var(--accent-gold);
+}
+
+[data-theme="dark"] .perk-tag {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--sky-primary);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .perk-item:hover .perk-tag {
+  background: rgba(212, 175, 55, 0.22);
+  color: var(--accent-gold-light);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+[data-theme="dark"] .perk-title {
+  color: #F0F9FF;
+}
+
+[data-theme="dark"] .perk-desc {
+  color: var(--text-azure-secondary);
+}
+
+[data-theme="dark"] .perk-footer-note {
+  border-top-color: rgba(56, 189, 248, 0.16);
+  color: var(--text-azure-muted);
+}
+
+[data-theme="dark"] .perk-item:hover .perk-footer-note {
+  color: var(--accent-gold-light);
+}
+
+[data-theme="dark"] .perks-concierge-strip {
+  background: linear-gradient(135deg, rgba(14, 39, 68, 0.85) 0%, rgba(8, 25, 45, 0.9) 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .concierge-online-dot {
+  border-color: #0E2744;
+}
+
+[data-theme="dark"] .concierge-strip-title {
+  color: #F0F9FF;
 }
 
 /* ==========================================================================
@@ -3870,59 +4413,110 @@ textarea.form-control {
     display: none !important;
   }
 
-  /* Perks Banner (Direct Booking Privilege) */
+  /* Perks Banner (Direct Booking Privilege) - Mobile Refinement */
   .perks-banner {
-    padding: 16px 14px !important;
-    margin-bottom: 24px !important;
-    border-radius: 18px !important;
+    padding: 22px 16px !important;
+    margin-bottom: 28px !important;
+    border-radius: 20px !important;
   }
-  .perks-banner .section-header {
-    margin-bottom: 12px !important;
+  .perks-header {
+    margin-bottom: 20px !important;
   }
-  .perks-banner .section-title {
-    font-size: clamp(1.25rem, 4.5vw, 1.5rem) !important;
+  .perks-title {
+    font-size: clamp(1.4rem, 5.2vw, 1.75rem) !important;
+    line-height: 1.25 !important;
   }
-  .perks-banner .section-lead {
-    font-size: 0.84rem !important;
-    margin-bottom: 10px !important;
+  .perks-lead {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 14px !important;
+  }
+  .perks-trust-strip {
+    gap: 8px !important;
+    font-size: 0.78rem !important;
+  }
+  .perks-trust-strip .trust-bullet {
+    display: none !important;
+  }
+  .perks-trust-strip .trust-item {
+    width: 100% !important;
   }
   .perks-grid {
     grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-    margin-top: 10px !important;
+    gap: 10px !important;
+    margin-top: 6px !important;
   }
   .perk-item {
-    padding: 10px !important;
-    border-radius: 12px !important;
-    gap: 4px !important;
-    background: var(--surface-cloud-subtle);
-    border: 1px solid var(--cloud-border-subtle);
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    gap: 0 !important;
   }
-  [data-theme="dark"] .perk-item {
-    background: rgba(14, 39, 68, 0.4);
-    border-color: rgba(56, 189, 248, 0.15);
+  .perk-top {
+    margin-bottom: 10px !important;
   }
   .perk-icon-wrap {
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 8px !important;
-    margin-bottom: 2px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    margin-bottom: 0 !important;
   }
   .perk-icon-wrap svg {
-    width: 17px !important;
-    height: 17px !important;
+    width: 19px !important;
+    height: 19px !important;
+  }
+  .perk-tag {
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
   }
   .perk-title {
-    font-size: 0.82rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.25 !important;
+    margin-bottom: 6px !important;
   }
   .perk-desc {
-    font-size: 0.74rem !important;
-    line-height: 1.35 !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 0.78rem !important;
+    line-height: 1.45 !important;
+    display: block !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important;
+    margin-bottom: 10px !important;
+  }
+  .perk-footer-note {
+    font-size: 0.7rem !important;
+    padding-top: 8px !important;
+  }
+  .perks-concierge-strip {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 16px 14px !important;
+    margin-top: 18px !important;
+    gap: 14px !important;
+  }
+  .concierge-strip-left {
+    flex: none !important;
+    gap: 12px !important;
+  }
+  .concierge-avatar-badge {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .concierge-strip-title {
+    font-size: 0.88rem !important;
+  }
+  .concierge-strip-desc {
+    font-size: 0.78rem !important;
+  }
+  .concierge-strip-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .concierge-strip-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 0.78rem !important;
+    padding: 10px 8px !important;
   }
 
   /* ==========================================================================

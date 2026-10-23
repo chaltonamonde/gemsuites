@@ -330,12 +330,12 @@
 
   .perks-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
 
   .perk-item {
-    padding: 10px !important;
-    border-radius: 12px !important;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
   }
 
   /* Filter buttons horizontal scroll */

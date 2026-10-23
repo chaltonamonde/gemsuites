@@ -35,8 +35,8 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=calm-luxe-2">
-  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/styles.css?v=privilege-luxe-1">
+  <link rel="stylesheet" href="css/mobile.css?v=privilege-luxe-1">
   <link rel="stylesheet" href="css/forms.css">
 
   <!-- JSON-LD Structured Data: Hotel & LocalBusiness -->
@@ -280,40 +280,162 @@
 
     <!-- DIRECT BOOKING GUARANTEE BANNER -->
     <section class="container" aria-label="Direct Guest Privileges">
-      <div class="perks-banner">
-        <div class="section-header" style="margin-bottom: var(--space-sm);">
-          <div class="section-eyebrow">Direct Guest Privilege</div>
-          <h2 class="section-title" style="font-size: 1.85rem;">Book Direct For The Guaranteed Best Experience</h2>
-          <p class="section-lead" style="font-size: 0.95rem;">Skip online travel agent commissions and enjoy exclusive perks reserved solely for guests who reserve directly with our Nairobi reservations team.</p>
+      <div class="perks-banner" id="direct-guest-privilege">
+        <!-- Ambient animated light sweep and radial warmth -->
+        <div class="perks-shimmer-bar" aria-hidden="true"></div>
+        <div class="perks-ambient-glow" aria-hidden="true"></div>
+
+        <!-- Decorative Monogram Watermark -->
+        <div class="perks-watermark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <circle cx="50" cy="50" r="46" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.45"/>
+            <circle cx="50" cy="50" r="38" stroke-width="1"/>
+            <text x="50" y="58" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="600" text-anchor="middle" fill="currentColor">GS</text>
+          </svg>
         </div>
+
+        <!-- Card Header Area -->
+        <div class="perks-header">
+          <div class="perks-badges-row">
+            <div class="privilege-pill">
+              <span class="privilege-sparkle" aria-hidden="true">✦</span>
+              <span class="privilege-pill-text">Direct Guest Privilege</span>
+            </div>
+            <div class="privilege-assurance-tag">
+              <span class="assurance-live-dot" aria-hidden="true"></span>
+              <span>Guaranteed Best Experience</span>
+            </div>
+          </div>
+
+          <h2 class="perks-title">Book Direct For The Guaranteed Best Experience</h2>
+          <p class="perks-lead">
+            Welcome to personalized Nairobi sanctuary living. When you reserve directly with our Riverside reservations team, you bypass third-party online travel agency commissions and unlock a curated suite of VIP privileges reserved exclusively for our direct guests.
+          </p>
+
+          <!-- Trust Badges Strip -->
+          <div class="perks-trust-strip">
+            <span class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Best Rate Match Guarantee</span>
+            </span>
+            <span class="trust-bullet" aria-hidden="true">•</span>
+            <span class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero Middleman Surcharges</span>
+            </span>
+            <span class="trust-bullet" aria-hidden="true">•</span>
+            <span class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Instant Confirmation on WhatsApp</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 4-Card Perks Grid -->
         <div class="perks-grid">
-          <div class="perk-item">
-            <div class="perk-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <!-- Privilege 1: Best Rate -->
+          <div class="perk-item" tabindex="0">
+            <div class="perk-top">
+              <div class="perk-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </div>
+              <span class="perk-tag">0% Surcharges</span>
             </div>
             <div class="perk-title">Best Direct Rate</div>
-            <div class="perk-desc">Direct rates verified without middleman surcharges. Transparent live quote calculation.</div>
+            <div class="perk-desc">Direct rates verified without middleman commissions. Transparent live quote calculation in KES and USD with our strict price match guarantee.</div>
+            <div class="perk-footer-note">
+              <span class="note-bullet">✦</span> 100% Rate Assurance
+            </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+
+          <!-- Privilege 2: Flexible Timing -->
+          <div class="perk-item" tabindex="0">
+            <div class="perk-top">
+              <div class="perk-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <span class="perk-tag">Complimentary</span>
             </div>
             <div class="perk-title">Flexible Check-In / Out</div>
-            <div class="perk-desc">Priority early arrival and late departure consideration subject to availability upon request.</div>
+            <div class="perk-desc">Priority consideration for early suite access and relaxed late departure, tailoring your stay seamlessly around your Nairobi flight schedule.</div>
+            <div class="perk-footer-note">
+              <span class="note-bullet">✦</span> Priority Consideration
+            </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+
+          <!-- Privilege 3: M-Pesa & WhatsApp -->
+          <div class="perk-item" tabindex="0">
+            <div class="perk-top">
+              <div class="perk-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                  <line x1="6" y1="6" x2="6.01" y2="6"/>
+                  <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+              </div>
+              <span class="perk-tag">Instant Settlement</span>
             </div>
             <div class="perk-title">Instant M-Pesa &amp; WhatsApp</div>
-            <div class="perk-desc">Lipa na M-Pesa direct settlements and instant confirmation directly with concierge.</div>
+            <div class="perk-desc">Lipa na M-Pesa direct settlements and instant booking confirmation delivered immediately to your phone with your personal digital voucher.</div>
+            <div class="perk-footer-note">
+              <span class="note-bullet">✦</span> Instant Digital Voucher
+            </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+
+          <!-- Privilege 4: Personal Concierge -->
+          <div class="perk-item" tabindex="0">
+            <div class="perk-top">
+              <div class="perk-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                  <circle cx="12" cy="10" r="1" fill="currentColor"/>
+                  <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="perk-tag">24/7 Dedicated</span>
             </div>
             <div class="perk-title">24/7 Personal Concierge</div>
-            <div class="perk-desc">Direct line for bespoke dining, airport transfers, and customized apartment setup.</div>
+            <div class="perk-desc">Direct line with our Nairobi team for bespoke Argenti dining, airport transfers, customized grocery stocking, and apartment arrangements.</div>
+            <div class="perk-footer-note">
+              <span class="note-bullet">✦</span> Bespoke Care &amp; Transfers
+            </div>
+          </div>
+        </div>
+
+        <!-- Concierge Welcoming Strip / CTA Bar -->
+        <div class="perks-concierge-strip">
+          <div class="concierge-strip-left">
+            <div class="concierge-avatar-badge" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span class="concierge-online-dot" title="Concierge team online"></span>
+            </div>
+            <div class="concierge-strip-info">
+              <div class="concierge-strip-title">Direct Reservations &amp; Concierge Host Online</div>
+              <div class="concierge-strip-desc">Special requests, extended residential stays, or custom arrival times? Our Nairobi team is on standby to assist you.</div>
+            </div>
+          </div>
+          <div class="concierge-strip-actions">
+            <a href="https://wa.me/254110677149?text=Hello%20GemSuites%20Reservations%20Team,%20I%20would%20like%20to%20inquire%20about%20direct%20booking%20privileges." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm perks-cta-wa" aria-label="Chat with Concierge on WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/>
+              </svg>
+              <span>Chat Concierge</span>
+            </a>
+            <a href="book.html" class="btn btn-primary btn-sm perks-cta-reserve">
+              <span>Book With Privileges</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
         </div>
       </div>
