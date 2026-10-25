@@ -27,6 +27,7 @@
     initSuiteCardTabs();
     initMobileCarouselDots();
     initPrivilegeCardEffects();
+    initBottomNavActiveState();
   });
 
   /* -------------------------------------------------------------
@@ -910,6 +911,53 @@
           }, 600);
         }
       });
+    }
+  }
+
+  /* -------------------------------------------------------------
+     Mobile Bottom Navigation Active State Resolver
+     ------------------------------------------------------------- */
+  function initBottomNavActiveState() {
+    const bottomNav = document.querySelector('.mobile-bottom-nav');
+    if (!bottomNav) return;
+
+    const path = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
+    const isHome = path === '' || path === 'index.html';
+
+    const items = bottomNav.querySelectorAll('.nav-item');
+    const bookCta = bottomNav.querySelector('.nav-item-cta');
+
+    // Only override if we are on a known page
+    if (isHome) {
+      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
+      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
+      const homeLink = bottomNav.querySelector('a[href="index.html"]');
+      if (homeLink) {
+        homeLink.classList.add('active');
+        homeLink.setAttribute('aria-current', 'page');
+      }
+    } else if (path === 'stay.html' || path === 'stay') {
+      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
+      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
+      const stayLink = bottomNav.querySelector('a[href="stay.html"]');
+      if (stayLink) {
+        stayLink.classList.add('active');
+        stayLink.setAttribute('aria-current', 'page');
+      }
+    } else if (path === 'argenti.html' || path === 'argenti') {
+      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
+      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
+      const diningLink = bottomNav.querySelector('a[href="argenti.html"]');
+      if (diningLink) {
+        diningLink.classList.add('active');
+        diningLink.setAttribute('aria-current', 'page');
+      }
+    } else if (path === 'book.html' || path === 'book') {
+      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
+      if (bookCta) {
+        bookCta.classList.add('active');
+        bookCta.setAttribute('aria-current', 'page');
+      }
     }
   }
 
