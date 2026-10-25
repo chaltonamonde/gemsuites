@@ -24,6 +24,7 @@
     initBookingBarEnhancements();
     initCardDescriptionClamping();
     initSuiteFilters();
+    initSuiteCardTabs();
     initMobileCarouselDots();
     initPrivilegeCardEffects();
   });
@@ -734,6 +735,60 @@
                 card.style.display = 'none';
               }
             }, 250);
+          }
+        });
+      });
+    });
+  }
+
+  /* -------------------------------------------------------------
+     12b. Suite Card Interactive Tabs System
+     ------------------------------------------------------------- */
+  function initSuiteCardTabs() {
+    const cardTabsWrappers = document.querySelectorAll('.suite-card-tabs');
+    if (!cardTabsWrappers.length) return;
+
+    cardTabsWrappers.forEach(function (tabsWrap) {
+      const tabBtns = tabsWrap.querySelectorAll('.suite-tab-btn');
+      const tabPanes = tabsWrap.querySelectorAll('.suite-tab-pane');
+      if (!tabBtns.length || !tabPanes.length) return;
+
+      tabBtns.forEach(function (btn, index) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetTab = btn.getAttribute('data-tab');
+
+          // Update button active state
+          tabBtns.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          // Switch active pane
+          tabPanes.forEach(function (pane) {
+            if (pane.getAttribute('data-pane') === targetTab) {
+              pane.classList.add('active');
+            } else {
+              pane.classList.remove('active');
+            }
+          });
+        });
+
+        // Keyboard arrow navigation
+        btn.addEventListener('keydown', function (e) {
+          let nextIndex = null;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            nextIndex = (index + 1) % tabBtns.length;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            nextIndex = (index - 1 + tabBtns.length) % tabBtns.length;
+          }
+
+          if (nextIndex !== null) {
+            e.preventDefault();
+            tabBtns[nextIndex].focus();
+            tabBtns[nextIndex].click();
           }
         });
       });

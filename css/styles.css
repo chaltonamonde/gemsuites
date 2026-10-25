@@ -3864,21 +3864,25 @@ textarea.form-control {
   border-color: rgba(56, 189, 248, 0.4);
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
 }
+/* ==========================================================================
+   SUITE & SERVICED APARTMENT CARDS (LUXURY REDESIGN)
+   ========================================================================== */
 .suite-card-media {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--deep-ink);
+  border-radius: 20px 20px 0 0;
 }
 .suite-card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .suite-tilt-card:hover .suite-card-media img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 .suite-card-media::after {
   content: '';
@@ -3886,20 +3890,29 @@ textarea.form-control {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(6, 26, 48, 0.45) 0%,
-    transparent 40%,
-    transparent 65%,
-    rgba(6, 26, 48, 0.65) 100%
+    rgba(6, 26, 48, 0.6) 0%,
+    rgba(6, 26, 48, 0.05) 35%,
+    rgba(6, 26, 48, 0.25) 60%,
+    rgba(6, 26, 48, 0.88) 100%
   );
   pointer-events: none;
 }
-.suite-chip {
+
+/* Floating Media Overlays */
+.suite-media-top {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 2;
+  pointer-events: none;
+}
+.suite-chip-pill {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -3911,164 +3924,280 @@ textarea.form-control {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
-.suite-price-badge {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 2;
+.suite-category-badge {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 6px 14px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--deep-ink);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-[data-theme="dark"] .suite-price-badge {
-  background: rgba(7, 21, 38, 0.92);
+  background: rgba(0, 0, 0, 0.45);
   color: #FAF6EE;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
 }
-.suite-price-badge small {
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--text-muted);
+
+.suite-media-bottom {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+  pointer-events: none;
+  gap: 10px;
 }
-.suite-card-content {
-  padding: 26px 28px;
+.suite-view-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #FAF6EE;
+  background: rgba(6, 26, 48, 0.7);
+  padding: 5px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  white-space: nowrap;
+}
+.suite-view-tag svg {
+  color: var(--accent-gold);
+}
+.suite-floating-price {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  background: rgba(6, 26, 48, 0.82);
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  line-height: 1.15;
+}
+.suite-floating-price .price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.suite-floating-price .price-from {
+  font-size: 0.68rem;
+  color: #94B9DA;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.suite-floating-price .price-val {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #FAF6EE;
+  letter-spacing: -0.01em;
+}
+.suite-floating-price .price-per {
+  font-size: 0.7rem;
+  color: #94B9DA;
+  font-weight: 500;
+}
+.suite-floating-price .price-alt {
+  font-size: 0.62rem;
+  color: var(--accent-gold);
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+/* Card Content Body */
+.suite-card-content {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   flex: 1;
 }
 .suite-card-header {
-  margin-bottom: 14px;
-}
-.suite-category-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent-gold);
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 .suite-card-title {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--text-main);
-  line-height: 1.25;
-  margin: 0 0 8px 0;
+  line-height: 1.22;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+  transition: color var(--transition-fast);
+}
+.suite-tilt-card:hover .suite-card-title {
+  color: var(--accent-gold);
 }
 .suite-card-lead {
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-secondary);
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Specs Grid - 4 Capsules */
-.suite-card-specs {
+/* 1. Horizontal Minimalist Specs Bar */
+.suite-specs-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  background: rgba(6, 26, 48, 0.025);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 8px 12px;
   gap: 8px;
-  margin: 16px 0 20px 0;
 }
-.spec-capsule {
+[data-theme="dark"] .suite-specs-bar {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(56, 189, 248, 0.15);
+}
+.spec-cell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.spec-cell .spec-icon {
+  flex-shrink: 0;
+  color: var(--accent-gold);
+}
+[data-theme="dark"] .spec-cell .spec-icon {
+  color: #38BDF8;
+}
+.spec-cell .spec-meta {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px 4px;
-  background: rgba(6, 26, 48, 0.03);
-  border: 1px solid var(--cream-deep);
-  border-radius: 12px;
-  transition: all var(--transition-fast);
+  min-width: 0;
+  line-height: 1.15;
 }
-[data-theme="dark"] .spec-capsule {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-.spec-capsule:hover {
-  background: rgba(2, 132, 199, 0.06);
-  border-color: rgba(2, 132, 199, 0.25);
-}
-.spec-capsule svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--deep-azure);
-  stroke-width: 2;
-  margin-bottom: 4px;
-}
-[data-theme="dark"] .spec-capsule svg {
-  stroke: #38BDF8;
-}
-.spec-capsule-label {
-  font-size: 0.65rem;
-  color: var(--text-muted);
+.spec-cell .spec-label {
+  font-size: 0.6rem;
   text-transform: uppercase;
   font-family: var(--font-mono);
-  letter-spacing: 0.05em;
-  margin-bottom: 1px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
 }
-.spec-capsule-val {
-  font-size: 0.82rem;
-  font-weight: 700;
+.spec-cell .spec-value {
+  font-size: 0.78rem;
+  font-weight: 600;
   color: var(--text-main);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spec-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-soft);
+  opacity: 0.5;
 }
 
-/* Signature Inclusions 2-column list */
-.suite-features-wrap {
-  margin-bottom: 22px;
-  padding: 14px 16px;
-  background: rgba(6, 26, 48, 0.02);
+/* 2. Tabbed Information System */
+.suite-card-tabs {
+  border: 1px solid var(--border-soft);
   border-radius: 14px;
-  border: 1px solid rgba(6, 26, 48, 0.05);
+  background: rgba(6, 26, 48, 0.015);
+  overflow: hidden;
 }
-[data-theme="dark"] .suite-features-wrap {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.05);
+[data-theme="dark"] .suite-card-tabs {
+  background: rgba(11, 31, 54, 0.45);
+  border-color: rgba(56, 189, 248, 0.15);
 }
-.suite-features-title {
+.suite-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(6, 26, 48, 0.02);
+}
+[data-theme="dark"] .suite-tabs-nav {
+  background: rgba(7, 21, 38, 0.6);
+  border-bottom-color: rgba(56, 189, 248, 0.12);
+}
+.suite-tab-btn {
+  flex: 1;
+  padding: 8px 10px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--deep-azure);
-  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
-[data-theme="dark"] .suite-features-title {
-  color: #7DD3FC;
+.suite-tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(212, 175, 55, 0.05);
 }
-.suite-features-list {
+.suite-tab-btn.active {
+  color: var(--accent-gold);
+  border-bottom-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.08);
+  font-weight: 700;
+}
+[data-theme="dark"] .suite-tab-btn.active {
+  color: #38BDF8;
+  border-bottom-color: #38BDF8;
+  background: rgba(56, 189, 248, 0.08);
+}
+.suite-tabs-container {
+  padding: 12px 14px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+.suite-tab-pane {
+  display: none;
+  width: 100%;
+}
+.suite-tab-pane.active {
+  display: block;
+  animation: fadeInTab 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.suite-tab-feature-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 14px;
+  gap: 6px 14px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.suite-features-list li {
+.suite-tab-feature-list li {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  font-size: 0.83rem;
-  line-height: 1.4;
+  gap: 6px;
+  font-size: 0.79rem;
+  line-height: 1.35;
   color: var(--text-secondary);
 }
-.suite-features-list li .feat-bullet {
+.suite-tab-feature-list li .dot-gold {
   color: var(--accent-gold);
-  font-weight: 700;
   flex-shrink: 0;
+  font-size: 0.72rem;
   margin-top: 1px;
+}
+[data-theme="dark"] .suite-tab-feature-list li .dot-gold {
+  color: #38BDF8;
 }
 
 /* Card Action Footer */
@@ -4076,45 +4205,56 @@ textarea.form-control {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-top: 18px;
-  border-top: 1px solid var(--cream-deep);
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
   margin-top: auto;
 }
 [data-theme="dark"] .suite-card-footer {
-  border-top-color: rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(56, 189, 248, 0.15);
 }
-.suite-card-rate-block {
-  display: flex;
-  flex-direction: column;
-}
-.suite-card-rate-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-}
-.suite-card-rate-val {
-  font-family: var(--font-mono);
-  font-size: 1.25rem;
-  font-weight: 700;
+.suite-card-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--text-main);
-  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
-.suite-card-rate-val .currency-sub {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-.suite-card-rate-sub {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+.suite-card-trust svg {
+  flex-shrink: 0;
 }
 .suite-card-actions {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+@media (max-width: 540px) {
+  .suite-specs-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 14px;
+  }
+  .suite-specs-bar .spec-sep {
+    display: none;
+  }
+  .suite-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .suite-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .suite-card-actions .btn {
+    text-align: center;
+    justify-content: center;
+  }
+  .suite-card-trust {
+    justify-content: center;
+  }
 }
 
 /* Specifications Matrix Component */

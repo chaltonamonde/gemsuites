@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GemSuites Hotel & Apartments | Riverside, Nairobi | Calm Luxury</title>
+  <title>GemSuites Hotel &amp; Apartments | Riverside, Nairobi | Calm Luxury</title>
   <meta name="description" content="Experience calm luxury at GemSuites Riverside, Nairobi. Luxury hotel suites, one- and two-bedroom serviced apartments, penthouse, Argenti restaurant, rooftop sky lounge, and Infinity Spa.">
   <meta name="keywords" content="GemSuites Riverside, Nairobi hotel, serviced apartments Nairobi, Riverside Lane accommodation, Argenti restaurant Nairobi, Infinity Spa, conference venue Nairobi">
   <link rel="canonical" href="https://gemsuites-riverside.com/">
@@ -11,61 +11,45 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gemsuites-riverside.com/">
-  <meta property="og:title" content="GemSuites Hotel & Apartments | Riverside, Nairobi">
+  <meta property="og:title" content="GemSuites Hotel &amp; Apartments | Riverside, Nairobi">
   <meta property="og:description" content="Calm luxury and serviced living in Riverside, Nairobi. Hotel suites, serviced apartments, Argenti restaurant, rooftop sky lounge, and Infinity Spa.">
   <meta property="og:image" content="media/og-share.svg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://gemsuites-riverside.com/">
-  <meta property="twitter:title" content="GemSuites Hotel & Apartments | Riverside, Nairobi">
+  <meta property="twitter:title" content="GemSuites Hotel &amp; Apartments | Riverside, Nairobi">
   <meta property="twitter:description" content="Calm luxury and serviced living in Riverside, Nairobi. Book direct for guaranteed best rates.">
   <meta property="twitter:image" content="media/og-share.svg">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#FAF6EE">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Theme Preference Initialization (Prevents flash of light/dark mode) -->
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('gemsuites_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', t);
-        var m = document.querySelector('meta[name="theme-color"]');
-        if (m) m.setAttribute('content', t === 'dark' ? '#071526' : '#FAF6EE');
+        var THEME_KEY = 'gemsuites_theme';
+        var stored = localStorage.getItem(THEME_KEY);
+        var theme = (stored === 'dark' || stored === 'light') ? stored :
+          ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#071526' : '#FAF6EE');
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=privilege-luxe-1">
-  <link rel="stylesheet" href="css/mobile.css?v=privilege-luxe-1">
-  <link rel="stylesheet" href="css/forms.css">
 
-  <!-- JSON-LD Structured Data: Hotel & LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["Hotel", "LodgingBusiness"],
-    "name": "GemSuites Hotel & Apartments, Riverside",
-    "description": "Luxury hotel suites, serviced apartments, and signature penthouse along Riverside Lane, Nairobi, Kenya.",
-    "url": "https://gemsuites-riverside.com/",
-    "logo": "https://gemsuites-riverside.com/favicon.svg",
-    "image": "https://gemsuites-riverside.com/media/og-share.svg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Riverside Lane, Riverside",
-      "addressLocality": "Nairobi",
-      "addressCountry": "KE"
-    },
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Infinity Spa & Heated Outdoor Pool", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Argenti Restaurant & Rooftop Sky Lounge", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Conferencing & Event Spaces (10-180 Guests)", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Complimentary High-Speed Wi-Fi", "value": true }
-    ],
-    "priceRange": "$$$"
-  }
-  </script>
+  <!-- Core & Home-Specific Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
+<body class="home-page">
   <!-- Accessible Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -80,7 +64,7 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation (Consolidated Core Links) -->
+      <!-- Desktop Navigation -->
       <nav class="nav-desktop" aria-label="Primary Navigation">
         <a href="stay.html" class="nav-link">Suites &amp; Living</a>
         
@@ -132,7 +116,7 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div class="mobile-theme-row">
       <div class="mobile-theme-title">
@@ -179,541 +163,757 @@
           <a href="offers.html" class="nav-link">Exclusive Offers &amp; Packages</a>
           <a href="gallery.html" class="nav-link">Visual Photo Gallery</a>
           <a href="location.html" class="nav-link">Riverside Neighborhood</a>
-          <a href="about.html" class="nav-link">About GemSuites Riverside</a>
-          <a href="state-house.html" class="nav-link">GemSuites State House Crescent</a>
+          <a href="about.html" class="nav-link">About GemSuites</a>
+          <a href="state-house.html" class="nav-link">GemSuites State House</a>
+          <a href="policies.html" class="nav-link">Guest Policies &amp; FAQs</a>
         </div>
       </div>
       <div class="mobile-nav-group">
-        <button type="button" class="mobile-group-header" aria-expanded="false">
-          <span>Guest Services</span>
-          <svg class="mobile-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="mobile-group-links">
-          <a href="contact.html" class="nav-link">Contact &amp; Concierge</a>
-          <a href="policies.html" class="nav-link">Guest Policies &amp; Terms</a>
-        </div>
+        <a href="contact.html" class="mobile-group-direct">Contact &amp; Location</a>
       </div>
-    </div>
-    <div class="mobile-drawer-cta">
-      <a href="book.html" class="btn btn-gold btn-lg" style="width: 100%;">Book Direct Now</a>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main id="main-content">
-    <!-- HERO SECTION WITH LIVE AMBIENT BACKGROUND -->
-    <section class="hero-ambient" aria-label="Welcome to GemSuites Riverside">
-      <div class="ambient-media-container">
-        <!-- Luxury Hospitality Photography Ken Burns Slideshow -->
-        <div class="ambient-slideshow" aria-label="GemSuites Riverside Photography Showcase">
-          <div class="slide-item active" style="background-image: url('media/hero-exterior.jpg');"></div>
-          <div class="slide-item" style="background-image: url('media/suite-deluxe.jpg');"></div>
-          <div class="slide-item" style="background-image: url('media/penthouse-terrace.jpg');"></div>
-          <div class="slide-item" style="background-image: url('media/argenti-sky-lounge.jpg');"></div>
-          <div class="slide-item" style="background-image: url('media/spa-infinity-pool.jpg');"></div>
+    <!-- ====================================================================
+         1. CINEMATIC FULL-VIEWPORT HERO WITH SLIDESHOW & ORBS
+         ==================================================================== -->
+    <section class="hero-cinematic" aria-label="Hero Overview">
+      <div class="hero-media-layer">
+        <!-- Hero Slideshow with Ken Burns transitions -->
+        <div class="hero-slideshow" aria-hidden="true">
+          <div class="hero-slide active" style="background-image: url('media/hero-exterior.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('media/argenti-sky-lounge.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('media/spa-infinity-pool.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('media/penthouse-terrace.jpg');"></div>
         </div>
-
-        <!-- Pure CSS Animated Ambient Orbs -->
-        <div class="sky-ambient-orbs" aria-hidden="true">
-          <div class="sky-orb sky-orb-1"></div>
-          <div class="sky-orb sky-orb-2"></div>
-          <div class="sky-orb sky-orb-gold"></div>
+        <!-- Atmospheric gradient scrim -->
+        <div class="hero-overlay"></div>
+        <!-- Floating ambient glowing orbs -->
+        <div class="hero-orbs" aria-hidden="true">
+          <div class="hero-orb hero-orb-1"></div>
+          <div class="hero-orb hero-orb-2"></div>
+          <div class="hero-orb hero-orb-gold"></div>
         </div>
-        <div class="ambient-overlay"></div>
       </div>
 
-      <div class="container hero-content">
-        <div class="section-eyebrow">Riverside Lane • Nairobi, Kenya</div>
-        <h1 class="hero-title">A Calm Luxury Sanctuary in Riverside</h1>
-        <p class="hero-lead">
-          Immerse yourself in refined tranquility. Hotel suites, residential serviced apartments, Argenti restaurant, rooftop sunset lounge, and restorative Infinity Spa.
+      <div class="hero-content-wrap">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          <span>Riverside Lane • Westlands • Nairobi</span>
+        </div>
+        <h1 class="hero-headline">
+          A Calm Luxury Sanctuary in <em>Riverside, Nairobi</em>
+        </h1>
+        <p class="hero-sub">
+          Where refined hotel suites, extended-stay residences, Argenti gastronomy, and serene wellness converge in Nairobi&rsquo;s most prestigious enclave.
         </p>
-        <div class="hero-actions">
-          <a href="book.html" class="btn btn-primary btn-lg">Check Direct Rates</a>
-          <a href="stay.html" class="btn btn-glass btn-lg">Explore Accommodations</a>
+        <div class="hero-cta-row">
+          <a href="#hero-booking-bar" class="btn btn-gold btn-lg">
+            <span>Check Availability &amp; Rates</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <a href="stay.html" class="btn btn-glass btn-lg" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.35);">
+            <span>Explore Residences</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
         </div>
       </div>
+
+      <!-- Ken Burns Slide Counter / Indicators -->
+      <div class="hero-slide-counter" aria-label="Hero Slide Switcher">
+        <button type="button" class="slide-dot active" data-slide-index="0" aria-label="Slide 1: Riverside Exterior"></button>
+        <button type="button" class="slide-dot" data-slide-index="1" aria-label="Slide 2: Sky Lounge"></button>
+        <button type="button" class="slide-dot" data-slide-index="2" aria-label="Slide 3: Infinity Pool"></button>
+        <button type="button" class="slide-dot" data-slide-index="3" aria-label="Slide 4: Penthouse Terrace"></button>
+      </div>
+
+      <!-- Subtle Scroll Down Indicator -->
+      <a href="#booking-section" class="hero-scroll-hint" aria-label="Scroll to booking bar">
+        <div class="scroll-mouse" aria-hidden="true">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </a>
     </section>
 
-    <!-- FLOATING GLASS BOOKING BAR -->
-    <section class="container floating-booking-bar" aria-label="Quick Booking Selector">
-      <div class="booking-bar-wrapper">
-        <div class="booking-bar-ambient-glow" aria-hidden="true"></div>
-        <form action="book.html" method="GET" class="booking-bar-card" id="hero-booking-bar">
-          <div class="booking-field" id="field-checkin">
-            <label for="bar-checkin" class="field-label">
-              <span class="field-label-left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <span>Check-In</span>
-              </span>
-            </label>
-            <input type="date" id="bar-checkin" name="checkin" class="field-input" required aria-label="Check-in Date">
-            <div class="field-subtext" id="bar-checkin-weekday">From 14:00</div>
-          </div>
-
-          <div class="booking-field" id="field-checkout">
-            <label for="bar-checkout" class="field-label">
-              <span class="field-label-left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <span>Check-Out</span>
-              </span>
-              <span class="booking-duration-pill" id="bar-duration-pill" title="Calculated stay duration">
-                <span class="pill-dot"></span>
-                <span class="pill-text">2 Nights</span>
-              </span>
-            </label>
-            <input type="date" id="bar-checkout" name="checkout" class="field-input" required aria-label="Check-out Date">
-            <div class="field-subtext" id="bar-checkout-weekday">Until 11:00</div>
-          </div>
-
-          <div class="booking-field" id="field-suite">
-            <label for="bar-suite" class="field-label">
-              <span class="field-label-left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path><path d="M21 11H3"></path><path d="M7 11V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"></path></svg>
-                <span>Suite / Apartment</span>
-              </span>
-            </label>
-            <select id="bar-suite" name="suite" class="field-input" aria-label="Suite or Serviced Apartment Type">
-              <option value="hotel-suite">Luxury Hotel Suite</option>
-              <option value="one-bedroom-apartment">1-Bedroom Serviced Apartment</option>
-              <option value="two-bedroom-apartment">2-Bedroom Serviced Apartment</option>
-              <option value="penthouse">Presidential Penthouse</option>
-            </select>
-            <div class="field-subtext">Serviced residences</div>
-          </div>
-
-          <div class="booking-field" id="field-guests">
-            <label for="bar-guests" class="field-label">
-              <span class="field-label-left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <span>Guests</span>
-              </span>
-            </label>
-            <select id="bar-guests" name="guests" class="field-input" aria-label="Number of Guests">
-              <option value="1">1 Guest</option>
-              <option value="2" selected>2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5+ Guests</option>
-            </select>
-            <div class="field-subtext">Adults &amp; children</div>
-          </div>
-
-          <div class="booking-submit-wrap">
-            <button type="submit" class="btn-submit" id="bar-submit-btn" aria-label="Check rates and suite availability">
-              <span class="btn-submit-shimmer" aria-hidden="true"></span>
-              <span class="btn-submit-label">Check Rates</span>
-              <svg class="btn-submit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <div class="booking-bar-ribbon" role="region" aria-label="Direct guest booking privileges">
-        <div class="ribbon-item">
-          <span class="ribbon-star" aria-hidden="true">✦</span>
-          <span>Guaranteed Best Direct Rates</span>
-        </div>
-        <span class="ribbon-sep" aria-hidden="true">•</span>
-        <div class="ribbon-item">
-          <span class="ribbon-icon" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-          </span>
-          <span>Instant M-Pesa &amp; Card Settlements</span>
-        </div>
-        <span class="ribbon-sep" aria-hidden="true">•</span>
-        <div class="ribbon-item">
-          <span class="ribbon-icon ribbon-whatsapp" aria-hidden="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-          </span>
-          <span>Direct WhatsApp Concierge</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIRECT BOOKING GUARANTEE BANNER -->
-    <section class="container" aria-label="Direct Guest Privileges">
-      <div class="perks-banner" id="direct-guest-privilege">
-        <!-- Ambient animated light sweep and radial warmth -->
-        <div class="perks-shimmer-bar" aria-hidden="true"></div>
-        <div class="perks-ambient-glow" aria-hidden="true"></div>
-
-        <!-- Decorative Monogram Watermark -->
-        <div class="perks-watermark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
-            <circle cx="50" cy="50" r="46" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.45"/>
-            <circle cx="50" cy="50" r="38" stroke-width="1"/>
-            <text x="50" y="58" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="600" text-anchor="middle" fill="currentColor">GS</text>
-          </svg>
-        </div>
-
-        <!-- Card Header Area -->
-        <div class="perks-header">
-          <div class="perks-badges-row">
-            <div class="privilege-pill">
-              <span class="privilege-sparkle" aria-hidden="true">✦</span>
-              <span class="privilege-pill-text">Direct Guest Privilege</span>
-            </div>
-            <div class="privilege-assurance-tag">
-              <span class="assurance-live-dot" aria-hidden="true"></span>
-              <span>Guaranteed Best Experience</span>
-            </div>
-          </div>
-
-          <h2 class="perks-title">Book Direct For The Guaranteed Best Experience</h2>
-          <p class="perks-lead">
-            Welcome to personalized Nairobi sanctuary living. When you reserve directly with our Riverside reservations team, you bypass third-party online travel agency commissions and unlock a curated suite of VIP privileges reserved exclusively for our direct guests.
-          </p>
-
-          <!-- Trust Badges Strip -->
-          <div class="perks-trust-strip">
-            <span class="trust-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Best Rate Match Guarantee</span>
+    <!-- ====================================================================
+         2. FLOATING GLASS BOOKING BAR (INTEGRATED WITH MAIN.JS)
+         ==================================================================== -->
+    <div class="hero-booking-section" id="booking-section">
+      <form action="book.html" method="GET" class="booking-bar-card" id="hero-booking-bar" aria-label="Direct Reservation Bar">
+        <!-- Check-In Field -->
+        <div class="booking-field" id="field-checkin">
+          <label for="bar-checkin" class="field-label">
+            <span class="field-label-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Check-In</span>
             </span>
-            <span class="trust-bullet" aria-hidden="true">•</span>
-            <span class="trust-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Zero Middleman Surcharges</span>
+          </label>
+          <input type="date" id="bar-checkin" name="checkin" class="field-input" required aria-label="Check-in Date">
+          <div class="field-subtext" id="bar-checkin-weekday">From 14:00</div>
+        </div>
+
+        <!-- Check-Out Field -->
+        <div class="booking-field" id="field-checkout">
+          <label for="bar-checkout" class="field-label">
+            <span class="field-label-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Check-Out</span>
             </span>
-            <span class="trust-bullet" aria-hidden="true">•</span>
-            <span class="trust-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Instant Confirmation on WhatsApp</span>
+            <span class="booking-duration-pill" id="bar-duration-pill" title="Calculated stay duration">
+              <span class="pill-dot"></span>
+              <span class="pill-text">2 Nights</span>
             </span>
-          </div>
+          </label>
+          <input type="date" id="bar-checkout" name="checkout" class="field-input" required aria-label="Check-out Date">
+          <div class="field-subtext" id="bar-checkout-weekday">Until 11:00</div>
         </div>
 
-        <!-- 4-Card Perks Grid -->
-        <div class="perks-grid">
-          <!-- Privilege 1: Best Rate -->
-          <div class="perk-item" tabindex="0">
-            <div class="perk-top">
-              <div class="perk-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="M9 12l2 2 4-4"/>
-                </svg>
-              </div>
-              <span class="perk-tag">0% Surcharges</span>
-            </div>
-            <div class="perk-title">Best Direct Rate</div>
-            <div class="perk-desc">Direct rates verified without middleman commissions. Transparent live quote calculation in KES and USD with our strict price match guarantee.</div>
-            <div class="perk-footer-note">
-              <span class="note-bullet">✦</span> 100% Rate Assurance
-            </div>
-          </div>
-
-          <!-- Privilege 2: Flexible Timing -->
-          <div class="perk-item" tabindex="0">
-            <div class="perk-top">
-              <div class="perk-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
-                </svg>
-              </div>
-              <span class="perk-tag">Complimentary</span>
-            </div>
-            <div class="perk-title">Flexible Check-In / Out</div>
-            <div class="perk-desc">Priority consideration for early suite access and relaxed late departure, tailoring your stay seamlessly around your Nairobi flight schedule.</div>
-            <div class="perk-footer-note">
-              <span class="note-bullet">✦</span> Priority Consideration
-            </div>
-          </div>
-
-          <!-- Privilege 3: M-Pesa & WhatsApp -->
-          <div class="perk-item" tabindex="0">
-            <div class="perk-top">
-              <div class="perk-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                  <line x1="6" y1="6" x2="6.01" y2="6"/>
-                  <line x1="6" y1="18" x2="6.01" y2="18"/>
-                </svg>
-              </div>
-              <span class="perk-tag">Instant Settlement</span>
-            </div>
-            <div class="perk-title">Instant M-Pesa &amp; WhatsApp</div>
-            <div class="perk-desc">Lipa na M-Pesa direct settlements and instant booking confirmation delivered immediately to your phone with your personal digital voucher.</div>
-            <div class="perk-footer-note">
-              <span class="note-bullet">✦</span> Instant Digital Voucher
-            </div>
-          </div>
-
-          <!-- Privilege 4: Personal Concierge -->
-          <div class="perk-item" tabindex="0">
-            <div class="perk-top">
-              <div class="perk-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  <circle cx="9" cy="10" r="1" fill="currentColor"/>
-                  <circle cx="12" cy="10" r="1" fill="currentColor"/>
-                  <circle cx="15" cy="10" r="1" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="perk-tag">24/7 Dedicated</span>
-            </div>
-            <div class="perk-title">24/7 Personal Concierge</div>
-            <div class="perk-desc">Direct line with our Nairobi team for bespoke Argenti dining, airport transfers, customized grocery stocking, and apartment arrangements.</div>
-            <div class="perk-footer-note">
-              <span class="note-bullet">✦</span> Bespoke Care &amp; Transfers
-            </div>
-          </div>
+        <!-- Suite / Apartment Selector -->
+        <div class="booking-field" id="field-suite">
+          <label for="bar-suite" class="field-label">
+            <span class="field-label-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path><path d="M21 11H3"></path><path d="M7 11V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"></path></svg>
+              <span>Suite / Apartment</span>
+            </span>
+          </label>
+          <select id="bar-suite" name="suite" class="field-input" aria-label="Suite or Serviced Apartment Type">
+            <option value="hotel-suite">Luxury Hotel Suite</option>
+            <option value="one-bedroom-apartment">1-Bedroom Serviced Apartment</option>
+            <option value="two-bedroom-apartment">2-Bedroom Serviced Apartment</option>
+            <option value="penthouse">Presidential Penthouse</option>
+          </select>
+          <div class="field-subtext">Serviced residences</div>
         </div>
 
-        <!-- Concierge Welcoming Strip / CTA Bar -->
-        <div class="perks-concierge-strip">
-          <div class="concierge-strip-left">
-            <div class="concierge-avatar-badge" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-              <span class="concierge-online-dot" title="Concierge team online"></span>
-            </div>
-            <div class="concierge-strip-info">
-              <div class="concierge-strip-title">Direct Reservations &amp; Concierge Host Online</div>
-              <div class="concierge-strip-desc">Special requests, extended residential stays, or custom arrival times? Our Nairobi team is on standby to assist you.</div>
-            </div>
-          </div>
-          <div class="concierge-strip-actions">
-            <a href="https://wa.me/254110677149?text=Hello%20GemSuites%20Reservations%20Team,%20I%20would%20like%20to%20inquire%20about%20direct%20booking%20privileges." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm perks-cta-wa" aria-label="Chat with Concierge on WhatsApp">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/>
-              </svg>
-              <span>Chat Concierge</span>
-            </a>
-            <a href="book.html" class="btn btn-primary btn-sm perks-cta-reserve">
-              <span>Book With Privileges</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
+        <!-- Guests Selector -->
+        <div class="booking-field" id="field-guests">
+          <label for="bar-guests" class="field-label">
+            <span class="field-label-left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <span>Guests</span>
+            </span>
+          </label>
+          <select id="bar-guests" name="guests" class="field-input" aria-label="Number of Guests">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5+ Guests</option>
+          </select>
+          <div class="field-subtext">Adults &amp; children</div>
         </div>
+
+        <!-- Submit Button -->
+        <div class="booking-submit-wrap">
+          <button type="submit" class="btn-submit" id="bar-submit-btn" aria-label="Check rates and suite availability">
+            <span class="btn-submit-shimmer" aria-hidden="true"></span>
+            <span class="btn-submit-text">Check Rates</span>
+            <svg class="btn-submit-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ====================================================================
+         3. TRUST RIBBON (KENYAN & DIPLOMATIC TRUST SIGNALS)
+         ==================================================================== -->
+    <section class="trust-ribbon" aria-label="Key Hotel Guarantees">
+      <div class="trust-ribbon-item">
+        <span class="trust-ribbon-icon gold" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        </span>
+        <span>Guaranteed Best Direct Rates</span>
+      </div>
+
+      <div class="trust-ribbon-item">
+        <span class="trust-ribbon-icon green" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        </span>
+        <span>Instant M-Pesa &amp; Card Confirmation</span>
+      </div>
+
+      <div class="trust-ribbon-item">
+        <span class="trust-ribbon-icon" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </span>
+        <span>Flexible Cancellation &amp; Check-In</span>
+      </div>
+
+      <div class="trust-ribbon-item">
+        <span class="trust-ribbon-icon" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+        </span>
+        <span>Dedicated High-Speed 500Mbps Fiber</span>
+      </div>
+
+      <div class="trust-ribbon-item">
+        <span class="trust-ribbon-icon gold" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </span>
+        <span>24/7 Diplomatic-Grade Security</span>
       </div>
     </section>
 
-    <!-- ACCOMMODATION BENTO GRID SHOWCASE -->
-    <section class="container section-padding" aria-label="Accommodations Overview">
-      <div class="section-header">
-        <div class="section-eyebrow">Accommodations &amp; Serviced Living</div>
-        <h2 class="section-title">Designed for Quiet Focus and Restorative Stays</h2>
-        <p class="section-lead">Choose between bespoke hotel suites for executive visits or expansive one- and two-bedroom apartments with full kitchens and private balconies.</p>
-      </div>
-
-      <div class="bento-grid">
-        <!-- Card 1: Hotel Suite (col-8) -->
-        <article class="bento-card col-8" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="media/suite-deluxe.jpg" alt="GemSuites Luxury Hotel Suite interior" class="bento-img" loading="lazy">
-          </div>
-          <div class="bento-body">
-            <span class="bento-badge">Hotel Suite • 1 King Bed</span>
-            <h3 class="bento-title">Luxury Hotel Suites</h3>
-            <p class="bento-desc">Crafted for short-stay indulgence and executive travel. Features bespoke timber cabinetry, an ergonomic workstation, marble rain shower, and lush garden views.</p>
-            <div class="bento-meta">
-              <span>Rates Valid: <strong class="rate-validity-label">Official 2026 / 2027 Direct Seasonal Rates</strong></span>
-              <a href="book.html?suite=hotel-suite" class="btn btn-outline-gold btn-sm">Check Rate &amp; Book</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2: 1-Bedroom Apartment (col-4) -->
-        <article class="bento-card col-4" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="media/one-bed-apartment.jpg" alt="One-Bedroom Serviced Apartment living area" class="bento-img" loading="lazy">
-          </div>
-          <div class="bento-body">
-            <span class="bento-badge">Serviced Apartment • Long Stay</span>
-            <h3 class="bento-title">One-Bedroom Apartment</h3>
-            <p class="bento-desc">Full residential privacy with separate master bedroom, living salon, gourmet induction kitchen, and in-unit washer/dryer.</p>
-            <div class="bento-meta">
-              <span>Extended Stay Available</span>
-              <a href="book.html?suite=one-bedroom-apartment" class="btn btn-outline-gold btn-sm">Reserve</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3: 2-Bedroom Apartment (col-4) -->
-        <article class="bento-card col-4" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="media/two-bed-apartment.jpg" alt="Two-Bedroom Serviced Apartment with private balcony" class="bento-img" loading="lazy">
-          </div>
-          <div class="bento-body">
-            <span class="bento-badge">Family &amp; Diplomatic</span>
-            <h3 class="bento-title">Two-Bedroom Apartment</h3>
-            <p class="bento-desc">Two private ensuite bathrooms, large entertainer's terrace, dining for 4, and full chef's kitchen suited for delegations and families.</p>
-            <div class="bento-meta">
-              <span>Spacious Layout</span>
-              <a href="book.html?suite=two-bedroom-apartment" class="btn btn-outline-gold btn-sm">Reserve</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 4: Presidential Penthouse (col-8) -->
-        <article class="bento-card col-8" data-tilt>
-          <div class="bento-img-wrap">
-            <img src="media/penthouse-terrace.jpg" alt="The Presidential Penthouse with panoramic rooftop views" class="bento-img" loading="lazy">
-          </div>
-          <div class="bento-body">
-            <span class="bento-badge">Signature Penthouse • 360° Views</span>
-            <h3 class="bento-title">The Presidential Penthouse</h3>
-            <p class="bento-desc">Occupying the top floor along Riverside Lane. Features wraparound rooftop entertaining terraces, double-height ceilings, and private VIP concierge services.</p>
-            <div class="bento-meta">
-              <span>Exclusive Top-Floor Suite</span>
-              <a href="book.html?suite=penthouse" class="btn btn-outline-gold btn-sm">Inquire &amp; Book</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div style="text-align: center; margin-top: var(--space-2xl);">
-        <a href="stay.html" class="btn btn-glass btn-lg">View Complete Accommodation Portfolio &amp; Floor Plans</a>
-      </div>
-    </section>
-
-    <!-- EXPERIENCES HIGHLIGHT: ARGENTI & INFINITY SPA -->
-    <section class="section-padding" style="background: var(--bg-section-alt); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+    <!-- ====================================================================
+         4. ACCOMMODATION SUITES & SERVICED RESIDENCES (TABBED PANELS)
+         ==================================================================== -->
+    <section class="accommodation-section" aria-labelledby="accommodations-title">
       <div class="container">
-        <div class="section-header">
-          <div class="section-eyebrow">Sensory Living</div>
-          <h2 class="section-title">Culinary Artistry &amp; Restorative Wellness</h2>
-          <p class="section-lead">From dawn breakfasts to sunset cocktails and heated pool therapies nestled in Riverside's tranquil greenery.</p>
-        </div>
-
-        <div class="experiences-grid">
-          <!-- Dining Card -->
-          <div class="experience-card" data-tilt>
-            <div class="experience-img-wrap">
-              <img src="media/argenti-dining.jpg" alt="Argenti Restaurant interior" loading="lazy">
-            </div>
-            <div class="experience-body">
-              <span class="bento-badge">Argenti Restaurant &amp; Rooftop Sky Lounge</span>
-              <h3 class="bento-title">Contemporary Dining &amp; Sunset Sky Lounge</h3>
-              <p class="bento-desc">Vibrant international gastronomy celebrating prime local ingredients. Enjoy panoramic dusk views, artisan cocktails, and alfresco terrace dining.</p>
-              <div style="margin-top: auto; padding-top: var(--space-sm);">
-                <a href="argenti.html" class="btn btn-primary btn-sm">Explore Menus &amp; Book Table</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Spa Card -->
-          <div class="experience-card" data-tilt>
-            <div class="experience-img-wrap">
-              <img src="media/spa-infinity-pool.jpg" alt="Infinity Spa and heated outdoor pool" loading="lazy">
-            </div>
-            <div class="experience-body">
-              <span class="bento-badge">Infinity Spa &amp; Wellness Sanctuary</span>
-              <h3 class="bento-title">Outdoor Heated Pool &amp; Holistic Therapies</h3>
-              <p class="bento-desc">Bespoke massages, organic botanical scrubs, and a heated outdoor pool surrounded by lush Riverside foliage for total body revitalization.</p>
-              <div style="margin-top: auto; padding-top: var(--space-sm);">
-                <a href="spa.html" class="btn btn-primary btn-sm">View Treatments &amp; Reserve</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Conferencing Card -->
-          <div class="experience-card" data-tilt>
-            <div class="experience-img-wrap">
-              <img src="media/events-boardroom.jpg" alt="Conferencing and event spaces" loading="lazy">
-            </div>
-            <div class="experience-body">
-              <span class="bento-badge">Conferencing • 10 to 180 Guests</span>
-              <h3 class="bento-title">Bespoke Executive Meetings &amp; Banquets</h3>
-              <p class="bento-desc">Flexible layouts including plenary ballroom and executive boardroom. Complete 4K audiovisual infrastructure with custom catering by Argenti.</p>
-              <div style="margin-top: auto; padding-top: var(--space-sm);">
-                <a href="events.html" class="btn btn-primary btn-sm">Request Event Proposal</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS & TRIPADVISOR TRUST SECTION -->
-    <section class="container section-padding" aria-label="Guest Experiences & Trust">
-      <div class="section-header">
-        <div class="section-eyebrow">Verified Guest Feedback</div>
-        <h2 class="section-title">Trusted by Diplomatic &amp; Executive Travelers</h2>
-        <p class="section-lead">
-          Rated highly by discerning guests across 74 reviews. Read authentic guest impressions directly on TripAdvisor.
-        </p>
-      </div>
-
-      <div class="testimonials-track">
-        <!-- Review 1 -->
-        <div class="testimonial-card">
-          <p class="testimonial-quote">"Outstanding tranquility along Riverside Lane. The apartment felt like a luxurious home away from home with all the perks of a five-star hotel. Argenti's rooftop sunsets were exceptional."</p>
-          <div class="testimonial-author">
-            <div>
-              <div class="author-name">Michael K.</div>
-              <div class="author-location">London, UK • Two-Bedroom Apartment</div>
-            </div>
-            <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="tripadvisor-link tripadvisor-external-link" target="_blank" rel="noopener noreferrer">TripAdvisor ↗</a>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="testimonial-card">
-          <p class="testimonial-quote">"The quiet luxury atmosphere is real. Highly responsive staff, superb Infinity Spa massage, and the direct WhatsApp booking assistance was seamless."</p>
-          <div class="testimonial-author">
-            <div>
-              <div class="author-name">David O.</div>
-              <div class="author-location">Nairobi, Kenya • Hotel Suite &amp; Spa</div>
-            </div>
-            <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="tripadvisor-link tripadvisor-external-link" target="_blank" rel="noopener noreferrer">TripAdvisor ↗</a>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="testimonial-card">
-          <p class="testimonial-quote">"We hosted an international board session for 35 delegates. The audiovisual setup and catering were flawless, and the penthouse views across Nairobi are magnificent."</p>
-          <div class="testimonial-author">
-            <div>
-              <div class="author-name">Sarah T.</div>
-              <div class="author-location">Johannesburg, SA • Conferencing</div>
-            </div>
-            <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="tripadvisor-link tripadvisor-external-link" target="_blank" rel="noopener noreferrer">TripAdvisor ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: var(--space-xl);">
-        <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="btn btn-glass tripadvisor-external-link" target="_blank" rel="noopener noreferrer">
-          View All Verified Reviews on TripAdvisor ↗
-        </a>
-      </div>
-    </section>
-
-    <!-- SISTER PROPERTY TEASER (GemSuites State House) -->
-    <section class="container" aria-label="Sister Property">
-      <div class="sister-property-card">
-        <div class="sister-property-content">
-          <div class="section-eyebrow">Sister Property</div>
-          <h3 class="section-title" style="font-size: 1.75rem; margin-bottom: var(--space-xs);">GemSuites State House, Nairobi</h3>
-          <p style="font-size: 0.95rem; color: var(--text-azure-secondary);">
-            Seeking luxury corporate residences near State House Crescent? GemSuites State House offers long-term diplomatic apartments in a quiet, high-security neighborhood.
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">Curated Living Spaces</div>
+          <h2 class="section-title" id="accommodations-title">Suites &amp; Serviced Living in Riverside</h2>
+          <p class="section-sub">
+            Designed for short luxury getaways, diplomatic postings, and extended corporate stays. Each residence features expansive floor plans, private balconies, and full hotel services.
           </p>
         </div>
-        <div>
-          <a href="state-house.html" class="btn btn-outline-gold btn-lg">Explore GemSuites State House</a>
+
+        <!-- Interactive Category Switcher Navigation -->
+        <div class="suite-tabs-nav" role="tablist" aria-label="Accommodation Types" data-reveal data-reveal-delay="1">
+          <button type="button" class="suite-tab-btn active" role="tab" id="tab-deluxe" aria-selected="true" aria-controls="panel-deluxe" data-suite-target="deluxe">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path><path d="M21 11H3"></path></svg>
+            <span>Hotel Suites (45 m²)</span>
+          </button>
+          <button type="button" class="suite-tab-btn" role="tab" id="tab-one-bed" aria-selected="false" aria-controls="panel-one-bed" data-suite-target="one-bed">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <span>1-Bedroom Serviced (85 m²)</span>
+          </button>
+          <button type="button" class="suite-tab-btn" role="tab" id="tab-two-bed" aria-selected="false" aria-controls="panel-two-bed" data-suite-target="two-bed">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            <span>2-Bedroom Family (140 m²)</span>
+          </button>
+          <button type="button" class="suite-tab-btn" role="tab" id="tab-penthouse" aria-selected="false" aria-controls="panel-penthouse" data-suite-target="penthouse">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Presidential Penthouse (280 m²)</span>
+          </button>
+        </div>
+
+        <!-- Panel 1: Deluxe Hotel Suite -->
+        <div class="suite-panel active" id="panel-deluxe" role="tabpanel" aria-labelledby="tab-deluxe" data-suite="deluxe">
+          <div class="suite-image-side">
+            <img src="media/suite-deluxe.jpg" alt="GemSuites Deluxe Hotel Suite in Riverside Nairobi" loading="lazy" width="800" height="600">
+            <div class="suite-image-badge">HOTEL SUITE &bull; 45 M&sup2;</div>
+            <div class="suite-rate-float">
+              <span class="suite-rate-from">From</span>
+              <span class="suite-rate-price" data-bind="property.accommodations.hotelSuite.rateUSD">$180</span>
+              <span class="suite-rate-unit">Per Night</span>
+            </div>
+          </div>
+          <div class="suite-content-side">
+            <div class="suite-tag">Calm Luxury &bull; Short &amp; Mid Stay</div>
+            <h3 class="suite-name">Deluxe Hotel Suite</h3>
+            <p class="suite-description">
+              A serene urban haven with bespoke plush king bedding, private balcony facing manicured Riverside greenery, acoustic sound insulation, and a spa-inspired marble bathroom.
+            </p>
+            <div class="suite-specs">
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                <span>45 m&sup2; / 484 sq ft</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 18h20M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path></svg>
+                <span>King Bed</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Up to 2 Guests</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <span>Nespresso &amp; Mini-Bar</span>
+              </span>
+            </div>
+            <div class="suite-amenities">
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>High-Speed 500Mbps Fiber Wi-Fi</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Rain Shower &amp; Luxury Robes</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Daily Housekeeping &amp; Turndown</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>24-Hour Argenti In-Room Dining</span>
+              </div>
+            </div>
+            <div class="suite-cta-row">
+              <a href="book.html?suite=hotel-suite" class="btn btn-gold btn-md">Reserve This Suite</a>
+              <a href="stay.html#hotel-suite" class="btn btn-outline btn-md">Full Floor Plan &amp; Specs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: One-Bedroom Serviced Apartment -->
+        <div class="suite-panel" id="panel-one-bed" role="tabpanel" aria-labelledby="tab-one-bed" data-suite="one-bed">
+          <div class="suite-image-side">
+            <img src="media/one-bed-apartment.jpg" alt="1-Bedroom Serviced Apartment in GemSuites Riverside" loading="lazy" width="800" height="600">
+            <div class="suite-image-badge">1-BEDROOM RESIDENCE &bull; 85 M&sup2;</div>
+            <div class="suite-rate-float">
+              <span class="suite-rate-from">From</span>
+              <span class="suite-rate-price" data-bind="property.accommodations.oneBed.rateUSD">$240</span>
+              <span class="suite-rate-unit">Per Night</span>
+            </div>
+          </div>
+          <div class="suite-content-side">
+            <div class="suite-tag">Extended Stay &bull; Full Kitchen</div>
+            <h3 class="suite-name">1-Bedroom Serviced Apartment</h3>
+            <p class="suite-description">
+              Fully self-contained residential living featuring an Italian-crafted chef&rsquo;s kitchen, spacious living and dining salon, separate master bedroom suite, and integrated laundry.
+            </p>
+            <div class="suite-specs">
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                <span>85 m&sup2; / 915 sq ft</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 18h20M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path></svg>
+                <span>King Bed + Living Sofa</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Up to 3 Guests</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+                <span>Full Kitchen &amp; Washer</span>
+              </span>
+            </div>
+            <div class="suite-amenities">
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full Gourmet Induction Kitchen</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Washer/Dryer &amp; Ironing Suite</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated Ergonomic Work Desk</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Private Balcony with Sunset Views</span>
+              </div>
+            </div>
+            <div class="suite-cta-row">
+              <a href="book.html?suite=one-bedroom-apartment" class="btn btn-gold btn-md">Reserve 1-Bedroom</a>
+              <a href="stay.html#one-bedroom" class="btn btn-outline btn-md">Full Floor Plan &amp; Specs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Two-Bedroom Serviced Apartment -->
+        <div class="suite-panel" id="panel-two-bed" role="tabpanel" aria-labelledby="tab-two-bed" data-suite="two-bed">
+          <div class="suite-image-side">
+            <img src="media/two-bed-apartment.jpg" alt="2-Bedroom Family Residence in GemSuites Riverside Nairobi" loading="lazy" width="800" height="600">
+            <div class="suite-image-badge">2-BEDROOM RESIDENCE &bull; 140 M&sup2;</div>
+            <div class="suite-rate-float">
+              <span class="suite-rate-from">From</span>
+              <span class="suite-rate-price" data-bind="property.accommodations.twoBed.rateUSD">$360</span>
+              <span class="suite-rate-unit">Per Night</span>
+            </div>
+          </div>
+          <div class="suite-content-side">
+            <div class="suite-tag">Family &amp; Diplomatic &bull; 2 En-Suites</div>
+            <h3 class="suite-name">2-Bedroom Family Residence</h3>
+            <p class="suite-description">
+              Expansive serviced residence with dual ensuite bedrooms, expansive 6-seat dining area, full island kitchen, guest powder room, and wrap-around terrace for families or delegations.
+            </p>
+            <div class="suite-specs">
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                <span>140 m&sup2; / 1,506 sq ft</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 18h20M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path></svg>
+                <span>1 King + 1 Queen / Twin</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Up to 5 Guests</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <span>Dual En-Suite Bathrooms</span>
+              </span>
+            </div>
+            <div class="suite-amenities">
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Two Private En-Suite Bathrooms</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Island Kitchen with Dishwasher</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full Living Salon &amp; 6-Seat Dining</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Wrap-Around Scenic Balcony</span>
+              </div>
+            </div>
+            <div class="suite-cta-row">
+              <a href="book.html?suite=two-bedroom-apartment" class="btn btn-gold btn-md">Reserve 2-Bedroom</a>
+              <a href="stay.html#two-bedroom" class="btn btn-outline btn-md">Full Floor Plan &amp; Specs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Presidential Penthouse -->
+        <div class="suite-panel" id="panel-penthouse" role="tabpanel" aria-labelledby="tab-penthouse" data-suite="penthouse">
+          <div class="suite-image-side">
+            <img src="media/penthouse-terrace.jpg" alt="Presidential Penthouse Terrace in GemSuites Riverside Nairobi" loading="lazy" width="800" height="600">
+            <div class="suite-image-badge">PRESIDENTIAL PENTHOUSE &bull; 280 M&sup2;</div>
+            <div class="suite-rate-float">
+              <span class="suite-rate-from">From</span>
+              <span class="suite-rate-price" data-bind="property.accommodations.penthouse.rateUSD">$650</span>
+              <span class="suite-rate-unit">Per Night</span>
+            </div>
+          </div>
+          <div class="suite-content-side">
+            <div class="suite-tag">Ultra Luxury &bull; Private Sky Deck</div>
+            <h3 class="suite-name">Presidential Sky Penthouse</h3>
+            <p class="suite-description">
+              Crown jewel of Riverside. An exquisite private penthouse suite offering 360-degree panoramic Nairobi skyline vistas, private open-air sun deck, butler pantry, and bespoke VIP security protocol.
+            </p>
+            <div class="suite-specs">
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                <span>280 m&sup2; / 3,014 sq ft</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Private Sky Terrace</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Up to 6 Guests</span>
+              </span>
+              <span class="spec-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span>Dedicated Butler on Call</span>
+              </span>
+            </div>
+            <div class="suite-amenities">
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Private Rooftop Panorama Deck</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated VIP Butler Service</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Freestanding Jacuzzi Soaking Tub</span>
+              </div>
+              <div class="amenity-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Private Lift Key Access</span>
+              </div>
+            </div>
+            <div class="suite-cta-row">
+              <a href="book.html?suite=penthouse" class="btn btn-gold btn-md">Inquire Penthouse</a>
+              <a href="stay.html#penthouse" class="btn btn-outline btn-md">Explore Penthouse Features</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- ====================================================================
+         5. CURATED EXPERIENCES (EDITORIAL 2-COLUMN SPLITS)
+         ==================================================================== -->
+    <section class="experiences-section" aria-labelledby="experiences-title">
+      <div class="container">
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">Gastronomy &bull; Wellness &bull; Gatherings</div>
+          <h2 class="section-title" id="experiences-title">The GemSuites Riverside Experience</h2>
+          <p class="section-sub">
+            From sunrise poolside breakfasts to sunset cocktails overlooking Westlands, every moment at GemSuites is crafted for effortless delight.
+          </p>
+        </div>
+
+        <div class="experiences-stack">
+          <!-- Experience 1: Argenti Restaurant -->
+          <article class="experience-split" data-reveal>
+            <div class="experience-img-block">
+              <img src="media/argenti-dining.jpg" alt="Argenti Restaurant &amp; Gastronomy at GemSuites Riverside" loading="lazy" width="800" height="500">
+              <div class="experience-img-tag">FINE GASTRONOMY &bull; ALL DAY</div>
+            </div>
+            <div class="experience-text-block">
+              <div class="experience-category">Gastronomy &amp; Lounge</div>
+              <h3 class="experience-heading">Argenti Restaurant &amp; Contemporary Dining</h3>
+              <p class="experience-body">
+                Indulge in artisanal culinary creations that blend classical European techniques with fresh, locally sourced Kenyan coastal and highland ingredients. Whether a power breakfast, diplomatic luncheon, or intimate candlelit dinner, Argenti sets the benchmark for fine dining along Riverside Drive.
+              </p>
+              <div class="experience-features">
+                <div class="experience-feature">Farm-to-table seasonal menus and charcoal-grilled prime cuts</div>
+                <div class="experience-feature">Sommelier-selected international wine cellar and vintage champagnes</div>
+                <div class="experience-feature">Private dining alcoves for confidential business gatherings</div>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+                <a href="argenti.html" class="btn btn-gold btn-md">Explore Argenti</a>
+                <a href="argenti.html#menu" class="btn btn-outline btn-md">View Dining Menu</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Experience 2: Argenti Rooftop Sky Lounge (Reverse Split) -->
+          <article class="experience-split reverse" data-reveal>
+            <div class="experience-img-block">
+              <img src="media/argenti-sky-lounge.jpg" alt="Argenti Rooftop Sky Lounge at GemSuites Riverside" loading="lazy" width="800" height="500">
+              <div class="experience-img-tag">PANORAMIC SKYLINE &bull; COCKTAILS</div>
+            </div>
+            <div class="experience-text-block">
+              <div class="experience-category">Rooftop Sky Lounge</div>
+              <h3 class="experience-heading">Sundowners Above the Nairobi Skyline</h3>
+              <p class="experience-body">
+                Ascend to the rooftop as dusk descends over Westlands. The Sky Lounge offers an ambient open-air terrace with handcrafted cocktails, chilled beats, and unobstructed skyline vistas. The quintessential Nairobi meeting point for diplomats, executives, and tastemakers.
+              </p>
+              <div class="experience-features">
+                <div class="experience-feature">Signature botanical mixology and rare single malt whiskeys</div>
+                <div class="experience-feature">Panoramic heated rooftop terrace with fire pit lounges</div>
+                <div class="experience-feature">Acoustic jazz evenings and curated resident DJ sets</div>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+                <a href="argenti.html#sky-lounge" class="btn btn-gold btn-md">Sky Lounge Details</a>
+                <a href="https://wa.me/254110677149?text=Hello%20GemSuites%2C%20I%20would%20like%20to%20reserve%20a%20table%20at%20the%20Sky%20Lounge" class="btn btn-whatsapp btn-md" target="_blank" rel="noopener">WhatsApp Table Booking</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Experience 3: Infinity Spa & Heated Pool -->
+          <article class="experience-split" data-reveal>
+            <div class="experience-img-block">
+              <img src="media/spa-infinity-pool.jpg" alt="Infinity Heated Pool and Wellness Spa at GemSuites Riverside" loading="lazy" width="800" height="500">
+              <div class="experience-img-tag">RESTORATIVE WELLNESS</div>
+            </div>
+            <div class="experience-text-block">
+              <div class="experience-category">Wellness &amp; Leisure</div>
+              <h3 class="experience-heading">Infinity Heated Pool &amp; Holistic Spa</h3>
+              <p class="experience-body">
+                Surrounded by lush indigenous bamboo and tropical flora, our temperature-controlled infinity pool provides peaceful swimming throughout the year. The adjacent Infinity Spa offers bespoke organic treatments, aromatic steam rooms, and deep relaxation therapy.
+              </p>
+              <div class="experience-features">
+                <div class="experience-feature">Year-round heated outdoor pool with sun loungers &amp; towel service</div>
+                <div class="experience-feature">Therapeutic deep tissue massages and African botanical facials</div>
+                <div class="experience-feature">Fully equipped fitness center with Technogym equipment</div>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+                <a href="spa.html" class="btn btn-gold btn-md">Explore Spa Treatments</a>
+                <a href="spa.html#book" class="btn btn-outline btn-md">Reserve Wellness Session</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6. DIRECT BOOKING PRIVILEGES & KENYAN TRUST SIGNALS
+         ==================================================================== -->
+    <section class="privileges-section" aria-labelledby="privileges-title">
+      <div class="container">
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">Direct Booking Rewards</div>
+          <h2 class="section-title" id="privileges-title">The GemSuites Resident Privileges</h2>
+          <p class="section-sub">
+            Booking directly through our official website or WhatsApp concierge guarantees you the lowest published rates and VIP perks unavailable on third-party portals.
+          </p>
+        </div>
+
+        <div class="privileges-grid">
+          <!-- Privilege 1 -->
+          <div class="privilege-card" data-reveal data-reveal-delay="1">
+            <div class="privilege-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+            </div>
+            <h4 class="privilege-title">Best Direct Rate Guarantee</h4>
+            <p class="privilege-desc">
+              Save up to 15% compared to online travel agencies. We match any lower verified rate and add an extra 10% direct discount.
+            </p>
+            <div class="privilege-note">No Middleman Fees</div>
+          </div>
+
+          <!-- Privilege 2 -->
+          <div class="privilege-card" data-reveal data-reveal-delay="2">
+            <div class="privilege-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h4 class="privilege-title">Flexible Check-In / Out</h4>
+            <p class="privilege-desc">
+              Enjoy priority early check-in from 11:00 AM and relaxed late check-out up to 2:00 PM (subject to availability upon arrival).
+            </p>
+            <div class="privilege-note">Diplomatic Flight Schedules</div>
+          </div>
+
+          <!-- Privilege 3 -->
+          <div class="privilege-card" data-reveal data-reveal-delay="3">
+            <div class="privilege-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <h4 class="privilege-title">M-Pesa &amp; Global Cards</h4>
+            <p class="privilege-desc">
+              Instant mobile checkout with Safaricom M-Pesa, Visa, Mastercard, or wire transfer, with instant digital booking confirmation.
+            </p>
+            <div class="privilege-note">Immediate Official Receipts</div>
+          </div>
+
+          <!-- Privilege 4 -->
+          <div class="privilege-card" data-reveal data-reveal-delay="4">
+            <div class="privilege-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h4 class="privilege-title">Dining &amp; Spa Privileges</h4>
+            <p class="privilege-desc">
+              Direct guests receive 10% privilege discount across Argenti Restaurant, Rooftop Sky Lounge, and all treatments at Infinity Spa.
+            </p>
+            <div class="privilege-note">Exclusive Resident Credit</div>
+          </div>
+        </div>
+
+        <!-- 24/7 Concierge Action Strip -->
+        <div class="concierge-cta-strip" data-reveal>
+          <div class="concierge-cta-left">
+            <div class="concierge-avatar" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <div class="concierge-online-pulse" title="Concierge Desk Online"></div>
+            </div>
+            <div>
+              <div class="concierge-cta-title">Need Personalized Corporate or Long-Stay Rates?</div>
+              <div class="concierge-cta-sub">Our Riverside guest relations team responds in under 2 minutes on WhatsApp.</div>
+            </div>
+          </div>
+          <div class="concierge-cta-actions">
+            <a href="https://wa.me/254110677149?text=Hello%20GemSuites%20Riverside%2C%20I%20would%20like%20to%20inquire%20about%20a%20reservation" class="btn btn-whatsapp btn-md" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
+              <span>Chat with Concierge</span>
+            </a>
+            <a href="tel:+254110677149" class="btn btn-outline btn-md">+254 110 677 149</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. SOCIAL PROOF & GUEST EXPERIENCES (VERIFIED REVIEWS)
+         ==================================================================== -->
+    <section class="testimonials-section" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">Guest Impressions</div>
+          <h2 class="section-title" id="testimonials-title">Voices of Calm Luxury</h2>
+          <p class="section-sub">
+            Read verified feedback from global diplomats, corporate executives, and travelers who make GemSuites Riverside their Nairobi residence.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Review 1 -->
+          <article class="review-card" data-reveal data-reveal-delay="1">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="review-text">
+              &ldquo;GemSuites Riverside was an immaculate sanctuary during my 3-month posting in Nairobi. The quiet atmosphere along Riverside Lane, the ultra-fast Wi-Fi, and the 24/7 security made working from my apartment completely seamless.&rdquo;
+            </p>
+            <div class="review-footer">
+              <div>
+                <div class="reviewer-name">Ambassador H. Lindqvist</div>
+                <div class="reviewer-meta">Stockholm &bull; Extended Residence Guest</div>
+              </div>
+              <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="ta-badge" target="_blank" rel="noopener">TripAdvisor 5.0 &#9733;</a>
+            </div>
+          </article>
+
+          <!-- Review 2 -->
+          <article class="review-card" data-reveal data-reveal-delay="2">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="review-text">
+              &ldquo;The Argenti Rooftop Sky Lounge has hands down the best twilight vista in Nairobi. Outstanding botanical cocktails, attentive sommelier service, and the ribeye steak was exquisite. A true 5-star standard.&rdquo;
+            </p>
+            <div class="review-footer">
+              <div>
+                <div class="reviewer-name">Dr. Wanjiku Mwangi</div>
+                <div class="reviewer-meta">Nairobi &bull; Argenti Dining &amp; Lounge Guest</div>
+              </div>
+              <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="ta-badge" target="_blank" rel="noopener">TripAdvisor 5.0 &#9733;</a>
+            </div>
+          </article>
+
+          <!-- Review 3 -->
+          <article class="review-card" data-reveal data-reveal-delay="3">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="review-text">
+              &ldquo;From the instant M-Pesa booking confirmation to the tranquil heated infinity pool after meetings, GemSuites Riverside sets the gold standard for luxury hospitality in East Africa. Will return every trip.&rdquo;
+            </p>
+            <div class="review-footer">
+              <div>
+                <div class="reviewer-name">Marcus van der Merwe</div>
+                <div class="reviewer-meta">Johannesburg &bull; Corporate Traveler</div>
+              </div>
+              <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="ta-badge" target="_blank" rel="noopener">TripAdvisor 5.0 &#9733;</a>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;" data-reveal>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g294207-d3369062-Reviews-GemSuites_Riverside-Nairobi.html" class="btn btn-glass btn-md" target="_blank" rel="noopener">
+            <span>Read All Verified Reviews on TripAdvisor ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         8. SISTER PROPERTY SPOTLIGHT (GEMSUITES STATE HOUSE)
+         ==================================================================== -->
+    <div class="container" data-reveal>
+      <section class="sister-banner" aria-label="Sister Property Announcement">
+        <div class="sister-banner-shimmer" aria-hidden="true"></div>
+        <div>
+          <div class="sister-tag">Sister Property</div>
+          <h3 class="sister-title">GemSuites State House, Nairobi</h3>
+          <p class="sister-desc">
+            Seeking luxury corporate residences near State House Crescent? GemSuites State House offers premier serviced diplomatic apartments in an ultra-secure, prestigious residential neighborhood.
+          </p>
+        </div>
+        <div class="sister-actions">
+          <a href="state-house.html" class="btn btn-gold btn-md">Explore State House Property</a>
+          <a href="contact.html" class="btn btn-glass btn-md" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.3);">Schedule Viewing</a>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- FLOATING CONCIERGE WHATSAPP TRIGGER -->
-  <a href="https://wa.me/254110677149" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
-    <div class="whatsapp-pulse-ring"></div>
+  <!-- ====================================================================
+       FLOATING CONCIERGE WHATSAPP TRIGGER
+       ==================================================================== -->
+  <a href="https://wa.me/254110677149?text=Hello%20GemSuites%20Riverside%2C%20I%20would%20like%20to%20inquire%20about%20a%20reservation" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with GemSuites Concierge on WhatsApp">
+    <div class="whatsapp-pulse-ring" aria-hidden="true"></div>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/></svg>
     <span>WhatsApp Concierge</span>
   </a>
 
-  <!-- SHARED SITE FOOTER -->
+  <!-- ====================================================================
+       SHARED SITE FOOTER
+       ==================================================================== -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -734,7 +934,7 @@
           </div>
         </div>
 
-        <!-- Col 2: Navigation Links -->
+        <!-- Col 2: Accommodations Links -->
         <div>
           <div class="footer-heading">Accommodations</div>
           <ul class="footer-nav-list">
@@ -760,7 +960,7 @@
           </ul>
         </div>
 
-        <!-- Col 4: Contact & Location (From site-data.js) -->
+        <!-- Col 4: Contact & Concierge -->
         <div>
           <div class="footer-heading">Contact &amp; Concierge</div>
           <div class="footer-contact-item">
@@ -793,7 +993,9 @@
     </div>
   </footer>
 
-  <!-- MOBILE STICKY BOTTOM ACTION BAR (Reserve + WhatsApp) -->
+  <!-- ====================================================================
+       MOBILE STICKY BOTTOM ACTION BAR (RESERVE + WHATSAPP)
+       ==================================================================== -->
   <aside class="mobile-sticky-bar" aria-label="Quick Mobile Actions">
     <a href="book.html" class="sticky-btn-reserve" id="mobile-sticky-reserve">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -804,7 +1006,7 @@
       </svg>
       <span>Reserve Direct</span>
     </a>
-    <a href="https://wa.me/254110677149" class="sticky-btn-wa" target="_blank" rel="noopener noreferrer" id="mobile-sticky-whatsapp" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/254110677149?text=Hello%20GemSuites%20Riverside%2C%20I%20would%20like%20to%20inquire%20about%20a%20reservation" class="sticky-btn-wa" target="_blank" rel="noopener noreferrer" id="mobile-sticky-whatsapp" aria-label="Chat on WhatsApp">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.791.815 2.791.816h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.421-4.407 9.828-9.828 9.828-1.637 0-3.176-.408-4.529-1.121l-5.643 1.477 1.503-5.507c-.822-1.427-1.289-3.08-1.289-4.837 0-5.421 4.407-9.828 9.828-9.828 5.421 0 9.828 4.407 9.828 9.828z"/>
       </svg>
@@ -815,5 +1017,111 @@
   <!-- Central site-data.js must be loaded before main.js -->
   <script src="data/site-data.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- ====================================================================
+       HOMEPAGE SPECIFIC DYNAMIC INTERACTIONS
+       ==================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* -------------------------------------------------------------
+         1. Hero Slideshow with Ken Burns & Dot Sync
+         ------------------------------------------------------------- */
+      var slides = document.querySelectorAll('.hero-slide');
+      var dots = document.querySelectorAll('.slide-dot');
+      var currentSlide = 0;
+      var slideInterval = null;
+
+      function goToSlide(index) {
+        if (!slides.length) return;
+        slides.forEach(function (s, i) {
+          s.classList.toggle('active', i === index);
+        });
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === index);
+        });
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        var next = (currentSlide + 1) % slides.length;
+        goToSlide(next);
+      }
+
+      function startSlideshow() {
+        if (slides.length > 1) {
+          slideInterval = setInterval(nextSlide, 6500);
+        }
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var targetIndex = parseInt(dot.getAttribute('data-slide-index'), 10);
+          if (!isNaN(targetIndex)) {
+            clearInterval(slideInterval);
+            goToSlide(targetIndex);
+            startSlideshow();
+          }
+        });
+      });
+
+      startSlideshow();
+
+      /* -------------------------------------------------------------
+         2. Accommodations Interactive Tab Switcher
+         ------------------------------------------------------------- */
+      var tabButtons = document.querySelectorAll('.suite-tab-btn');
+      var tabPanels = document.querySelectorAll('.suite-panel');
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = btn.getAttribute('data-suite-target');
+          if (!target) return;
+
+          tabButtons.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          tabPanels.forEach(function (panel) {
+            if (panel.getAttribute('data-suite') === target) {
+              panel.classList.add('active');
+            } else {
+              panel.classList.remove('active');
+            }
+          });
+        });
+      });
+
+      /* -------------------------------------------------------------
+         3. Modern IntersectionObserver Scroll-Reveal Engine
+         ------------------------------------------------------------- */
+      var revealElements = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.12
+        });
+
+        revealElements.forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        // Fallback for older browsers
+        revealElements.forEach(function (el) {
+          el.classList.add('revealed');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
