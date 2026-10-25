@@ -3649,7 +3649,8 @@ textarea.form-control {
 
 /* Mobile-only components base defaults (hidden on desktop) */
 .mobile-sticky-bar,
-.mobile-bottom-nav {
+.mobile-bottom-nav,
+.bn-dock {
   display: none;
 }
 .card-read-more-btn {
@@ -5027,42 +5028,63 @@ textarea.form-control {
   }
 
   /* ==========================================================================
-     MOBILE FLOATING GLASSMORPHIC BOTTOM NAVIGATION (4 LINKS)
+     MOBILE BOTTOM NAVIGATION — PREMIUM NATIVE-APP DOCK (.bn-)
+     Scoped entirely under .bn-* to avoid collisions with existing styles.
      ========================================================================== */
   .mobile-sticky-bar {
     display: none !important;
   }
 
-  .mobile-bottom-nav {
+  /* ── Dock Container ─────────────────────────────────────────────────────── */
+  .bn-dock {
     display: flex !important;
     position: fixed !important;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
-    left: 12px !important;
-    right: 12px !important;
-    max-width: 440px !important;
-    margin: 0 auto !important;
-    height: 62px !important;
-    padding: 6px 8px !important;
-    z-index: 999 !important;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 14px !important;
+    right: 14px !important;
+    max-width: 430px !important;
+    margin-inline: auto !important;
+    height: 64px !important;
+    padding: 7px 8px !important;
+    z-index: 9900 !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 6px !important;
-    border-radius: 28px !important;
-    background: rgba(255, 253, 248, 0.92) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    border: 1px solid rgba(212, 175, 55, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(6, 26, 48, 0.16), 0 2px 10px rgba(212, 175, 55, 0.14) !important;
-    transition: transform var(--transition-normal), background var(--transition-fast), border-color var(--transition-fast) !important;
+    gap: 4px !important;
+    border-radius: 32px !important;
+    background: rgba(255, 253, 248, 0.88) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.38) !important;
+    box-shadow:
+      0 2px 0 rgba(255,255,255,0.7) inset,
+      0 12px 40px rgba(6, 26, 48, 0.18),
+      0 3px 12px rgba(212, 175, 55, 0.16) !important;
+    /* Scroll-hide handled by JS via .bn-dock--hidden */
+    transition:
+      transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity  0.38s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.22s ease,
+      border-color 0.22s ease !important;
+    will-change: transform !important;
   }
 
-  [data-theme="dark"] .mobile-bottom-nav {
-    background: rgba(7, 21, 38, 0.92) !important;
-    border-color: rgba(56, 189, 248, 0.3) !important;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.16) !important;
+  .bn-dock.bn-dock--hidden {
+    transform: translateY(calc(100% + 28px)) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
-  .mobile-bottom-nav .nav-item {
+  [data-theme="dark"] .bn-dock {
+    background: rgba(5, 16, 32, 0.90) !important;
+    border-color: rgba(56, 189, 248, 0.28) !important;
+    box-shadow:
+      0 1px 0 rgba(56, 189, 248, 0.12) inset,
+      0 14px 48px rgba(0, 0, 0, 0.65),
+      0 0 28px rgba(56, 189, 248, 0.14) !important;
+  }
+
+  /* ── Regular Nav Item ────────────────────────────────────────────────────── */
+  .bn-item {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -5071,152 +5093,235 @@ textarea.form-control {
     flex: 1 !important;
     height: 100% !important;
     text-decoration: none !important;
-    color: var(--text-azure-secondary) !important;
-    border-radius: 18px !important;
+    color: var(--text-azure-muted) !important;
+    border-radius: 22px !important;
     position: relative !important;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 1 !important;
+    transition:
+      color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     -webkit-tap-highlight-color: transparent !important;
+    cursor: pointer !important;
   }
 
-  [data-theme="dark"] .mobile-bottom-nav .nav-item {
-    color: rgba(224, 242, 254, 0.72) !important;
+  [data-theme="dark"] .bn-item {
+    color: rgba(148, 190, 220, 0.68) !important;
   }
 
-  .mobile-bottom-nav .nav-item:active {
-    transform: scale(0.92) !important;
+  .bn-item:active {
+    transform: scale(0.88) !important;
+    transition-duration: 0.08s !important;
   }
 
-  .mobile-bottom-nav .nav-item.active {
-    color: var(--accent-gold-dark) !important;
+  /* Active state colors */
+  .bn-item.bn-active {
+    color: var(--accent-gold-dark, #B88E3E) !important;
   }
 
-  [data-theme="dark"] .mobile-bottom-nav .nav-item.active {
-    color: var(--accent-gold-light) !important;
+  [data-theme="dark"] .bn-item.bn-active {
+    color: var(--accent-gold-light, #F3D99F) !important;
   }
 
-  .mobile-bottom-nav .nav-icon {
+  /* ── Active Pill Highlight (slides behind active icon) ─────────────────── */
+  .bn-active-pill {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100% !important;
+    /* width and translateX set by JS */
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(232, 194, 122, 0.12) 100%) !important;
+    border-radius: 22px !important;
+    border: 1px solid rgba(212, 175, 55, 0.22) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    opacity: 0 !important;
+    transition:
+      transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+      width    0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+      opacity  0.22s ease !important;
+    will-change: transform, width !important;
+  }
+
+  [data-theme="dark"] .bn-active-pill {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.14) 0%, rgba(2, 132, 199, 0.10) 100%) !important;
+    border-color: rgba(56, 189, 248, 0.20) !important;
+  }
+
+  .bn-active-pill.bn-pill-visible {
+    opacity: 1 !important;
+  }
+
+  /* ── Icon Wrapper ────────────────────────────────────────────────────────── */
+  .bn-icon {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 22px !important;
-    height: 22px !important;
-    transition: transform 0.2s ease !important;
+    width: 24px !important;
+    height: 24px !important;
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   }
 
-  .mobile-bottom-nav .nav-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+  .bn-item.bn-active .bn-icon {
+    transform: translateY(-2px) scale(1.08) !important;
+  }
+
+  .bn-icon svg {
+    width: 21px !important;
+    height: 21px !important;
     stroke: currentColor !important;
-    stroke-width: 2 !important;
+    stroke-width: 1.9 !important;
     fill: none !important;
-    transition: stroke 0.2s ease !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    transition: stroke-width 0.22s ease !important;
   }
 
-  .mobile-bottom-nav .nav-item.active .nav-icon {
-    transform: translateY(-1px) !important;
+  .bn-item.bn-active .bn-icon svg {
+    stroke-width: 2.3 !important;
   }
 
-  .mobile-bottom-nav .nav-label {
-    font-family: var(--font-sans) !important;
-    font-size: 0.64rem !important;
+  /* ── Label ───────────────────────────────────────────────────────────────── */
+  .bn-label {
+    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif) !important;
+    font-size: 0.62rem !important;
     font-weight: 600 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.055em !important;
     text-transform: uppercase !important;
     line-height: 1 !important;
+    transition: font-weight 0.15s ease, opacity 0.22s ease !important;
+    opacity: 0.72 !important;
   }
 
-  .mobile-bottom-nav .nav-item.active .nav-label {
+  .bn-item.bn-active .bn-label {
     font-weight: 700 !important;
+    opacity: 1 !important;
   }
 
-  /* Active Indicator Glow Dot */
-  .mobile-bottom-nav .nav-active-dot {
+  /* ── Active Dot Indicator ────────────────────────────────────────────────── */
+  .bn-dot {
     position: absolute !important;
-    bottom: 3px !important;
+    bottom: 4px !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(0) !important;
     width: 4px !important;
     height: 4px !important;
     border-radius: 50% !important;
-    background: var(--accent-gold) !important;
+    background: var(--accent-gold, #D4AF37) !important;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0) !important;
     opacity: 0 !important;
-    transform: scale(0) !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition:
+      transform 0.30s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity   0.25s ease,
+      box-shadow 0.35s ease !important;
   }
 
-  .mobile-bottom-nav .nav-item.active .nav-active-dot {
+  .bn-item.bn-active .bn-dot {
     opacity: 1 !important;
-    transform: scale(1) !important;
-    box-shadow: 0 0 8px var(--accent-gold) !important;
+    transform: translateX(-50%) scale(1) !important;
+    box-shadow: 0 0 8px 2px rgba(212, 175, 55, 0.55) !important;
   }
 
-  /* 4th Item: Standout Gold Pill CTA */
-  .mobile-bottom-nav .nav-item-cta {
-    flex: 1.25 !important;
-    height: 46px !important;
-    background: var(--gradient-gold) !important;
+  [data-theme="dark"] .bn-dot {
+    background: var(--accent-gold-light, #F3D99F) !important;
+  }
+
+  /* ── Book Now Gold CTA Pill ──────────────────────────────────────────────── */
+  .bn-cta {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 90px !important;
+    height: 48px !important;
+    padding: 0 16px !important;
+    background: linear-gradient(135deg, #E8C27A 0%, #D4A359 50%, #C59B4B 100%) !important;
     color: #061A30 !important;
-    border-radius: 22px !important;
+    border-radius: 24px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 6px !important;
-    padding: 0 14px !important;
     font-weight: 800 !important;
     text-decoration: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.45) !important;
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.50) !important;
+    box-shadow:
+      inset 0 1.5px 0 rgba(255,255,255,0.55),
+      0 6px 20px rgba(212, 175, 55, 0.45),
+      0 2px 6px rgba(180, 130, 40, 0.25) !important;
     position: relative !important;
     overflow: hidden !important;
-    letter-spacing: 0.02em !important;
+    letter-spacing: 0.03em !important;
     -webkit-tap-highlight-color: transparent !important;
+    transition:
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.22s ease !important;
+    z-index: 1 !important;
   }
 
-  .mobile-bottom-nav .nav-item-cta:active {
-    transform: scale(0.96) !important;
+  .bn-cta:active {
+    transform: scale(0.93) !important;
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,0.4),
+      0 2px 8px rgba(212, 175, 55, 0.3) !important;
+    transition-duration: 0.08s !important;
   }
 
-  .mobile-bottom-nav .nav-item-cta.active {
-    box-shadow: 0 0 0 2px var(--accent-gold, #D4AF37), 0 6px 20px rgba(212, 175, 55, 0.55) !important;
+  .bn-cta.bn-active {
+    box-shadow:
+      inset 0 1.5px 0 rgba(255,255,255,0.55),
+      0 0 0 2.5px #D4AF37,
+      0 8px 24px rgba(212, 175, 55, 0.55) !important;
   }
 
-  .mobile-bottom-nav .nav-item-cta .nav-icon svg {
-    width: 17px !important;
-    height: 17px !important;
+  .bn-cta .bn-icon svg {
+    width: 16px !important;
+    height: 16px !important;
     stroke: #061A30 !important;
-    stroke-width: 2.3 !important;
+    stroke-width: 2.4 !important;
   }
 
-  .mobile-bottom-nav .nav-item-cta .nav-label {
+  .bn-cta .bn-label {
     color: #061A30 !important;
-    font-size: 0.74rem !important;
+    font-size: 0.72rem !important;
     font-weight: 800 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    opacity: 1 !important;
   }
 
-  /* Shimmer sweep effect */
-  .mobile-bottom-nav .nav-cta-shimmer {
+  /* ── Gold Shimmer Sweep on CTA ───────────────────────────────────────────── */
+  .bn-shimmer {
     position: absolute !important;
     top: 0 !important;
-    left: -100% !important;
-    width: 60% !important;
+    left: -110% !important;
+    width: 55% !important;
     height: 100% !important;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent) !important;
-    transform: skewX(-20deg) !important;
-    animation: navCtaShimmer 4s ease infinite !important;
+    background: linear-gradient(
+      100deg,
+      transparent 10%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 90%
+    ) !important;
+    transform: skewX(-18deg) !important;
+    animation: bnShimmer 3.8s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
     pointer-events: none !important;
   }
 
-  @keyframes navCtaShimmer {
-    0%   { left: -100%; }
-    25%  { left: 160%; }
-    100% { left: 160%; }
+  @keyframes bnShimmer {
+    0%   { left: -110%; opacity: 0; }
+    8%   { opacity: 1; }
+    38%  { left: 170%; opacity: 1; }
+    42%  { opacity: 0; }
+    100% { left: 170%; opacity: 0; }
   }
 
-  /* Ample clearance for site footer so no links are obstructed */
+  /* ── Footer Clearance ────────────────────────────────────────────────────── */
   .site-footer {
     padding-top: 32px !important;
-    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* ── Body Scroll Padding (so anchors clear the dock) ────────────────────── */
+  html {
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
   }
   .footer-grid {
     grid-template-columns: 1fr !important;

@@ -915,51 +915,122 @@
   }
 
   /* -------------------------------------------------------------
-     Mobile Bottom Navigation Active State Resolver
+     Premium Mobile Bottom Navigation Controller
+     - Scroll auto-hide / reappear (velocity-aware)
+     - Sliding gold active-pill highlight
+     - URL-based active state resolver
      ------------------------------------------------------------- */
   function initBottomNavActiveState() {
-    const bottomNav = document.querySelector('.mobile-bottom-nav');
-    if (!bottomNav) return;
+    var dock = document.querySelector('.bn-dock');
+    if (!dock) return;
 
-    const path = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
-    const isHome = path === '' || path === 'index.html';
+    /* ── Active State ─────────────────────────────────────────── */
+    var path = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
+    if (path === '') path = 'index.html';
 
-    const items = bottomNav.querySelectorAll('.nav-item');
-    const bookCta = bottomNav.querySelector('.nav-item-cta');
+    var items     = dock.querySelectorAll('.bn-item');
+    var cta       = dock.querySelector('.bn-cta');
+    var activePill = dock.querySelector('.bn-active-pill');
 
-    // Only override if we are on a known page
-    if (isHome) {
-      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
-      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
-      const homeLink = bottomNav.querySelector('a[href="index.html"]');
-      if (homeLink) {
-        homeLink.classList.add('active');
-        homeLink.setAttribute('aria-current', 'page');
+    // Map filename → href to look for
+    var pageMap = {
+      'index.html'       : 'index.html',
+      'stay.html'        : 'stay.html',
+      'argenti.html'     : 'argenti.html',
+      'book.html'        : 'book.html',
+    };
+
+    var targetHref = pageMap[path] || null;
+
+    // Clear all
+    items.forEach(function(el) {
+      el.classList.remove('bn-active');
+      el.removeAttribute('aria-current');
+    });
+    if (cta) {
+      cta.classList.remove('bn-active');
+      cta.removeAttribute('aria-current');
+    }
+
+    var activeEl = null;
+
+    if (targetHref === 'book.html') {
+      if (cta) {
+        cta.classList.add('bn-active');
+        cta.setAttribute('aria-current', 'page');
+        activeEl = cta;
       }
-    } else if (path === 'stay.html' || path === 'stay') {
-      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
-      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
-      const stayLink = bottomNav.querySelector('a[href="stay.html"]');
-      if (stayLink) {
-        stayLink.classList.add('active');
-        stayLink.setAttribute('aria-current', 'page');
-      }
-    } else if (path === 'argenti.html' || path === 'argenti') {
-      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
-      if (bookCta) { bookCta.classList.remove('active'); bookCta.removeAttribute('aria-current'); }
-      const diningLink = bottomNav.querySelector('a[href="argenti.html"]');
-      if (diningLink) {
-        diningLink.classList.add('active');
-        diningLink.setAttribute('aria-current', 'page');
-      }
-    } else if (path === 'book.html' || path === 'book') {
-      items.forEach(el => { el.classList.remove('active'); el.removeAttribute('aria-current'); });
-      if (bookCta) {
-        bookCta.classList.add('active');
-        bookCta.setAttribute('aria-current', 'page');
+    } else if (targetHref) {
+      var link = dock.querySelector('a[href="' + targetHref + '"]');
+      if (link) {
+        link.classList.add('bn-active');
+        link.setAttribute('aria-current', 'page');
+        activeEl = link;
       }
     }
+
+    /* ── Sliding Pill ─────────────────────────────────────────── */
+    function positionPill(el) {
+      if (!activePill || !el) {
+        if (activePill) activePill.classList.remove('bn-pill-visible');
+        return;
+      }
+      var dockRect = dock.getBoundingClientRect();
+      var elRect   = el.getBoundingClientRect();
+      var offsetX  = elRect.left - dockRect.left;
+      activePill.style.width     = elRect.width + 'px';
+      activePill.style.transform = 'translateX(' + offsetX + 'px)';
+      activePill.classList.add('bn-pill-visible');
+    }
+
+    // Give layout a tick to settle before measuring
+    requestAnimationFrame(function() {
+      positionPill(activeEl);
+    });
+
+    // Keep pill positioned on resize (landscape ↔ portrait flip)
+    window.addEventListener('resize', function() {
+      var cur = dock.querySelector('.bn-active, .bn-cta.bn-active');
+      positionPill(cur);
+    }, { passive: true });
+
+    /* ── Scroll Auto-Hide / Reappear ──────────────────────────── */
+    var lastScrollY   = window.scrollY;
+    var ticking       = false;
+    var scrolledDown  = 0;   // accumulated downward px since last direction change
+    var HIDE_THRESHOLD  = 80;  // px scrolled down before hiding
+    var SHOW_THRESHOLD  = 30;  // px scrolled up before showing
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var currentY = window.scrollY;
+          var delta    = currentY - lastScrollY;
+
+          if (delta > 0) {
+            // Scrolling down
+            scrolledDown += delta;
+            if (scrolledDown > HIDE_THRESHOLD && currentY > 120) {
+              dock.classList.add('bn-dock--hidden');
+            }
+          } else {
+            // Scrolling up
+            scrolledDown = 0;
+            if (Math.abs(delta) > SHOW_THRESHOLD || currentY < 80) {
+              dock.classList.remove('bn-dock--hidden');
+            }
+          }
+
+          lastScrollY = currentY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
+
 
   /* -------------------------------------------------------------
      Helper: Safe nested object path resolver
